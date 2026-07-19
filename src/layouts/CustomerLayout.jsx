@@ -1,23 +1,33 @@
-/*
-Layout dành cho khách hàng
+import { useEffect } from "react";
 
-Header
-Navbar
-Footer
-*/
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+
 import Header from "../components/customer/Header";
 import Footer from "../components/customer/Footer";
 
+import "../assets/styles/home.css";
+import "../assets/styles/header.css";
+
 function CustomerLayout() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  }, [location.pathname]);
+
   return (
-    <>
+    <div className="pd-customer-layout">
       <Header />
-      <main className="container mt-4">
+
+      <main className="pd-customer-main">
         <Outlet />
       </main>
+
       <Footer />
-    </>
+    </div>
   );
 }
 

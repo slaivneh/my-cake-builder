@@ -1,0 +1,788 @@
+/* =====================================================
+   PETITE DOUCEUR HEADER
+   ===================================================== */
+
+.pd-header {
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+
+  width: 100%;
+
+  font-family:
+    "Segoe UI",
+    Tahoma,
+    Arial,
+    sans-serif;
+
+  background: rgba(255, 253, 253, 0.98);
+
+  border-top:
+    1px solid rgba(235, 184, 195, 0.28);
+
+  box-shadow:
+    0 7px 24px
+    rgba(101, 57, 65, 0.08);
+
+  backdrop-filter: blur(12px);
+}
+
+/*
+  Viền lượn nhẹ bên dưới.
+*/
+.pd-header::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  bottom: -9px;
+  left: 0;
+
+  height: 10px;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 10px 0,
+      transparent 8px,
+      rgba(234, 144, 164, 0.55) 8.5px,
+      rgba(234, 144, 164, 0.55) 9.5px,
+      transparent 10px
+    )
+    0 0 / 22px 11px repeat-x;
+}
+
+/*
+  Xóa các phần Header cũ.
+*/
+.pd-header__shipping,
+.pd-header__notice,
+.pd-header__delivery,
+.pd-header__main {
+  display: none !important;
+}
+
+/* =====================================================
+   CONTAINER
+   ===================================================== */
+
+.pd-header__container {
+  position: relative;
+
+  width: min(
+    1440px,
+    calc(100% - 50px)
+  );
+
+  min-height: 132px;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    340px
+    minmax(0, 1fr);
+  align-items: center;
+
+  gap: 38px;
+
+  margin: 0 auto;
+  padding: 5px 0;
+}
+
+/* =====================================================
+   MENU TRÁI
+   ===================================================== */
+
+.pd-header__nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 34px;
+}
+
+.pd-header__link {
+  position: relative;
+
+  color: #694a44;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition: color 160ms ease;
+}
+
+.pd-header__link:hover,
+.pd-header__link--active {
+  color: #e15076;
+}
+
+.pd-header__link::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  bottom: -11px;
+  left: 0;
+
+  height: 2px;
+
+  background: #ea557b;
+
+  border-radius: 999px;
+
+  transform: scaleX(0);
+
+  transition: transform 160ms ease;
+}
+
+.pd-header__link:hover::after,
+.pd-header__link--active::after {
+  transform: scaleX(1);
+}
+
+/* =====================================================
+   LOGO
+   ===================================================== */
+
+/*
+  Logo được cấp hẳn một cột rộng 340px.
+  Không dùng cover nên không bị cắt.
+*/
+.pd-header__logo {
+  width: 340px;
+  height: 126px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  justify-self: center;
+
+  overflow: visible;
+
+  text-decoration: none;
+}
+
+.pd-header__logo img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  border: 0;
+
+  mix-blend-mode: multiply;
+
+  filter:
+    drop-shadow(
+      0 5px 8px
+      rgba(127, 72, 81, 0.06)
+    );
+
+  transition: transform 180ms ease;
+}
+
+.pd-header__logo:hover img {
+  transform: scale(1.02);
+}
+
+/* =====================================================
+   KHU VỰC BÊN PHẢI
+   ===================================================== */
+
+.pd-header__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  min-width: 0;
+}
+
+/*
+  Bắt buộc tạo khoảng cách lớn giữa
+  Đăng nhập và Đăng ký.
+*/
+.pd-header .pd-header__auth {
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 32px !important;
+}
+
+.pd-header__login {
+  min-height: 46px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 4px;
+
+  color: #694a44;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition: color 160ms ease;
+}
+
+.pd-header__login:hover {
+  color: #e15076;
+}
+
+.pd-header__register {
+  min-width: 104px;
+  min-height: 46px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 24px;
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f27b99,
+      #e94e76
+    );
+
+  border:
+    1px solid rgba(218, 67, 103, 0.13);
+  border-radius: 999px;
+
+  box-shadow:
+    0 11px 24px
+    rgba(220, 72, 108, 0.22);
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.pd-header__register:hover {
+  color: #ffffff;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 29px
+    rgba(220, 72, 108, 0.28);
+}
+
+/* =====================================================
+   USER ĐÃ ĐĂNG NHẬP
+   ===================================================== */
+
+.pd-header__customer-links,
+.pd-header__user {
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+}
+
+.pd-header__actions > * + * {
+  margin-left: 26px;
+}
+
+.pd-header__username {
+  max-width: 160px;
+
+  overflow: hidden;
+
+  color: #70514b;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pd-header__logout {
+  min-height: 39px;
+
+  padding: 0 16px;
+
+  color: #d84b70;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  background: #fff0f4;
+
+  border: 1px solid #efbdc8;
+  border-radius: 999px;
+
+  cursor: pointer;
+}
+
+/* =====================================================
+   MOBILE BUTTON
+   ===================================================== */
+
+.pd-header__menu-button {
+  display: none;
+
+  width: 44px;
+  height: 44px;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 5px;
+
+  padding: 0;
+
+  background: #fff2f5;
+
+  border: 1px solid #efb8c5;
+  border-radius: 13px;
+
+  cursor: pointer;
+}
+
+.pd-header__menu-button span {
+  width: 20px;
+  height: 2px;
+
+  background: #694a44;
+
+  border-radius: 999px;
+
+  transition:
+    transform 160ms ease,
+    opacity 160ms ease;
+}
+
+.pd-header__menu-button--open
+  span:nth-child(1) {
+  transform:
+    translateY(7px)
+    rotate(45deg);
+}
+
+.pd-header__menu-button--open
+  span:nth-child(2) {
+  opacity: 0;
+}
+
+.pd-header__menu-button--open
+  span:nth-child(3) {
+  transform:
+    translateY(-7px)
+    rotate(-45deg);
+}
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 1100px) {
+  .pd-header__container {
+    grid-template-columns:
+      minmax(0, 1fr)
+      270px
+      minmax(0, 1fr);
+
+    gap: 20px;
+  }
+
+  .pd-header__logo {
+    width: 270px;
+    height: 116px;
+  }
+
+  .pd-header__nav {
+    gap: 20px;
+  }
+
+  .pd-header .pd-header__auth {
+    gap: 20px !important;
+  }
+}
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 850px) {
+  .pd-header__container {
+    width: calc(100% - 28px);
+
+    min-height: 100px;
+
+    grid-template-columns:
+      1fr auto;
+
+    gap: 15px;
+  }
+
+  .pd-header__logo {
+    grid-column: 1;
+    grid-row: 1;
+
+    width: 220px;
+    height: 94px;
+
+    justify-self: start;
+  }
+
+  .pd-header__menu-button {
+    display: flex;
+
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .pd-header__nav,
+  .pd-header__actions {
+    position: absolute;
+    z-index: 1002;
+
+    right: 0;
+    left: 0;
+
+    display: none;
+
+    padding-right: 23px;
+    padding-left: 23px;
+
+    background:
+      rgba(255, 253, 253, 0.99);
+
+    border:
+      1px solid #f0c0cb;
+
+    box-shadow:
+      0 18px 31px
+      rgba(94, 49, 57, 0.13);
+  }
+
+  .pd-header__nav {
+    top: 100px;
+
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 19px;
+
+    padding-top: 24px;
+    padding-bottom: 21px;
+  }
+
+  .pd-header__actions {
+    top: 242px;
+
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    padding-top: 16px;
+    padding-bottom: 24px;
+
+    border-radius:
+      0 0 19px 19px;
+  }
+
+  .pd-header__nav--open,
+  .pd-header__actions--open {
+    display: flex;
+  }
+
+  .pd-header .pd-header__auth,
+  .pd-header__customer-links,
+  .pd-header__user {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pd-header__logo {
+    width: 190px;
+    height: 87px;
+  }
+}
+
+/* Tăng kích thước chữ navbar */
+
+.pd-header__link,
+.pd-header__login,
+.pd-header__cart {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pd-header__register {
+  min-width: 112px;
+  min-height: 48px;
+
+  padding: 0 26px;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.pd-header .pd-header__auth {
+  gap: 38px !important;
+}
+
+/* Đường gạch dưới cân với chữ mới */
+
+.pd-header__link::after {
+  bottom: -12px;
+  height: 2.5px;
+}
+
+/* Tablet */
+
+@media (max-width: 1100px) {
+  .pd-header__link,
+  .pd-header__login,
+  .pd-header__cart {
+    font-size: 15px;
+  }
+
+  .pd-header__register {
+    min-width: 104px;
+    min-height: 45px;
+
+    padding: 0 22px;
+
+    font-size: 14px;
+  }
+
+  .pd-header .pd-header__auth {
+    gap: 28px !important;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 850px) {
+  .pd-header__link,
+  .pd-header__login,
+  .pd-header__cart {
+    font-size: 16px;
+  }
+}
+
+/* =====================================================
+   ACCOUNT KHI ĐÃ ĐĂNG NHẬP
+   ===================================================== */
+
+.pd-header__logged-in {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 20px;
+}
+
+.pd-header__customer-links {
+  display: flex;
+  align-items: center;
+
+  gap: 28px;
+
+  padding-right: 22px;
+
+  border-right:
+    1px solid rgba(232, 166, 180, 0.55);
+}
+
+/* Khối thông tin tài khoản */
+
+.pd-header__account {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 175px;
+
+  padding: 7px 15px 7px 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff6f8,
+      #fff0f4
+    );
+
+  border:
+    1px solid #f1c3cd;
+  border-radius: 999px;
+
+  box-shadow:
+    0 7px 18px
+    rgba(160, 80, 97, 0.08);
+}
+
+/* Avatar chữ cái */
+
+.pd-header__avatar {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 auto;
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f38aa3,
+      #e65278
+    );
+
+  border:
+    2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+
+  box-shadow:
+    0 5px 12px
+    rgba(222, 76, 111, 0.2);
+}
+
+/* Dòng Xin chào và tên */
+
+.pd-header__account-info {
+  min-width: 0;
+
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  line-height: 1.2;
+}
+
+.pd-header__account-info span {
+  margin-bottom: 3px;
+
+  color: #a4837c;
+
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.pd-header__account-info strong {
+  max-width: 130px;
+
+  overflow: hidden;
+
+  color: #64453f;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Nút đăng xuất */
+
+.pd-header__logout {
+  min-height: 42px;
+
+  padding: 0 17px;
+
+  color: #dc4e72;
+
+  font-family:
+    "Segoe UI",
+    Tahoma,
+    Arial,
+    sans-serif;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  background: #ffffff;
+
+  border: 1px solid #efbdc8;
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.pd-header__logout:hover {
+  color: #ffffff;
+
+  background: #e9567a;
+
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+
+@media (max-width: 850px) {
+  .pd-header__logged-in {
+    width: 100%;
+
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 16px;
+  }
+
+  .pd-header__customer-links {
+    width: 100%;
+
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 17px;
+
+    padding-right: 0;
+    padding-bottom: 16px;
+
+    border-right: 0;
+    border-bottom:
+      1px solid rgba(232, 166, 180, 0.55);
+  }
+
+  .pd-header__account {
+    min-width: 210px;
+  }
+}

@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import AuthLayout from "../layouts/AuthLayout";
 import CustomerLayout from "../layouts/CustomerLayout";
@@ -10,6 +10,7 @@ import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 
 import Home from "../pages/customer/Home";
+import CakeList from "../pages/customer/CakeList";
 import CakeDetail from "../pages/customer/CakeDetail";
 import Cart from "../pages/customer/Cart";
 import Checkout from "../pages/customer/Checkout";
