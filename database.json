@@ -420,181 +420,575 @@
   "customCakeSettings": [
     {
       "id": 1,
-      "basePrice": 200000
+      "basePrice": 200000,
+      "defaultSizeId": 1,
+      "defaultLayerId": 1,
+      "defaultBaseId": 1,
+      "defaultFillingId": 4,
+      "defaultCreamId": 1,
+      "defaultShapeId": 1,
+      "defaultDecorationStyleId": 1,
+      "defaultDripSauceId": 1,
+      "defaultMessageStyleId": 1,
+      "defaultPackagingId": 1,
+      "defaultCandleOptionId": 1,
+      "defaultTopperId": 1,
+      "maxToppings": 8,
+      "messageMaxLength": 40,
+      "minimumLeadTimeHours": 24,
+      "urgentOrderExtraPrice": 80000,
+      "referenceImageExtraPrice": 50000
     }
   ],
   "cakeSizes": [
     {
       "id": 1,
       "name": "15cm",
-      "extraPrice": 0
+      "servings": "4-6 người",
+      "extraPrice": 0,
+      "isAvailable": true
     },
     {
       "id": 2,
       "name": "20cm",
-      "extraPrice": 100000
+      "servings": "8-10 người",
+      "extraPrice": 100000,
+      "isAvailable": true
     },
     {
       "id": 3,
       "name": "25cm",
-      "extraPrice": 250000
+      "servings": "12-16 người",
+      "extraPrice": 250000,
+      "isAvailable": true
+    },
+    {
+      "id": 4,
+      "name": "12cm",
+      "servings": "2-4 người",
+      "extraPrice": 0,
+      "isAvailable": true
+    },
+    {
+      "id": 5,
+      "name": "18cm",
+      "servings": "6-8 người",
+      "extraPrice": 60000,
+      "isAvailable": true
+    },
+    {
+      "id": 6,
+      "name": "30cm",
+      "servings": "18-24 người",
+      "extraPrice": 400000,
+      "isAvailable": true
     }
   ],
   "layerOptions": [
     {
       "id": 1,
       "name": "1 tầng",
-      "extraPrice": 0
+      "extraPrice": 0,
+      "isAvailable": true
     },
     {
       "id": 2,
       "name": "2 tầng",
-      "extraPrice": 150000
+      "extraPrice": 150000,
+      "isAvailable": true
     },
     {
       "id": 3,
       "name": "3 tầng",
-      "extraPrice": 350000
+      "extraPrice": 350000,
+      "isAvailable": true
+    },
+    {
+      "id": 4,
+      "name": "4 tầng",
+      "extraPrice": 650000,
+      "isAvailable": true
     }
   ],
   "cakeBases": [
     {
       "id": 1,
       "name": "Vanilla",
-      "extraPrice": 0
+      "description": "Cốt bánh vanilla mềm nhẹ.",
+      "extraPrice": 0,
+      "isAvailable": true
     },
     {
       "id": 2,
       "name": "Chocolate",
-      "extraPrice": 20000
+      "description": "Cốt bánh cacao đậm vị.",
+      "extraPrice": 20000,
+      "isAvailable": true
     },
     {
       "id": 3,
       "name": "Matcha",
-      "extraPrice": 30000
+      "description": "Cốt bánh trà xanh thơm nhẹ.",
+      "extraPrice": 30000,
+      "isAvailable": true
     },
     {
       "id": 4,
       "name": "Red Velvet",
-      "extraPrice": 25000
+      "description": "Cốt bánh cacao đỏ mềm ẩm.",
+      "extraPrice": 25000,
+      "isAvailable": true
+    },
+    {
+      "id": 5,
+      "name": "Pandan",
+      "description": "Cốt bánh lá dứa thơm dịu.",
+      "extraPrice": 20000,
+      "isAvailable": true
+    },
+    {
+      "id": 6,
+      "name": "Coffee",
+      "description": "Cốt bánh cà phê thơm đậm.",
+      "extraPrice": 25000,
+      "isAvailable": true
+    },
+    {
+      "id": 7,
+      "name": "Lemon",
+      "description": "Cốt bánh chanh vàng thanh mát.",
+      "extraPrice": 25000,
+      "isAvailable": true
+    },
+    {
+      "id": 8,
+      "name": "Carrot Cinnamon",
+      "description": "Cốt cà rốt và quế mềm ẩm.",
+      "extraPrice": 35000,
+      "isAvailable": true
     }
   ],
   "fillings": [
     {
       "id": 1,
       "name": "Dâu",
-      "extraPrice": 30000
+      "description": "Mứt dâu chua ngọt.",
+      "extraPrice": 30000,
+      "isAvailable": true
     },
     {
       "id": 2,
       "name": "Socola",
-      "extraPrice": 25000
+      "description": "Nhân socola mềm mịn.",
+      "extraPrice": 25000,
+      "isAvailable": true
     },
     {
       "id": 3,
       "name": "Phô mai",
-      "extraPrice": 30000
+      "description": "Nhân phô mai béo nhẹ.",
+      "extraPrice": 30000,
+      "isAvailable": true
     },
     {
       "id": 4,
       "name": "Kem sữa",
-      "extraPrice": 20000
+      "description": "Kem sữa vị ngọt dịu.",
+      "extraPrice": 20000,
+      "isAvailable": true
+    },
+    {
+      "id": 5,
+      "name": "Xoài",
+      "description": "Mứt xoài chua ngọt.",
+      "extraPrice": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 6,
+      "name": "Việt quất",
+      "description": "Mứt việt quất thơm dịu.",
+      "extraPrice": 35000,
+      "isAvailable": true
+    },
+    {
+      "id": 7,
+      "name": "Mâm xôi",
+      "description": "Mứt mâm xôi có vị chua nhẹ.",
+      "extraPrice": 40000,
+      "isAvailable": true
+    },
+    {
+      "id": 8,
+      "name": "Custard vanilla",
+      "description": "Kem trứng vanilla mềm mịn.",
+      "extraPrice": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 9,
+      "name": "Caramel muối",
+      "description": "Caramel ngọt dịu kết hợp vị mặn nhẹ.",
+      "extraPrice": 35000,
+      "isAvailable": true
+    },
+    {
+      "id": 10,
+      "name": "Chanh dây",
+      "description": "Nhân chanh dây chua thanh.",
+      "extraPrice": 35000,
+      "isAvailable": true
+    },
+    {
+      "id": 11,
+      "name": "Biscoff",
+      "description": "Nhân bánh quy caramel Biscoff.",
+      "extraPrice": 40000,
+      "isAvailable": true
+    },
+    {
+      "id": 12,
+      "name": "Hạt dẻ cười",
+      "description": "Kem pistachio béo thơm.",
+      "extraPrice": 55000,
+      "isAvailable": true
     }
   ],
   "creamTypes": [
     {
       "id": 1,
       "name": "Buttercream",
-      "extraPrice": 0
+      "description": "Kem bơ đứng form, phù hợp tạo hoa và bắt viền.",
+      "extraPrice": 0,
+      "isAvailable": true
     },
     {
       "id": 2,
       "name": "Whipping",
-      "extraPrice": 15000
+      "description": "Kem sữa nhẹ, ít ngọt.",
+      "extraPrice": 15000,
+      "isAvailable": true
     },
     {
       "id": 3,
       "name": "Cream Cheese",
-      "extraPrice": 30000
+      "description": "Kem phô mai béo nhẹ.",
+      "extraPrice": 30000,
+      "isAvailable": true
     },
     {
       "id": 4,
       "name": "Ganache",
-      "extraPrice": 40000
+      "description": "Kem socola đậm vị.",
+      "extraPrice": 40000,
+      "isAvailable": true
+    },
+    {
+      "id": 5,
+      "name": "Mousse Cream",
+      "description": "Kem mousse mềm và mịn.",
+      "extraPrice": 35000,
+      "isAvailable": true
+    },
+    {
+      "id": 6,
+      "name": "Yogurt Cream",
+      "description": "Kem sữa chua chua nhẹ.",
+      "extraPrice": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 7,
+      "name": "Mascarpone Cream",
+      "description": "Kem mascarpone béo thơm.",
+      "extraPrice": 45000,
+      "isAvailable": true
     }
   ],
   "cakeColors": [
     {
       "id": 1,
-      "name": "Trắng",
-      "hex": "#FFFFFF"
+      "name": "Trắng kem",
+      "hex": "#FFF8E7",
+      "extraPrice": 0
     },
     {
       "id": 2,
-      "name": "Hồng",
-      "hex": "#FFC0CB"
+      "name": "Hồng pastel",
+      "hex": "#F8BBD0",
+      "extraPrice": 0
     },
     {
       "id": 3,
-      "name": "Đỏ",
-      "hex": "#FF0000"
+      "name": "Đỏ dâu",
+      "hex": "#E85D75",
+      "extraPrice": 5000
     },
     {
       "id": 4,
-      "name": "Vàng",
-      "hex": "#FFD700"
+      "name": "Vàng bơ",
+      "hex": "#F8D77A",
+      "extraPrice": 0
     },
     {
       "id": 5,
       "name": "Xanh mint",
-      "hex": "#98FF98"
+      "hex": "#B7E4C7",
+      "extraPrice": 0
     },
     {
       "id": 6,
-      "name": "Tím",
-      "hex": "#9370DB"
+      "name": "Tím lavender",
+      "hex": "#CDB4DB",
+      "extraPrice": 0
+    },
+    {
+      "id": 7,
+      "name": "Xanh baby",
+      "hex": "#BDE0FE",
+      "extraPrice": 0
+    },
+    {
+      "id": 8,
+      "name": "Cam đào",
+      "hex": "#FFB4A2",
+      "extraPrice": 0
+    },
+    {
+      "id": 9,
+      "name": "Nâu cacao",
+      "hex": "#8D6E63",
+      "extraPrice": 5000
+    },
+    {
+      "id": 10,
+      "name": "Xanh sage",
+      "hex": "#A3B18A",
+      "extraPrice": 0
+    },
+    {
+      "id": 11,
+      "name": "Đen",
+      "hex": "#2B2B2B",
+      "extraPrice": 15000
+    },
+    {
+      "id": 12,
+      "name": "Phối 2 màu",
+      "hex": "MULTI",
+      "extraPrice": 20000
     }
   ],
   "toppings": [
     {
       "id": 1,
       "name": "Oreo",
-      "price": 25000
+      "category": "Bánh quy",
+      "price": 25000,
+      "isAvailable": true
     },
     {
       "id": 2,
       "name": "Dâu tươi",
-      "price": 35000
+      "category": "Trái cây",
+      "price": 35000,
+      "isAvailable": true
     },
     {
       "id": 3,
       "name": "Macaron",
-      "price": 40000
+      "category": "Bánh ngọt",
+      "price": 40000,
+      "isAvailable": true
     },
     {
       "id": 4,
       "name": "Chocolate Chip",
-      "price": 20000
+      "category": "Socola",
+      "price": 20000,
+      "isAvailable": true
     },
     {
       "id": 5,
       "name": "Hạnh nhân",
-      "price": 25000
+      "category": "Hạt",
+      "price": 25000,
+      "isAvailable": true
     },
     {
       "id": 6,
       "name": "Kẹo màu",
-      "price": 15000
+      "category": "Kẹo trang trí",
+      "price": 15000,
+      "isAvailable": true
     },
     {
       "id": 7,
       "name": "Hoa ăn được",
-      "price": 35000
+      "category": "Hoa",
+      "price": 35000,
+      "isAvailable": true
     },
     {
       "id": 8,
       "name": "KitKat",
-      "price": 30000
+      "category": "Bánh kẹo",
+      "price": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 9,
+      "name": "Việt quất tươi",
+      "category": "Trái cây",
+      "price": 35000,
+      "isAvailable": true
+    },
+    {
+      "id": 10,
+      "name": "Mâm xôi tươi",
+      "category": "Trái cây",
+      "price": 45000,
+      "isAvailable": true
+    },
+    {
+      "id": 11,
+      "name": "Xoài tươi",
+      "category": "Trái cây",
+      "price": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 12,
+      "name": "Cherry đỏ",
+      "category": "Trái cây",
+      "price": 40000,
+      "isAvailable": true
+    },
+    {
+      "id": 13,
+      "name": "Nho xanh",
+      "category": "Trái cây",
+      "price": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 14,
+      "name": "Bánh quy Biscoff",
+      "category": "Bánh quy",
+      "price": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 15,
+      "name": "Bánh quy bơ mini",
+      "category": "Bánh quy",
+      "price": 25000,
+      "isAvailable": true
+    },
+    {
+      "id": 16,
+      "name": "Brownie mini",
+      "category": "Bánh ngọt",
+      "price": 35000,
+      "isAvailable": true
+    },
+    {
+      "id": 17,
+      "name": "Mini choux",
+      "category": "Bánh ngọt",
+      "price": 35000,
+      "isAvailable": true
+    },
+    {
+      "id": 18,
+      "name": "Marshmallow mini",
+      "category": "Kẹo trang trí",
+      "price": 20000,
+      "isAvailable": true
+    },
+    {
+      "id": 19,
+      "name": "Meringue mini",
+      "category": "Bánh ngọt",
+      "price": 25000,
+      "isAvailable": true
+    },
+    {
+      "id": 20,
+      "name": "Ngọc trai đường",
+      "category": "Kẹo trang trí",
+      "price": 20000,
+      "isAvailable": true
+    },
+    {
+      "id": 21,
+      "name": "Chocolate đen bào",
+      "category": "Socola",
+      "price": 25000,
+      "isAvailable": true
+    },
+    {
+      "id": 22,
+      "name": "Chocolate trắng bào",
+      "category": "Socola",
+      "price": 25000,
+      "isAvailable": true
+    },
+    {
+      "id": 23,
+      "name": "Thanh chocolate trang trí",
+      "category": "Socola",
+      "price": 35000,
+      "isAvailable": true
+    },
+    {
+      "id": 24,
+      "name": "Hạt dẻ cười",
+      "category": "Hạt",
+      "price": 45000,
+      "isAvailable": true
+    },
+    {
+      "id": 25,
+      "name": "Hạt điều rang",
+      "category": "Hạt",
+      "price": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 26,
+      "name": "Dừa sấy",
+      "category": "Hạt",
+      "price": 20000,
+      "isAvailable": true
+    },
+    {
+      "id": 27,
+      "name": "Cánh hoa hồng khô",
+      "category": "Hoa",
+      "price": 25000,
+      "isAvailable": true
+    },
+    {
+      "id": 28,
+      "name": "Hoa cúc ăn được",
+      "category": "Hoa",
+      "price": 35000,
+      "isAvailable": true
+    },
+    {
+      "id": 29,
+      "name": "Lá vàng ăn được",
+      "category": "Cao cấp",
+      "price": 70000,
+      "isAvailable": true
+    },
+    {
+      "id": 30,
+      "name": "Bướm wafer paper",
+      "category": "Trang trí giấy gạo",
+      "price": 40000,
+      "isAvailable": true
     }
   ],
   "carts": [
@@ -626,7 +1020,16 @@
             "creamId": 2,
             "colorId": 2,
             "toppingIds": [1, 3],
-            "message": "Happy Birthday"
+            "message": "Happy Birthday",
+            "shapeId": 1,
+            "decorationStyleId": 1,
+            "dripSauceId": 1,
+            "messageStyleId": 1,
+            "topperId": 1,
+            "packagingId": 1,
+            "candleOptionId": 1,
+            "referenceImage": "",
+            "specialRequest": ""
           },
           "quantity": 1,
           "unitPrice": 430000,
@@ -753,7 +1156,16 @@
             "creamId": 2,
             "colorId": 2,
             "toppingIds": [1, 3],
-            "message": "Happy Birthday"
+            "message": "Happy Birthday",
+            "shapeId": 1,
+            "decorationStyleId": 1,
+            "dripSauceId": 1,
+            "messageStyleId": 1,
+            "topperId": 1,
+            "packagingId": 1,
+            "candleOptionId": 1,
+            "referenceImage": "",
+            "specialRequest": ""
           },
           "quantity": 1,
           "unitPrice": 430000,
@@ -819,7 +1231,16 @@
             "creamId": 1,
             "colorId": 5,
             "toppingIds": [2],
-            "message": "Chúc mừng"
+            "message": "Chúc mừng",
+            "shapeId": 1,
+            "decorationStyleId": 1,
+            "dripSauceId": 1,
+            "messageStyleId": 1,
+            "topperId": 1,
+            "packagingId": 1,
+            "candleOptionId": 1,
+            "referenceImage": "",
+            "specialRequest": ""
           },
           "quantity": 1,
           "unitPrice": 405000,
@@ -934,7 +1355,16 @@
             "creamId": 4,
             "colorId": 6,
             "toppingIds": [4, 5],
-            "message": "Kỷ niệm"
+            "message": "Kỷ niệm",
+            "shapeId": 1,
+            "decorationStyleId": 1,
+            "dripSauceId": 1,
+            "messageStyleId": 1,
+            "topperId": 1,
+            "packagingId": 1,
+            "candleOptionId": 1,
+            "referenceImage": "",
+            "specialRequest": ""
           },
           "quantity": 1,
           "unitPrice": 720000,
@@ -1153,6 +1583,312 @@
       "note": "Khách yêu cầu hủy",
       "createdAt": "2026-07-08T08:00:00Z",
       "updatedAt": "2026-07-08T10:00:00Z"
+    }
+  ],
+  "cakeShapes": [
+    {
+      "id": 1,
+      "name": "Hình tròn",
+      "extraPrice": 0,
+      "isAvailable": true
+    },
+    {
+      "id": 2,
+      "name": "Hình vuông",
+      "extraPrice": 20000,
+      "isAvailable": true
+    },
+    {
+      "id": 3,
+      "name": "Hình trái tim",
+      "extraPrice": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 4,
+      "name": "Hình chữ nhật",
+      "extraPrice": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 5,
+      "name": "Hình bông hoa",
+      "extraPrice": 50000,
+      "isAvailable": true
+    },
+    {
+      "id": 6,
+      "name": "Hình số",
+      "extraPrice": 70000,
+      "isAvailable": true
+    },
+    {
+      "id": 7,
+      "name": "Hình chữ cái",
+      "extraPrice": 70000,
+      "isAvailable": true
+    },
+    {
+      "id": 8,
+      "name": "Hình vòm",
+      "extraPrice": 40000,
+      "isAvailable": true
+    }
+  ],
+  "decorationStyles": [
+    {
+      "id": 1,
+      "name": "Tối giản",
+      "description": "Trang trí ít chi tiết, màu sắc nhẹ nhàng.",
+      "extraPrice": 0,
+      "isAvailable": true
+    },
+    {
+      "id": 2,
+      "name": "Korean Pastel",
+      "description": "Phong cách Hàn Quốc với kem pastel và chữ viết nhỏ.",
+      "extraPrice": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 3,
+      "name": "Vintage Lambeth",
+      "description": "Bắt viền kem nhiều lớp theo phong cách cổ điển.",
+      "extraPrice": 70000,
+      "isAvailable": true
+    },
+    {
+      "id": 4,
+      "name": "Vườn hoa",
+      "description": "Trang trí hoa kem và hoa ăn được.",
+      "extraPrice": 80000,
+      "isAvailable": true
+    },
+    {
+      "id": 5,
+      "name": "Vườn trái cây",
+      "description": "Trang trí nhiều loại trái cây tươi.",
+      "extraPrice": 90000,
+      "isAvailable": true
+    },
+    {
+      "id": 6,
+      "name": "Hoạt hình đáng yêu",
+      "description": "Trang trí nhân vật hoặc hình vẽ đơn giản.",
+      "extraPrice": 100000,
+      "isAvailable": true
+    },
+    {
+      "id": 7,
+      "name": "Chocolate Drip",
+      "description": "Phủ sốt chảy và trang trí socola.",
+      "extraPrice": 60000,
+      "isAvailable": true
+    },
+    {
+      "id": 8,
+      "name": "Rustic Naked Cake",
+      "description": "Lớp kem mỏng để lộ cốt bánh, trang trí tự nhiên.",
+      "extraPrice": 50000,
+      "isAvailable": true
+    },
+    {
+      "id": 9,
+      "name": "Galaxy",
+      "description": "Phối màu dải ngân hà và nhũ trang trí.",
+      "extraPrice": 90000,
+      "isAvailable": true
+    },
+    {
+      "id": 10,
+      "name": "Luxury Gold",
+      "description": "Phong cách sang trọng với điểm nhấn vàng.",
+      "extraPrice": 120000,
+      "isAvailable": true
+    }
+  ],
+  "dripSauces": [
+    {
+      "id": 1,
+      "name": "Không dùng sốt chảy",
+      "extraPrice": 0,
+      "isAvailable": true
+    },
+    {
+      "id": 2,
+      "name": "Chocolate đen",
+      "extraPrice": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 3,
+      "name": "Chocolate trắng",
+      "extraPrice": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 4,
+      "name": "Sốt dâu",
+      "extraPrice": 25000,
+      "isAvailable": true
+    },
+    {
+      "id": 5,
+      "name": "Caramel muối",
+      "extraPrice": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 6,
+      "name": "Matcha",
+      "extraPrice": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 7,
+      "name": "Việt quất",
+      "extraPrice": 30000,
+      "isAvailable": true
+    }
+  ],
+  "messageStyles": [
+    {
+      "id": 1,
+      "name": "Viết chữ trực tiếp bằng kem",
+      "extraPrice": 0,
+      "isAvailable": true
+    },
+    {
+      "id": 2,
+      "name": "Bảng fondant nhỏ",
+      "extraPrice": 25000,
+      "isAvailable": true
+    },
+    {
+      "id": 3,
+      "name": "Thẻ giấy cắm bánh",
+      "extraPrice": 20000,
+      "isAvailable": true
+    },
+    {
+      "id": 4,
+      "name": "Chữ nổi fondant",
+      "extraPrice": 40000,
+      "isAvailable": true
+    },
+    {
+      "id": 5,
+      "name": "Không ghi lời nhắn",
+      "extraPrice": 0,
+      "isAvailable": true
+    }
+  ],
+  "topperOptions": [
+    {
+      "id": 1,
+      "name": "Không dùng topper",
+      "extraPrice": 0,
+      "isAvailable": true
+    },
+    {
+      "id": 2,
+      "name": "Topper Happy Birthday",
+      "extraPrice": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 3,
+      "name": "Topper tên theo yêu cầu",
+      "extraPrice": 50000,
+      "isAvailable": true
+    },
+    {
+      "id": 4,
+      "name": "Topper số tuổi",
+      "extraPrice": 35000,
+      "isAvailable": true
+    },
+    {
+      "id": 5,
+      "name": "Topper ảnh in",
+      "extraPrice": 70000,
+      "isAvailable": true
+    },
+    {
+      "id": 6,
+      "name": "Topper nhân vật mica",
+      "extraPrice": 80000,
+      "isAvailable": true
+    },
+    {
+      "id": 7,
+      "name": "Topper hoa và bướm",
+      "extraPrice": 50000,
+      "isAvailable": true
+    }
+  ],
+  "packagingOptions": [
+    {
+      "id": 1,
+      "name": "Hộp bánh tiêu chuẩn",
+      "extraPrice": 0,
+      "isAvailable": true
+    },
+    {
+      "id": 2,
+      "name": "Hộp trong suốt",
+      "extraPrice": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 3,
+      "name": "Hộp quà kèm nơ",
+      "extraPrice": 50000,
+      "isAvailable": true
+    },
+    {
+      "id": 4,
+      "name": "Hộp cao cấp kèm thiệp",
+      "extraPrice": 80000,
+      "isAvailable": true
+    },
+    {
+      "id": 5,
+      "name": "Túi giữ lạnh",
+      "extraPrice": 40000,
+      "isAvailable": true
+    }
+  ],
+  "candleOptions": [
+    {
+      "id": 1,
+      "name": "Không lấy nến",
+      "extraPrice": 0,
+      "isAvailable": true
+    },
+    {
+      "id": 2,
+      "name": "Nến xoắn pastel",
+      "extraPrice": 15000,
+      "isAvailable": true
+    },
+    {
+      "id": 3,
+      "name": "Nến số",
+      "extraPrice": 20000,
+      "isAvailable": true
+    },
+    {
+      "id": 4,
+      "name": "Nến chữ Happy Birthday",
+      "extraPrice": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": 5,
+      "name": "Nến pháo hoa",
+      "extraPrice": 25000,
+      "isAvailable": true
     }
   ]
 }
