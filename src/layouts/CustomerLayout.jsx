@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import NotificationBell from '../components/notification/NotificationBell';
 
+
 const CustomerLayout = () => {
   return (
     <div className="customer-layout">

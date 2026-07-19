@@ -1,12 +1,6 @@
 /*
 Hàm tính giá bánh custom
 
-Giá =
-Size
-+ Layer
-+ Cream
-+ Filling
-+ Topping
 */
 import {
   CAKE_SIZES,

@@ -1,17 +1,45 @@
-/*
-Quản lý trạng thái đăng nhập của toàn bộ ứng dụng
+import { createContext, useEffect, useState } from "react";
 
-Chức năng:
-- Lưu currentUser
-- Login
-- Logout
-- Register
-- Kiểm tra role
-*/
-import { createContext } from "react";
+const AuthContext = createContext();
 
-export const AuthContext = createContext();
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
 
-export default function AuthProvider({ children }) {
-  return <AuthContext.Provider value={{}}>{children}</AuthContext.Provider>;
-}
+  useEffect(() => {
+    const currentUser = localStorage.getItem("user");
+
+    if (currentUser) {
+      setUser(JSON.parse(currentUser));
+    }
+  }, []);
+
+  const login = (userData) => {
+    localStorage.setItem("user", JSON.stringify(userData));
+    setUser(userData);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+  };
+
+  const register = (userData) => {
+    localStorage.setItem("user", JSON.stringify(userData));
+    setUser(userData);
+  };
+
+  return (
+    <AuthContext.Provider
+      value={{
+        user,
+        login,
+        logout,
+        register,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export default AuthContext;
