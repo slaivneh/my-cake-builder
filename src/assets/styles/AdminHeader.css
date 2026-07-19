@@ -1,0 +1,371 @@
+/* ============================================
+   AdminHeader.css — Sidebar dọc thu gọn/mở rộng
+   Màu trích từ logo Petite Douceur
+   ============================================ */
+
+:root {
+    /* Trích màu từ logo */
+    --logo-pink-light: #fdf2f4;
+    /* Nền nhạt trong logo */
+    --logo-pink-soft: #f5dce2;
+    /* Viền hồng nhạt logo */
+    --logo-pink-medium: #e8a4b0;
+    /* Hồng trung bình */
+    --logo-pink-dark: #c97a85;
+    /* Chữ Petite Douceur - hồng đất đậm */
+    --logo-pink-deep: #b05a68;
+    /* Hồng đất sâu */
+    --logo-cream: #fef9f9;
+    /* Kem trắng hồng */
+    --logo-white: #ffffff;
+
+    --pd-radius-md: 0.75rem;
+    --pd-radius-full: 9999px;
+    --pd-shadow-1: 0 4px 20px rgba(176, 90, 104, 0.06);
+    --pd-shadow-2: 0 8px 30px rgba(176, 90, 104, 0.1);
+    --pd-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   SIDEBAR — MÀU NHẠT (nền kem/trắng hồng)
+   ============================================ */
+.admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 260px;
+    background: var(--logo-cream);
+    border-right: 1.5px solid var(--logo-pink-soft);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 16px;
+    box-sizing: border-box;
+    z-index: 1000;
+    transition: var(--pd-transition);
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+}
+
+.admin-sidebar.collapsed {
+    width: 80px;
+    padding: 24px 12px;
+}
+
+/* ============================================
+   TOGGLE BUTTON
+   ============================================ */
+.admin-sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    right: -14px;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--pd-radius-full);
+    background: var(--logo-pink-soft);
+    border: 1.5px solid var(--logo-pink-medium);
+    color: var(--logo-pink-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--pd-shadow-1);
+    transition: var(--pd-transition);
+    z-index: 1001;
+}
+
+.admin-sidebar-toggle:hover {
+    background: var(--logo-pink-dark);
+    color: var(--logo-white);
+    box-shadow: var(--pd-shadow-2);
+}
+
+/* ============================================
+   LOGO
+   ============================================ */
+.admin-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    margin-bottom: 56px;
+    padding: 0 8px;
+    transition: var(--pd-transition);
+}
+
+.admin-logo-img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    flex-shrink: 0;
+    transition: var(--pd-transition);
+}
+
+.admin-sidebar.collapsed .admin-logo-img {
+    width: 52px;
+    height: 52px;
+}
+
+.admin-logo-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    transition: opacity 0.2s ease;
+}
+
+.admin-logo-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--logo-pink-deep);
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.admin-logo-subtitle {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--logo-pink-medium);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 2px;
+    white-space: nowrap;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 50px;
+}
+
+.admin-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: var(--pd-radius-md);
+    color: var(--logo-pink-deep);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: var(--pd-transition);
+    white-space: nowrap;
+}
+
+.admin-nav-item:hover {
+    background: var(--logo-pink-light);
+    color: var(--logo-pink-deep);
+}
+
+.admin-nav-item.active {
+    background: var(--logo-pink-soft);
+    color: var(--logo-pink-deep);
+}
+
+.admin-nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.admin-nav-label {
+    transition: opacity 0.2s ease;
+}
+
+/* ============================================
+   BOTTOM: USER CARD + LOGOUT
+   ============================================ */
+.admin-sidebar-bottom {
+    border-top: 1.5px solid var(--logo-pink-soft);
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.admin-user-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: var(--pd-radius-md);
+    background: var(--logo-pink-light);
+    transition: var(--pd-transition);
+}
+
+.admin-user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--pd-radius-full);
+    background: var(--logo-pink-dark);
+    color: var(--logo-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+    transition: var(--pd-transition);
+}
+
+.admin-sidebar.collapsed .admin-user-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+}
+
+.admin-user-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    transition: opacity 0.2s ease;
+}
+
+.admin-user-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--logo-pink-deep);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-user-role {
+    font-size: 12px;
+    color: var(--logo-pink-medium);
+    font-weight: 500;
+}
+
+.admin-logout-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: var(--pd-radius-md);
+    border: 1.5px solid var(--logo-pink-soft);
+    background: transparent;
+    color: var(--logo-pink-deep);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--pd-transition);
+    font-family: inherit;
+}
+
+.admin-logout-btn:hover {
+    background: var(--logo-pink-light);
+    border-color: var(--logo-pink-medium);
+}
+
+.admin-logout-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.admin-logout-label {
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+}
+
+/* ============================================
+   MOBILE OVERLAY
+   ============================================ */
+.admin-sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(176, 90, 104, 0.25);
+    backdrop-filter: blur(2px);
+    z-index: 999;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ============================================
+   MOBILE TOGGLE BUTTON
+   ============================================ */
+.admin-mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--pd-radius-md);
+    background: var(--logo-cream);
+    border: 1.5px solid var(--logo-pink-soft);
+    color: var(--logo-pink-dark);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--pd-shadow-1);
+    z-index: 998;
+    transition: var(--pd-transition);
+}
+
+.admin-mobile-toggle:hover {
+    box-shadow: var(--pd-shadow-2);
+}
+
+/* ============================================
+   RESPONSIVE — Mobile
+   ============================================ */
+@media (max-width: 768px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+        width: 260px !important;
+        padding: 24px 16px !important;
+    }
+
+    .admin-sidebar.mobile-open {
+        transform: translateX(0);
+    }
+
+    .admin-sidebar.mobile-open .admin-logo-text,
+    .admin-sidebar.mobile-open .admin-nav-label,
+    .admin-sidebar.mobile-open .admin-user-info,
+    .admin-sidebar.mobile-open .admin-logout-label {
+        opacity: 1 !important;
+        display: flex !important;
+    }
+
+    .admin-sidebar-toggle {
+        display: none;
+    }
+
+    .admin-mobile-toggle {
+        display: flex;
+    }
+}
+
+/* ============================================
+   COLLAPSED STATE — ẩn text
+   ============================================ */
+.admin-sidebar.collapsed .admin-logo-text,
+.admin-sidebar.collapsed .admin-nav-label,
+.admin-sidebar.collapsed .admin-user-info,
+.admin-sidebar.collapsed .admin-logout-label {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    pointer-events: none;
+}

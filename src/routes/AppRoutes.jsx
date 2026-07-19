@@ -23,7 +23,9 @@ import OrderManagement from "../pages/admin/OrderManagement";
 
 import NotFound from "../pages/NotFound";
 
+
 function AppRoutes() {
+
   return (
     <Routes>
       {/* Auth */}
@@ -35,6 +37,7 @@ function AppRoutes() {
       {/* Customer */}
       <Route element={<CustomerLayout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/cakes/:id" element={<CakeDetail />} />
 
         <Route element={<ProtectedRoute role="customer" />}>
@@ -47,12 +50,11 @@ function AppRoutes() {
       </Route>
 
       {/* Admin */}
-      <Route element={<ProtectedRoute role="staff" />}>
+      <Route element={<ProtectedRoute role={["staff", "owner"]} />}>
         <Route element={<AdminLayout />}>
           <Route path="/admin/orders" element={<OrderManagement />} />
         </Route>
       </Route>
-
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

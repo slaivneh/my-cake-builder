@@ -32,3 +32,5 @@ export const searchCakes = async (keyword) => {
 
   return Array.isArray(cakes) ? cakes : [];
 };
+
+export const getCakes = getAllCakes;

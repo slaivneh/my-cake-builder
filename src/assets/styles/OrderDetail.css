@@ -1,0 +1,532 @@
+/* ============================================
+   OrderDetail.css — Petite Douceur Theme
+   ============================================ */
+
+/* ---------- Variables ---------- */
+:root {
+    --od-pink-light: #fdf2f4;
+    --od-pink-soft: #f5dce2;
+    --od-pink-medium: #e8a4b0;
+    --od-pink-dark: #c97a85;
+    --od-pink-deep: #b05a68;
+    --od-cream: #fef9f9;
+    --od-white: #ffffff;
+    --od-brown: #5c4b4f;
+    --od-brown-light: #896d68;
+    --od-radius: 1.25rem;
+    --od-radius-sm: 0.75rem;
+    --od-shadow: 0 4px 20px rgba(176, 90, 104, 0.06);
+    --od-shadow-hover: 0 8px 30px rgba(176, 90, 104, 0.1);
+    --od-transition: all 0.25s ease;
+}
+
+/* ---------- Page ---------- */
+.od-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 0 40px;
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    color: var(--od-brown);
+}
+
+/* ---------- Header ---------- */
+.od-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1.5px solid var(--od-pink-soft);
+}
+
+.od-back {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    color: var(--od-pink-deep);
+    font-size: 14px;
+    font-weight: 600;
+    background: var(--od-cream);
+    border: 1.5px solid var(--od-pink-soft);
+    border-radius: var(--od-radius-sm);
+    cursor: pointer;
+    transition: var(--od-transition);
+    font-family: inherit;
+}
+
+.od-back:hover {
+    background: var(--od-pink-light);
+    border-color: var(--od-pink-medium);
+}
+
+.od-title {
+    flex: 1;
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--od-pink-deep);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.od-code {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--od-pink-dark);
+    background: var(--od-pink-light);
+    padding: 6px 16px;
+    border-radius: var(--od-radius-sm);
+    border: 1.5px solid var(--od-pink-soft);
+}
+
+.od-status-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.od-status-label {
+    font-size: 14px;
+    color: var(--od-brown-light);
+    font-weight: 500;
+}
+
+.od-status-badge {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* ---------- Grid ---------- */
+.od-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* ---------- Card ---------- */
+.od-card {
+    background: var(--od-white);
+    border: 1.5px solid var(--od-pink-soft);
+    border-radius: var(--od-radius);
+    padding: 24px;
+    box-shadow: var(--od-shadow);
+    transition: var(--od-transition);
+}
+
+.od-card:hover {
+    box-shadow: var(--od-shadow-hover);
+}
+
+.od-card--full {
+    grid-column: 1 / -1;
+    margin-bottom: 20px;
+}
+
+.od-card_title {
+    margin: 0 0 18px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--od-pink-deep);
+    padding-bottom: 12px;
+    border-bottom: 1.5px solid var(--od-pink-soft);
+}
+
+/* ---------- Field ---------- */
+.od-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 14px;
+}
+
+.od-field:last-child {
+    margin-bottom: 0;
+}
+
+.od-field_label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--od-brown-light);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.od-field_value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--od-brown);
+}
+
+.od-field_value--italic {
+    font-style: italic;
+    color: var(--od-brown-light);
+}
+
+.od-payment--paid {
+    color: #2E7D32;
+    font-weight: 700;
+}
+
+.od-payment--pending {
+    color: #B27A00;
+    font-weight: 700;
+}
+
+/* ---------- Table ---------- */
+.od-table-wrap {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+.od-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.od-table thead th {
+    text-align: left;
+    padding: 14px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--od-brown-light);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: var(--od-pink-light);
+    border-bottom: 2px solid var(--od-pink-soft);
+    white-space: nowrap;
+}
+
+.od-table thead th:first-child {
+    border-radius: 12px 0 0 0;
+}
+
+.od-table thead th:last-child {
+    border-radius: 0 12px 0 0;
+}
+
+.od-table tbody td {
+    padding: 16px;
+    border-bottom: 1px solid var(--od-pink-soft);
+    vertical-align: top;
+}
+
+.od-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.od-tc-center {
+    text-align: center;
+}
+
+.od-tc-right {
+    text-align: right;
+}
+
+.od-total {
+    font-weight: 700;
+    color: var(--od-pink-deep);
+}
+
+/* ---------- Custom Cake Config ---------- */
+.od-custom_badge {
+    display: inline-block;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--od-pink-deep);
+    background: var(--od-pink-light);
+    border: 1.5px solid var(--od-pink-soft);
+    border-radius: 999px;
+    margin-bottom: 8px;
+}
+
+.od-custom_name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--od-brown);
+    margin-bottom: 10px;
+}
+
+.od-custom_config {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+}
+
+.od-config-row {
+    font-size: 13px;
+    color: var(--od-brown-light);
+    line-height: 1.5;
+}
+
+.od-config-row span {
+    font-weight: 600;
+    color: var(--od-brown);
+}
+
+.od-config-row--highlight {
+    grid-column: 1 / -1;
+    background: var(--od-pink-light);
+    padding: 10px 14px;
+    border-radius: var(--od-radius-sm);
+    border: 1.5px solid var(--od-pink-soft);
+    color: var(--od-pink-deep);
+    font-weight: 600;
+}
+
+.od-config-row--note {
+    grid-column: 1 / -1;
+    font-style: italic;
+    color: var(--od-brown-light);
+}
+
+/* ---------- Item (non-custom) ---------- */
+.od-item_name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--od-brown);
+}
+
+.od-item_option {
+    font-size: 12px;
+    color: var(--od-brown-light);
+    margin-top: 4px;
+}
+
+/* ---------- Pricing ---------- */
+.od-pricing {
+    max-width: 380px;
+    margin-left: auto;
+    padding-top: 16px;
+    border-top: 2px solid var(--od-pink-soft);
+}
+
+.od-pricing_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--od-brown-light);
+}
+
+.od-pricing_row--discount {
+    color: var(--od-pink-deep);
+    font-weight: 600;
+}
+
+.od-pricing_row--total {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--od-pink-deep);
+    padding-top: 12px;
+    margin-top: 8px;
+    border-top: 2px dashed var(--od-pink-soft);
+}
+
+/* ---------- Timeline ---------- */
+.od-timeline {
+    position: relative;
+    padding-left: 24px;
+}
+
+.od-timeline::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--od-pink-soft);
+}
+
+.od-timeline_item {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.od-timeline_item:last-child {
+    padding-bottom: 0;
+}
+
+.od-timeline_dot {
+    position: absolute;
+    left: -22px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--od-pink-dark);
+    border: 3px solid var(--od-white);
+    box-shadow: 0 0 0 2px var(--od-pink-dark);
+}
+
+.od-timeline_status {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--od-brown);
+}
+
+.od-timeline_time {
+    font-size: 12px;
+    color: var(--od-brown-light);
+    margin-top: 2px;
+}
+
+/* ---------- Actions ---------- */
+.od-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding-top: 8px;
+}
+
+/* ---------- Buttons ---------- */
+.od-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    border-radius: var(--od-radius-sm);
+    border: none;
+    cursor: pointer;
+    transition: var(--od-transition);
+}
+
+.od-btn--primary {
+    color: var(--od-white);
+    background: var(--od-pink-dark);
+    box-shadow: 0 6px 18px rgba(201, 122, 133, 0.25);
+}
+
+.od-btn--primary:hover {
+    background: var(--od-pink-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(201, 122, 133, 0.35);
+}
+
+.od-btn--success {
+    color: var(--od-white);
+    background: #7cb87c;
+    box-shadow: 0 6px 18px rgba(124, 184, 124, 0.25);
+}
+
+.od-btn--success:hover {
+    background: #6aa86a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(124, 184, 124, 0.35);
+}
+
+.od-btn--danger {
+    color: var(--od-white);
+    background: #d47878;
+    box-shadow: 0 6px 18px rgba(212, 120, 120, 0.25);
+}
+
+.od-btn--danger:hover {
+    background: #c46666;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(212, 120, 120, 0.35);
+}
+
+/* ---------- Empty ---------- */
+.od-empty {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.od-empty h3 {
+    font-size: 22px;
+    color: var(--od-brown-light);
+    margin-bottom: 20px;
+}
+
+.od-empty-text {
+    color: var(--od-brown-light);
+    font-style: italic;
+    margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE — Mobile
+   ============================================ */
+@media (max-width: 768px) {
+    .od-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .od-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .od-title {
+        font-size: 20px;
+    }
+
+    .od-code {
+        font-size: 14px;
+    }
+
+    .od-custom_config {
+        grid-template-columns: 1fr;
+    }
+
+    .od-pricing {
+        max-width: 100%;
+    }
+
+    .od-actions {
+        justify-content: stretch;
+    }
+
+    .od-actions .od-btn {
+        flex: 1;
+        min-width: 140px;
+    }
+
+    .od-table thead {
+        display: none;
+    }
+
+    .od-table tbody td {
+        display: block;
+        padding: 10px 0;
+        border-bottom: none;
+    }
+
+    .od-table tbody td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--od-brown-light);
+        text-transform: uppercase;
+        margin-bottom: 4px;
+    }
+
+    .od-table tbody tr {
+        display: block;
+        padding: 16px;
+        border-bottom: 1.5px solid var(--od-pink-soft);
+    }
+
+    .od-tc-center,
+    .od-tc-right {
+        text-align: left;
+    }
+}

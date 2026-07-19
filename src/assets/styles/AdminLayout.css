@@ -1,0 +1,30 @@
+/* ============================================
+   AdminLayout.css — Background màu đậm từ logo
+   ============================================ */
+
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    /* Màu đậm từ chữ "Petite Douceur" trong logo */
+    background: #f8d6de;
+    ;
+}
+
+.admin-main {
+    flex: 1;
+    margin-left: 260px;
+    padding: 32px 40px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   RESPONSIVE — Mobile
+   ============================================ */
+@media (max-width: 768px) {
+    .admin-main {
+        margin-left: 0;
+        padding: 80px 16px 24px 16px;
+    }
+}

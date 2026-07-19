@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import "../../assets/styles/OrderDetailModal.css";
 
 function OrderDetailModal({
   show,
   order,
+  cakes,
   onClose,
   onUpdateStatus,
   getNextStatus,
@@ -10,305 +12,400 @@ function OrderDetailModal({
   getStatusText,
   metadata,
 }) {
+  const [zoomImage, setZoomImage] = useState(null);
+
   if (!show || !order) return null;
 
-  // Resolving metadata lookups
+  /* ---------- Map cake image from cakes DB ---------- */
+  const getCakeImage = (cakeId) => {
+    if (!cakes || !Array.isArray(cakes)) return null;
+    const cake = cakes.find((c) => c.id === cakeId);
+    return cake?.image || null;
+  };
+
   const getSizeName = (id) => metadata.sizes.find((s) => s.id === id)?.name || `Size #${id}`;
   const getLayerName = (id) => metadata.layers.find((l) => l.id === id)?.name || `${id} tầng`;
   const getBaseName = (id) => metadata.bases.find((b) => b.id === id)?.name || `Cốt #${id}`;
   const getFillingName = (id) => metadata.fillings.find((f) => f.id === id)?.name || `Nhân #${id}`;
   const getCreamName = (id) => metadata.creams.find((c) => c.id === id)?.name || `Kem #${id}`;
   const getColorName = (id) => metadata.colors.find((c) => c.id === id)?.name || `Màu #${id}`;
+  const getColorHex = (id) => metadata.colors.find((c) => c.id === id)?.hex || "#f5dce2";
   const getToppingsNames = (ids) => {
     if (!ids || ids.length === 0) return "Không chọn";
-    return ids
-      .map((id) => metadata.toppings.find((t) => t.id === id)?.name || `Topping #${id}`)
-      .join(", ");
+    return ids.map((id) => metadata.toppings.find((t) => t.id === id)?.name || `Topping #${id}`).join(", ");
+  };
+
+  /* ---------- SVG Preview cho Custom Cake ---------- */
+  const renderCustomSVG = (config) => {
+    if (!config) return null;
+    const colorHex = getColorHex(config.colorId);
+    const layerCount = config.layerId || 1;
+    const height = 60 + layerCount * 25;
+
+    return (
+      <svg viewBox="0 0 200 160" className="odm-svg-preview">
+        {/* Plate */}
+        <ellipse cx="100" cy="145" rx="80" ry="10" fill="#e8e8e8" />
+
+        {/* Cake layers */}
+        {Array.from({ length: layerCount }).map((_, i) => (
+          <g key={i}>
+            <rect
+              x="50"
+              y={height - 30 - i * 28}
+              width="100"
+              height="26"
+              rx="4"
+              fill={colorHex === "MULTI" ? (i % 2 === 0 ? "#f8bbd0" : "#d0e1fd") : colorHex}
+              stroke="#c97a85"
+              strokeWidth="1"
+            />
+            {i < layerCount - 1 && (
+              <rect
+                x="48"
+                y={height - 32 - i * 28}
+                width="104"
+                height="4"
+                rx="2"
+                fill="#fff"
+                stroke="#f5dce2"
+                strokeWidth="0.5"
+              />
+            )}
+          </g>
+        ))}
+
+        {/* Drip */}
+        <path
+          d={`M 50 ${height - 30} Q 60 ${height - 15} 70 ${height - 30} Q 80 ${height - 10} 90 ${height - 30} Q 100 ${height - 18} 110 ${height - 30} Q 120 ${height - 12} 130 ${height - 30} Q 140 ${height - 20} 150 ${height - 30}`}
+          fill="none"
+          stroke="#fff"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
+
+        {/* Toppings dots */}
+        {config.toppingIds?.map((_, i) => (
+          <circle
+            key={i}
+            cx={70 + (i % 4) * 20 + (i * 7) % 15}
+            cy={height - 45 - Math.floor(i / 4) * 15}
+            r="4"
+            fill={["#ff6b6b", "#ffd93d", "#6bcb77", "#4d96ff"][i % 4]}
+          />
+        ))}
+
+        {/* Message */}
+        {config.message && (
+          <text
+            x="100"
+            y={height - 50 - layerCount * 5}
+            textAnchor="middle"
+            fill="#5c4b4f"
+            fontSize="10"
+            fontFamily="Segoe UI"
+            fontWeight="600"
+          >
+            {config.message.length > 15 ? config.message.slice(0, 15) + "..." : config.message}
+          </text>
+        )}
+      </svg>
+    );
   };
 
   return (
-    <div className="modal show d-block" tabIndex="-1" style={{ backgroundColor: "rgba(0,0,0,0.5)", zIndex: 1050 }}>
-      <div className="modal-dialog modal-dialog-centered modal-lg">
-        <div className="modal-content border-0 rounded-4 shadow-lg overflow-hidden bg-white">
-          {/* Modal Header */}
-          <div className="modal-header border-0 p-4" style={{ backgroundColor: "#FFF8FA", borderBottom: "2px solid #F48FB1" }}>
-            <h5 className="modal-title fw-bold text-dark fs-4 d-flex align-items-center">
-              <span className="me-2">📋</span> Details of Order{" "}
-              <span className="ms-2 fw-bold" style={{ color: "#F48FB1" }}>
-                {order.orderCode}
-              </span>
-            </h5>
-            <button type="button" className="btn-close" onClick={onClose}></button>
+    <>
+      {/* Zoom Overlay */}
+      {zoomImage && (
+        <div className="odm-zoom-overlay" onClick={() => setZoomImage(null)}>
+          <div className="odm-zoom-content" onClick={(e) => e.stopPropagation()}>
+            <button className="odm-zoom-close" onClick={() => setZoomImage(null)}>×</button>
+            {zoomImage.type === "image" ? (
+              <img src={zoomImage.src} alt={zoomImage.alt} className="odm-zoom-img" />
+            ) : (
+              <div className="odm-zoom-svg">{zoomImage.svg}</div>
+            )}
+            <p className="odm-zoom-label">{zoomImage.alt}</p>
           </div>
+        </div>
+      )}
 
-          {/* Modal Body */}
-          <div className="modal-body p-4" style={{ maxHeight: "calc(100vh - 210px)", overflowY: "auto" }}>
-            {/* Status bar */}
-            <div className="mb-4 d-flex justify-content-between align-items-center bg-light p-3 rounded-3">
-              <span className="fw-semibold text-secondary">Current Status:</span>
-              {getStatusBadge(order.status)}
+      <div className="odm-overlay" onClick={onClose}>
+        <div className="odm-dialog" onClick={(e) => e.stopPropagation()}>
+          <div className="odm-content">
+            {/* Header */}
+            <div className="odm-header">
+              <h5 className="odm-header_title">
+                Chi tiết đơn hàng
+                <span className="odm-header_code">{order.orderCode}</span>
+              </h5>
+              <button type="button" className="odm-close" onClick={onClose}>×</button>
             </div>
 
-            <div className="row g-4 mb-4">
-              {/* Customer Info */}
-              <div className="col-12 col-md-6">
-                <div className="card h-100 border rounded-3 p-3">
-                  <h6 className="fw-bold text-dark border-bottom pb-2 mb-3">👤 Customer Information</h6>
-                  <div className="mb-2">
-                    <small className="text-muted d-block">Full Name</small>
-                    <span className="fw-semibold">{order.customerName}</span>
+            {/* Body */}
+            <div className="odm-body">
+              {/* Status bar */}
+              <div className="odm-status-bar">
+                <span className="odm-status-bar_label">Trạng thái hiện tại:</span>
+                {getStatusBadge(order.status)}
+              </div>
+
+              {/* Info Grid */}
+              <div className="odm-grid">
+                {/* Customer */}
+                <div className="odm-card">
+                  <h6 className="odm-card_title">Thông tin khách hàng</h6>
+                  <div className="odm-field">
+                    <span className="odm-field_label">Họ tên</span>
+                    <span className="odm-field_value">{order.customerName}</span>
                   </div>
-                  <div className="mb-2">
-                    <small className="text-muted d-block">Phone Number</small>
-                    <span>{order.phone}</span>
+                  <div className="odm-field">
+                    <span className="odm-field_label">Số điện thoại</span>
+                    <span className="odm-field_value">{order.phone}</span>
                   </div>
-                  <div className="mb-2">
-                    <small className="text-muted d-block">Delivery / Pickup Slot</small>
-                    <span className="fw-semibold text-danger">
-                      📅 {order.deliveryDate} &nbsp;|&nbsp; ⏰ {order.deliveryTime}
+                  <div className="odm-field">
+                    <span className="odm-field_label">Ngày nhận</span>
+                    <span className="odm-field_value">
+                      {order.deliveryDate} | {order.deliveryTime}
                     </span>
                   </div>
-                  <div className="mb-0">
-                    <small className="text-muted d-block">Customer Note</small>
-                    <span className="fst-italic text-secondary">
+                  <div className="odm-field">
+                    <span className="odm-field_label">Ghi chú</span>
+                    <span className="odm-field_value odm-field_value--italic">
                       {order.note ? `"${order.note}"` : "Không có ghi chú"}
                     </span>
                   </div>
                 </div>
-              </div>
 
-              {/* Delivery Info */}
-              <div className="col-12 col-md-6">
-                <div className="card h-100 border rounded-3 p-3">
-                  <h6 className="fw-bold text-dark border-bottom pb-2 mb-3">🚚 Delivery & Payment</h6>
-                  <div className="mb-2">
-                    <small className="text-muted d-block">Receive Method</small>
-                    <span className="fw-semibold">
-                      {order.receiveMethod === "delivery" ? "🚚 Giao hàng" : "🏪 Nhận tại tiệm"}
+                {/* Delivery */}
+                <div className="odm-card">
+                  <h6 className="odm-card_title">Giao hàng & Thanh toán</h6>
+                  <div className="odm-field">
+                    <span className="odm-field_label">Hình thức nhận</span>
+                    <span className="odm-field_value">
+                      {order.receiveMethod === "delivery" ? "Giao hàng" : "Nhận tại tiệm"}
                     </span>
                   </div>
-                  <div className="mb-2">
-                    <small className="text-muted d-block">Address</small>
-                    <span className="text-wrap">{order.shippingAddress}</span>
+                  <div className="odm-field">
+                    <span className="odm-field_label">Địa chỉ</span>
+                    <span className="odm-field_value">{order.shippingAddress || order.address || "—"}</span>
                   </div>
-                  <div className="mb-2">
-                    <small className="text-muted d-block">Payment Method</small>
-                    <span>{order.paymentMethod}</span>
+                  <div className="odm-field">
+                    <span className="odm-field_label">Phương thức thanh toán</span>
+                    <span className="odm-field_value">{order.paymentMethod}</span>
                   </div>
-                  <div className="mb-0">
-                    <small className="text-muted d-block">Payment Status</small>
-                    <span className={`badge px-2.5 py-1 ${order.paymentStatus === "paid" ? "bg-success" : "bg-warning text-dark"}`}>
+                  <div className="odm-field">
+                    <span className="odm-field_label">Trạng thái thanh toán</span>
+                    <span className={`odm-payment odm-payment--${order.paymentStatus}`}>
                       {order.paymentStatus === "paid" ? "Đã thanh toán" : "Chưa thanh toán"}
                     </span>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Items Table */}
-            <div className="card border rounded-3 p-3 mb-4">
-              <h6 className="fw-bold text-dark border-bottom pb-2 mb-3">🍰 Ordered Items</h6>
-              <div className="table-responsive">
-                <table className="table align-middle">
-                  <thead className="table-light">
-                    <tr>
-                      <th className="py-2">Item Name / Config</th>
-                      <th className="py-2 text-center" style={{ width: "80px" }}>Qty</th>
-                      <th className="py-2 text-end" style={{ width: "120px" }}>Unit Price</th>
-                      <th className="py-2 text-end" style={{ width: "130px" }}>Subtotal</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {order.items &&
-                      order.items.map((item, index) => {
-                        const isCustom = item.type === "custom";
-                        return (
-                          <tr key={index}>
-                            <td className="py-3">
+              {/* Items with Images */}
+              <div className="odm-card odm-card--full">
+                <h6 className="odm-card_title">Sản phẩm đặt mua</h6>
+
+                {/* Item Cards */}
+                <div className="odm-item-cards">
+                  {order.items?.map((item, index) => {
+                    const isCustom = item.type === "custom";
+                    const cakeImage = !isCustom ? getCakeImage(item.cakeId) : null;
+
+                    return (
+                      <div className="odm-item-card" key={index}>
+                        {/* Image / Placeholder */}
+                        <div className="odm-item-card_visual">
+                          {isCustom ? (
+                            <div
+                              className="odm-item-card_placeholder"
+                              onClick={() => setZoomImage({
+                                type: "svg",
+                                svg: renderCustomSVG(item.customConfig),
+                                alt: item.name || "Bánh custom"
+                              })}
+                            >
+                              {renderCustomSVG(item.customConfig)}
+                              <span className="odm-item-card_placeholder-text">Custom</span>
+                            </div>
+                          ) : cakeImage ? (
+                            <div
+                              className="odm-item-card_img-wrap"
+                              onClick={() => setZoomImage({
+                                type: "image",
+                                src: cakeImage,
+                                alt: item.cakeName
+                              })}
+                            >
+                              <img
+                                src={cakeImage}
+                                alt={item.cakeName}
+                                className="odm-item-card_img"
+                              />
+                            </div>
+                          ) : (
+                            <div className="odm-item-card_placeholder odm-item-card_placeholder--empty">
+                              <span className="odm-item-card_placeholder-text">Không có ảnh</span>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Info */}
+                        <div className="odm-item-card_info">
+                          <div className="odm-item-card_header">
+                            <div>
                               {isCustom ? (
-                                <div>
-                                  <span className="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill mb-1">
-                                    ✨ Custom Cake Design
-                                  </span>
-                                  <div className="fw-bold text-dark">{item.name || "Bánh thiết kế riêng"}</div>
-                                  {item.customConfig ? (
-                                    <div className="text-muted" style={{ fontSize: "0.85rem" }}>
-                                      <div className="row g-1 mt-1">
-                                        <div className="col-6">
-                                          📍 <strong>Kích thước:</strong> {getSizeName(item.customConfig.sizeId)} ({getLayerName(item.customConfig.layerId)})
-                                        </div>
-                                        <div className="col-6">
-                                          🍞 <strong>Cốt bánh:</strong> {getBaseName(item.customConfig.baseId)}
-                                        </div>
-                                        <div className="col-6">
-                                          🍯 <strong>Nhân bánh:</strong> {getFillingName(item.customConfig.fillingId)}
-                                        </div>
-                                        <div className="col-6">
-                                          🥛 <strong>Lớp kem:</strong> {getCreamName(item.customConfig.creamId)}
-                                        </div>
-                                        <div className="col-12">
-                                          🎨 <strong>Màu chủ đạo:</strong> {getColorName(item.customConfig.colorId)}
-                                        </div>
-                                        <div className="col-12 text-wrap">
-                                          🧁 <strong>Toppings:</strong> {getToppingsNames(item.customConfig.toppingIds)}
-                                        </div>
-                                        {item.customConfig.message && (
-                                          <div className="col-12 mt-1 bg-light p-1.5 rounded border border-light-subtle">
-                                            ✍️ <strong>Thông điệp ghi lên bánh:</strong>{" "}
-                                            <span className="text-danger fw-semibold">
-                                              "{item.customConfig.message}"
-                                            </span>
-                                          </div>
-                                        )}
-                                        {item.customConfig.specialRequest && (
-                                          <div className="col-12 mt-1 text-secondary fst-italic">
-                                            📌 <strong>Yêu cầu đặc biệt:</strong> "{item.customConfig.specialRequest}"
-                                          </div>
-                                        )}
-                                      </div>
-                                    </div>
-                                  ) : (
-                                    <span className="text-muted italic">No config specified.</span>
-                                  )}
-                                </div>
+                                <>
+                                  <span className="odm-custom_badge">Bánh thiết kế riêng</span>
+                                  <div className="odm-item-card_name">{item.name || "Bánh custom"}</div>
+                                </>
                               ) : (
-                                <div>
-                                  <div className="fw-bold text-dark">{item.cakeName}</div>
-                                  {item.optionLabel && (
-                                    <small className="text-secondary">Size / Option: {item.optionLabel}</small>
-                                  )}
+                                <div className="odm-item-card_name">{item.cakeName}</div>
+                              )}
+                              {item.optionLabel && (
+                                <div className="odm-item-card_option">{item.optionLabel}</div>
+                              )}
+                            </div>
+                            <div className="odm-item-card_price">
+                              <span className="odm-item-card_qty">x{item.quantity}</span>
+                              <span className="odm-item-card_total">{item.lineTotal?.toLocaleString("vi-VN")} đ</span>
+                            </div>
+                          </div>
+
+                          {/* Custom Config */}
+                          {isCustom && item.customConfig && (
+                            <div className="odm-custom_config">
+                              <div className="odm-config-row">
+                                <span>Kích thước:</span> {getSizeName(item.customConfig.sizeId)} ({getLayerName(item.customConfig.layerId)})
+                              </div>
+                              <div className="odm-config-row">
+                                <span>Cốt bánh:</span> {getBaseName(item.customConfig.baseId)}
+                              </div>
+                              <div className="odm-config-row">
+                                <span>Nhân bánh:</span> {getFillingName(item.customConfig.fillingId)}
+                              </div>
+                              <div className="odm-config-row">
+                                <span>Lớp kem:</span> {getCreamName(item.customConfig.creamId)}
+                              </div>
+                              <div className="odm-config-row">
+                                <span>Màu chủ đạo:</span> {getColorName(item.customConfig.colorId)}
+                              </div>
+                              <div className="odm-config-row">
+                                <span>Toppings:</span> {getToppingsNames(item.customConfig.toppingIds)}
+                              </div>
+                              {item.customConfig.message && (
+                                <div className="odm-config-row odm-config-row--highlight">
+                                  Thông điệp: "{item.customConfig.message}"
                                 </div>
                               )}
-                            </td>
-                            <td className="py-3 text-center fw-semibold text-secondary">{item.quantity}</td>
-                            <td className="py-3 text-end">{item.unitPrice?.toLocaleString("vi-VN")} ₫</td>
-                            <td className="py-3 text-end fw-bold text-dark">
-                              {item.lineTotal?.toLocaleString("vi-VN")} ₫
-                            </td>
-                          </tr>
-                        );
-                      })}
-                  </tbody>
-                </table>
-              </div>
-
-              {/* Pricing Breakdown */}
-              <div className="row justify-content-end mt-3 border-top pt-3 g-2">
-                <div className="col-8 col-md-5 text-end text-muted">Subtotal:</div>
-                <div className="col-4 col-md-3 text-end fw-semibold">
-                  {order.subtotal?.toLocaleString("vi-VN")} ₫
-                </div>
-
-                <div className="col-8 col-md-5 text-end text-muted">Shipping Fee:</div>
-                <div className="col-4 col-md-3 text-end fw-semibold">
-                  {order.shippingFee?.toLocaleString("vi-VN")} ₫
-                </div>
-
-                {order.discount > 0 && (
-                  <>
-                    <div className="col-8 col-md-5 text-end text-muted">Discount:</div>
-                    <div className="col-4 col-md-3 text-end text-danger fw-semibold">
-                      -{order.discount?.toLocaleString("vi-VN")} ₫
-                    </div>
-                  </>
-                )}
-
-                <div className="col-8 col-md-5 text-end fw-bold fs-5" style={{ color: "#F48FB1" }}>
-                  Total Amount:
-                </div>
-                <div className="col-4 col-md-3 text-end fw-bold fs-5 text-dark border-top pt-1">
-                  {order.total?.toLocaleString("vi-VN")} ₫
-                </div>
-              </div>
-            </div>
-
-            {/* Timeline history */}
-            <div className="card border rounded-3 p-3">
-              <h6 className="fw-bold text-dark border-bottom pb-2 mb-3">🕒 Status Update Log</h6>
-              {order.statusHistory && order.statusHistory.length > 0 ? (
-                <div className="ps-3 border-start border-2 border-pink ms-2 position-relative">
-                  {order.statusHistory.map((history, idx) => (
-                    <div className="mb-3 position-relative" key={idx}>
-                      <div
-                        className="position-absolute"
-                        style={{
-                          left: "-25px",
-                          top: "4px",
-                          width: "12px",
-                          height: "12px",
-                          borderRadius: "50%",
-                          backgroundColor: "#F48FB1",
-                          border: "2.5px solid #fff",
-                          boxShadow: "0 0 0 2px #F48FB1",
-                        }}
-                      />
-                      <div className="fw-bold text-dark" style={{ fontSize: "0.92rem" }}>
-                        {getStatusText(history.status)}
+                              {item.customConfig.specialRequest && (
+                                <div className="odm-config-row odm-config-row--note">
+                                  Yêu cầu đặc biệt: "{item.customConfig.specialRequest}"
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
                       </div>
-                      <small className="text-secondary">
-                        {new Date(history.time).toLocaleString("vi-VN", {
-                          year: "numeric",
-                          month: "2-digit",
-                          day: "2-digit",
-                          hour: "2-digit",
-                          minute: "2-digit",
-                          second: "2-digit",
-                        })}
-                      </small>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
-              ) : (
-                <small className="text-muted italic">Không ghi nhận lịch sử trạng thái.</small>
-              )}
+
+                {/* Pricing */}
+                <div className="odm-pricing">
+                  <div className="odm-pricing_row">
+                    <span>Tạm tính</span>
+                    <span>{order.subtotal?.toLocaleString("vi-VN")} đ</span>
+                  </div>
+                  <div className="odm-pricing_row">
+                    <span>Phí giao hàng</span>
+                    <span>{order.shippingFee?.toLocaleString("vi-VN")} đ</span>
+                  </div>
+                  {order.discount > 0 && (
+                    <div className="odm-pricing_row odm-pricing_row--discount">
+                      <span>Giảm giá</span>
+                      <span>-{order.discount?.toLocaleString("vi-VN")} đ</span>
+                    </div>
+                  )}
+                  <div className="odm-pricing_row odm-pricing_row--total">
+                    <span>Tổng cộng</span>
+                    <span>{order.total?.toLocaleString("vi-VN")} đ</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Timeline */}
+              <div className="odm-card odm-card--full">
+                <h6 className="odm-card_title">Lịch sử trạng thái</h6>
+                {order.statusHistory?.length > 0 ? (
+                  <div className="odm-timeline">
+                    {order.statusHistory.map((history, idx) => (
+                      <div className="odm-timeline_item" key={idx}>
+                        <div className="odm-timeline_dot" />
+                        <div className="odm-timeline_content">
+                          <div className="odm-timeline_status">{getStatusText(history.status)}</div>
+                          <div className="odm-timeline_time">
+                            {new Date(history.time).toLocaleString("vi-VN", {
+                              year: "numeric", month: "2-digit", day: "2-digit",
+                              hour: "2-digit", minute: "2-digit", second: "2-digit",
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="odm-empty-text">Không ghi nhận lịch sử trạng thái.</p>
+                )}
+              </div>
             </div>
-          </div>
 
-          {/* Footer actions */}
-          <div className="modal-footer border-0 p-4 bg-light">
-            <div className="d-flex gap-2 w-100 justify-content-end">
-              <button type="button" className="btn btn-outline-secondary rounded-pill px-4" onClick={onClose}>
-                Close Window
-              </button>
-
-              {order.status === "Pending" && (
-                <button
-                  className="btn text-white rounded-pill px-4"
-                  style={{ backgroundColor: "#F48FB1", borderColor: "#F48FB1" }}
-                  onClick={() => onUpdateStatus(order.id, order.status, "confirm")}
-                >
-                  Confirm Order
+            {/* Footer */}
+            <div className="odm-footer">
+              <div className="odm-footer_actions">
+                <button className="odm-btn odm-btn--secondary" onClick={onClose}>
+                  Đóng
                 </button>
-              )}
 
-              {order.status !== "Pending" &&
-                order.status !== "Completed" &&
-                order.status !== "Cancelled" &&
-                order.status !== "Cancel" &&
-                getNextStatus(order.status) && (
+                {order.status === "Pending" && (
                   <button
-                    className="btn btn-success rounded-pill px-4"
-                    onClick={() => onUpdateStatus(order.id, order.status, "next")}
+                    className="odm-btn odm-btn--primary"
+                    onClick={() => onUpdateStatus(order.id, order.status, "confirm")}
                   >
-                    Advance to: {getStatusText(getNextStatus(order.status))}
+                    Xác nhận đơn
                   </button>
                 )}
 
-              {order.status !== "Completed" &&
-                order.status !== "Cancelled" &&
-                order.status !== "Cancel" && (
-                  <button
-                    className="btn btn-danger rounded-pill px-4"
-                    onClick={() => onUpdateStatus(order.id, order.status, "cancel")}
-                  >
-                    Cancel Order
-                  </button>
-                )}
+                {order.status !== "Pending" &&
+                  order.status !== "Completed" &&
+                  order.status !== "Cancelled" &&
+                  order.status !== "Cancel" &&
+                  getNextStatus(order.status) && (
+                    <button
+                      className="odm-btn odm-btn--success"
+                      onClick={() => onUpdateStatus(order.id, order.status, "next")}
+                    >
+                      {getStatusText(getNextStatus(order.status))}
+                    </button>
+                  )}
+
+                {order.status !== "Completed" &&
+                  order.status !== "Cancelled" &&
+                  order.status !== "Cancel" && (
+                    <button
+                      className="odm-btn odm-btn--danger"
+                      onClick={() => onUpdateStatus(order.id, order.status, "cancel")}
+                    >
+                      Hủy đơn
+                    </button>
+                  )}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
