@@ -8,12 +8,16 @@ Bao gồm:
 */
 import axiosClient from "./axiosClient";
 
-const authService = {
-  login(email, password) {},
-
-  register(user) {},
-
-  logout() {},
+export const login = (data) => {
+  return axiosClient.get(
+    `/users?email=${data.email}&password=${data.password}`,
+  );
 };
 
-export default authService;
+export const register = (data) => {
+  return axiosClient.post("/users", data);
+};
+
+export const getUser = (id) => {
+  return axiosClient.get(`/users/${id}`);
+};

@@ -1,14 +1,18 @@
-/*
-Kiểm tra quyền truy cập
+import { Navigate, Outlet } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
-Customer
+function ProtectedRoute({ role }) {
+  const { user } = useAuth();
 
-Staff
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
-Owner
-*/
-import { Navigate } from "react-router-dom";
+  if (role && user.role !== role && user.role !== "owner") {
+    return <Navigate to="/" replace />;
+  }
 
-export default function ProtectedRoute({ children }) {
-  return children;
+  return <Outlet />;
 }
+
+export default ProtectedRoute;

@@ -7,14 +7,18 @@ API đơn hàng
 */
 import axiosClient from "./axiosClient";
 
-const orderService = {
-  getAll() {},
-
-  getById(id) {},
-
-  create(order) {},
-
-  updateStatus(id, status) {},
+export const getOrders = () => {
+  return axiosClient.get("/orders");
 };
 
-export default orderService;
+export const getOrderById = (id) => {
+  return axiosClient.get(`/orders/${id}`);
+};
+
+export const createOrder = (data) => {
+  return axiosClient.post("/orders", data);
+};
+
+export const updateStatus = (id, data) => {
+  return axiosClient.patch(`/orders/${id}`, data);
+};
