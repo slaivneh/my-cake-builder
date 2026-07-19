@@ -1,52 +1,65 @@
-/*
-Định nghĩa toàn bộ route của ứng dụng
-*/
-import { Routes, Route } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
-import Home from "../pages/customer/Home";
+import AuthLayout from "../layouts/AuthLayout";
+import CustomerLayout from "../layouts/CustomerLayout";
+import AdminLayout from "../layouts/AdminLayout";
+
+import ProtectedRoute from "./ProtectedRoute";
+
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
+
+import Home from "../pages/customer/Home";
+import CakeList from "../pages/customer/CakeList";
 import CakeDetail from "../pages/customer/CakeDetail";
 import Cart from "../pages/customer/Cart";
 import Checkout from "../pages/customer/Checkout";
 import OrderHistory from "../pages/customer/OrderHistory";
-import Profile from "../pages/customer/Profile";
 
 import CustomCake from "../pages/customCake/CustomCake";
 
-import Dashboard from "../pages/admin/Dashboard";
-import Orders from "../pages/admin/Orders";
-import OrderDetail from "../pages/admin/OrderDetail";
-import Revenue from "../pages/admin/Revenue";
+import OrderManagement from "../pages/admin/OrderManagement";
 
-export default function AppRoutes() {
+import NotFound from "../pages/NotFound";
+
+function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Navigate to="/home" replace />} />
 
-      <Route path="/login" element={<Login />} />
+      <Route element={<AuthLayout />}>
+        <Route path="/login" element={<Login />} />
 
-      <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Register />} />
+      </Route>
 
-      <Route path="/cakes/:id" element={<CakeDetail />} />
+      <Route element={<CustomerLayout />}>
+        <Route path="/home" element={<Home />} />
 
-      <Route path="/custom-cake" element={<CustomCake />} />
+        <Route path="/cakes" element={<CakeList />} />
 
-      <Route path="/cart" element={<Cart />} />
+        <Route path="/cakes/:id" element={<CakeDetail />} />
 
-      <Route path="/checkout" element={<Checkout />} />
+        <Route element={<ProtectedRoute role="customer" />}>
+          <Route path="/custom-cake" element={<CustomCake />} />
 
-      <Route path="/orders" element={<OrderHistory />} />
+          <Route path="/cart" element={<Cart />} />
 
-      <Route path="/profile" element={<Profile />} />
+          <Route path="/checkout" element={<Checkout />} />
 
-      <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/orders" element={<OrderHistory />} />
+        </Route>
+      </Route>
 
-      <Route path="/dashboard/orders" element={<Orders />} />
+      <Route element={<ProtectedRoute role="owner" />}>
+        <Route element={<AdminLayout />}>
+          <Route path="/admin/orders" element={<OrderManagement />} />
+        </Route>
+      </Route>
 
-      <Route path="/dashboard/orders/:id" element={<OrderDetail />} />
-
-      <Route path="/dashboard/revenue" element={<Revenue />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
+
+export default AppRoutes;

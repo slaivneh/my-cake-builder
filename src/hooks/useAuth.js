@@ -1,10 +1,15 @@
-/*
-Custom Hook xử lý đăng nhập
+import { useContext } from "react";
 
-Bao gồm:
-- login()
-- logout()
-- register()
-- currentUser
-*/
-export default function useAuth() {}
+import AuthContext from "../contexts/AuthContext";
+
+function useAuth() {
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error("useAuth phải được sử dụng bên trong AuthProvider.");
+  }
+
+  return context;
+}
+
+export default useAuth;
