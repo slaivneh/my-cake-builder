@@ -3098,6 +3098,14 @@
   ],
   "topperOptions": [
     {
+      "id": 9999,
+      "userId": 4,
+      "title": "Welcome to Petite Douceur!",
+      "content": "Cảm ơn bạn đã ghé thăm tiệm bánh. Chúc bạn một ngày thật ngọt ngào!",
+      "isRead": true,
+      "createdAt": "2026-07-19T16:12:30.320Z"
+    },
+    {
       "id": 1,
       "name": "Không dùng topper",
       "extraPrice": 0,
