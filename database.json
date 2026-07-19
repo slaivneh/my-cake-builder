@@ -3742,6 +3742,14 @@
   ],
   "notifications": [
     {
+      "id": 9999,
+      "userId": 4,
+      "title": "Welcome to Petite Douceur!",
+      "content": "Cảm ơn bạn đã ghé thăm tiệm bánh. Chúc bạn một ngày thật ngọt ngào!",
+      "isRead": true,
+      "createdAt": "2026-07-19T16:12:30.320Z"
+    },
+    {
       "id": 1,
       "userId": 5,
       "title": "Đơn hàng đang được giao",
@@ -4114,7 +4122,7 @@
       "userId": 4,
       "title": "Đơn hàng đã sẵn sàng",
       "content": "Đơn hàng của bạn đã sẵn sàng. Shipper sẽ đến lấy hàng ngay.",
-      "isRead": false,
+      "isRead": true,
       "createdAt": "2024-10-17T02:26:03Z"
     },
     {
@@ -4138,7 +4146,7 @@
       "userId": 4,
       "title": "Đơn hàng đã được xác nhận",
       "content": "Đơn hàng của bạn đã được xác nhận. Chúng tôi sẽ bắt đầu chuẩn bị ngay.",
-      "isRead": false,
+      "isRead": true,
       "createdAt": "2025-05-04T19:21:31Z"
     },
     {
@@ -4186,7 +4194,7 @@
       "userId": 4,
       "title": "Nhắc nhở giao hàng",
       "content": "Đơn hàng của bạn sẽ được giao trong hôm nay. Vui lòng chuẩn bị nhận hàng.",
-      "isRead": false,
+      "isRead": true,
       "createdAt": "2024-04-11T15:20:44Z"
     },
     {

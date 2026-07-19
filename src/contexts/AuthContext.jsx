@@ -2,6 +2,10 @@
 Quản lý trạng thái đăng nhập của toàn bộ ứng dụng
 
 Chức năng:
+/*
+Quản lý trạng thái đăng nhập của toàn bộ ứng dụng
+
+Chức năng:
 - Lưu currentUser
 - Login
 - Logout
