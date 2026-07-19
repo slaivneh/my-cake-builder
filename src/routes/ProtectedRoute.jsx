@@ -18,10 +18,13 @@ function ProtectedRoute({ role }) {
     );
   }
 
-  if (role && user.role !== role) {
-    return (
-      <Navigate to={user.role === "owner" ? "/admin/orders" : "/"} replace />
-    );
+  // Cho phép nhiều role
+  if (role) {
+    const allowedRoles = Array.isArray(role) ? role : [role];
+
+    if (!allowedRoles.includes(user.role)) {
+      return <Navigate to="/" replace />;
+    }
   }
 
   return <Outlet />;

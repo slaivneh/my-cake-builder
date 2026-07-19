@@ -1,0 +1,240 @@
+/* ============================================
+   OrderTable.css — Petite Douceur Theme
+   ============================================ */
+
+:root {
+    --ot-pink-light: #fdf2f4;
+    --ot-pink-soft: #f5dce2;
+    --ot-pink-medium: #e8a4b0;
+    --ot-pink-dark: #c97a85;
+    --ot-pink-deep: #b05a68;
+    --ot-cream: #fef9f9;
+    --ot-white: #ffffff;
+    --ot-brown: #5c4b4f;
+    --ot-brown-light: #896d68;
+    --ot-radius: 1.25rem;
+    --ot-radius-sm: 0.75rem;
+    --ot-shadow: 0 4px 20px rgba(176, 90, 104, 0.06);
+    --ot-transition: all 0.25s ease;
+}
+
+/* ---------- Table Wrap ---------- */
+.ot-table-wrap {
+    overflow-x: auto;
+    background: var(--ot-white);
+    border: 1.5px solid var(--ot-pink-soft);
+    border-radius: var(--ot-radius);
+    box-shadow: var(--ot-shadow);
+}
+
+/* ---------- Table ---------- */
+.ot-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+}
+
+/* Header */
+.ot-table thead th {
+    padding: 16px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ot-brown-light);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: var(--ot-pink-light);
+    border-bottom: 2px solid var(--ot-pink-soft);
+    white-space: nowrap;
+}
+
+.ot-table thead th:first-child {
+    border-radius: 18px 0 0 0;
+}
+
+.ot-table thead th:last-child {
+    border-radius: 0 18px 0 0;
+}
+
+/* Body */
+.ot-table tbody tr {
+    transition: var(--ot-transition);
+}
+
+.ot-table tbody tr:hover {
+    background: var(--ot-cream);
+}
+
+.ot-table tbody td {
+    padding: 14px;
+    border-bottom: 1px solid var(--ot-pink-soft);
+    vertical-align: middle;
+    color: var(--ot-brown);
+}
+
+.ot-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.ot-table tbody tr:last-child td:first-child {
+    border-radius: 0 0 0 18px;
+}
+
+.ot-table tbody tr:last-child td:last-child {
+    border-radius: 0 0 18px 0;
+}
+
+/* Cell align */
+.ot-tc-center {
+    text-align: center;
+}
+
+.ot-tc-right {
+    text-align: right;
+}
+
+/* Code */
+.ot-code {
+    font-weight: 700;
+    color: var(--ot-pink-deep);
+    font-size: 13px;
+}
+
+/* Name */
+.ot-name {
+    font-weight: 600;
+    color: var(--ot-brown);
+}
+
+/* Phone */
+.ot-phone {
+    color: var(--ot-brown-light);
+    font-size: 13px;
+}
+
+/* Method badge */
+.ot-method {
+    display: inline-block;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 999px;
+    border: 1.5px solid var(--ot-pink-soft);
+    background: var(--ot-cream);
+    color: var(--ot-brown-light);
+    white-space: nowrap;
+}
+
+.ot-method--delivery {
+    background: #e8f5e9;
+    border-color: #c8e6c9;
+    color: #2e7d32;
+}
+
+.ot-method--pickup {
+    background: #fff3e0;
+    border-color: #ffe0b2;
+    color: #e65100;
+}
+
+/* Date */
+.ot-date {
+    color: var(--ot-brown);
+    font-size: 13px;
+}
+
+.ot-time {
+    color: var(--ot-brown-light);
+    font-size: 12px;
+}
+
+/* Price */
+.ot-price {
+    font-weight: 700;
+    color: var(--ot-brown);
+    white-space: nowrap;
+}
+
+/* Actions */
+.ot-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Buttons */
+.ot-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 7px 18px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: inherit;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: var(--ot-transition);
+    white-space: nowrap;
+}
+
+.ot-btn--view {
+    color: var(--ot-white);
+    background: var(--ot-pink-dark);
+    box-shadow: 0 3px 10px rgba(201, 122, 133, 0.2);
+}
+
+.ot-btn--view:hover {
+    background: var(--ot-pink-deep);
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   RESPONSIVE — Mobile
+   ============================================ */
+@media (max-width: 768px) {
+    .ot-table-wrap {
+        border-radius: var(--ot-radius-sm);
+    }
+
+    .ot-table thead {
+        display: none;
+    }
+
+    .ot-table tbody td {
+        display: block;
+        padding: 8px 16px;
+        border-bottom: none;
+    }
+
+    .ot-table tbody td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--ot-brown-light);
+        text-transform: uppercase;
+        margin-bottom: 3px;
+    }
+
+    .ot-table tbody tr {
+        display: block;
+        padding: 12px 0;
+        border-bottom: 1.5px solid var(--ot-pink-soft);
+    }
+
+    .ot-table tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    .ot-tc-center,
+    .ot-tc-right {
+        text-align: left;
+    }
+
+    .ot-actions {
+        justify-content: flex-start;
+    }
+}

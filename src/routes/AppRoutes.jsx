@@ -15,6 +15,7 @@ import CakeDetail from "../pages/customer/CakeDetail";
 import Cart from "../pages/customer/Cart";
 import Checkout from "../pages/customer/Checkout";
 import OrderHistory from "../pages/customer/OrderHistory";
+import OrderDetail from "../pages/customer/OrderDetail";
 
 import CustomCake from "../pages/customCake/CustomCake";
 
@@ -22,41 +23,38 @@ import OrderManagement from "../pages/admin/OrderManagement";
 
 import NotFound from "../pages/NotFound";
 
+
 function AppRoutes() {
+
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/home" replace />} />
-
+      {/* Auth */}
       <Route element={<AuthLayout />}>
         <Route path="/login" element={<Login />} />
-
         <Route path="/register" element={<Register />} />
       </Route>
 
+      {/* Customer */}
       <Route element={<CustomerLayout />}>
+        <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-
-        <Route path="/cakes" element={<CakeList />} />
-
         <Route path="/cakes/:id" element={<CakeDetail />} />
 
         <Route element={<ProtectedRoute role="customer" />}>
           <Route path="/custom-cake" element={<CustomCake />} />
-
           <Route path="/cart" element={<Cart />} />
-
           <Route path="/checkout" element={<Checkout />} />
-
           <Route path="/orders" element={<OrderHistory />} />
+          <Route path="/orders/:id" element={<OrderDetail />} />
         </Route>
       </Route>
 
-      <Route element={<ProtectedRoute role="owner" />}>
+      {/* Admin */}
+      <Route element={<ProtectedRoute role={["staff", "owner"]} />}>
         <Route element={<AdminLayout />}>
           <Route path="/admin/orders" element={<OrderManagement />} />
         </Route>
       </Route>
-
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
