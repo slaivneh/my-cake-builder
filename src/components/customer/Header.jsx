@@ -4,7 +4,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 import logo from "../../assets/images/auth/logo.png";
-
+import "../../assets/styles/header.css";
 function Header() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
@@ -73,9 +73,8 @@ function Header() {
 
         {/* Khu vực bên phải */}
         <div
-          className={`pd-header__actions ${
-            menuOpen ? "pd-header__actions--open" : ""
-          }`}
+          className={`pd-header__actions ${menuOpen ? "pd-header__actions--open" : ""
+            }`}
         >
           {!user ? (
             /* Chưa đăng nhập */
@@ -153,9 +152,8 @@ function Header() {
         {/* Nút menu mobile */}
         <button
           type="button"
-          className={`pd-header__menu-button ${
-            menuOpen ? "pd-header__menu-button--open" : ""
-          }`}
+          className={`pd-header__menu-button ${menuOpen ? "pd-header__menu-button--open" : ""
+            }`}
           onClick={() => {
             setMenuOpen((previous) => !previous);
           }}
