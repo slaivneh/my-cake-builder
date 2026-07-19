@@ -255,7 +255,10 @@
       "slug": "banh-kem-dau-tuoi",
       "category": "Bánh kem",
       "description": "Bánh kem tươi với lớp kem bơ và dâu tây tươi mọng nước",
-      "images": ["/images/cakes/cake1.jpg", "/images/cakes/cake1_2.jpg"],
+      "images": [
+        "/images/cakes/cake1.jpg",
+        "/images/cakes/cake1_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -287,7 +290,10 @@
       "slug": "banh-kem-socola-den",
       "category": "Bánh kem",
       "description": "Bánh kem socola đen đậm đà với lớp ganache mịn màng",
-      "images": ["/images/cakes/cake2.jpg", "/images/cakes/cake2_2.jpg"],
+      "images": [
+        "/images/cakes/cake2.jpg",
+        "/images/cakes/cake2_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -319,7 +325,10 @@
       "slug": "banh-kem-matcha-nhat-ban",
       "category": "Bánh kem",
       "description": "Bánh kem matcha nhập khẩu từ Nhật Bản, vị trà xanh thanh mát",
-      "images": ["/images/cakes/cake3.jpg", "/images/cakes/cake3_2.jpg"],
+      "images": [
+        "/images/cakes/cake3.jpg",
+        "/images/cakes/cake3_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -351,7 +360,10 @@
       "slug": "banh-kem-red-velvet",
       "category": "Bánh kem",
       "description": "Bánh kem red velvet cổ điển với kem cream cheese mịn",
-      "images": ["/images/cakes/cake4.jpg", "/images/cakes/cake4_2.jpg"],
+      "images": [
+        "/images/cakes/cake4.jpg",
+        "/images/cakes/cake4_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -383,7 +395,10 @@
       "slug": "banh-kem-ca-phe-capuchino",
       "category": "Bánh kem",
       "description": "Bánh kem cà phê capuchino thơm nồng cho người yêu cà phê",
-      "images": ["/images/cakes/cake5.jpg", "/images/cakes/cake5_2.jpg"],
+      "images": [
+        "/images/cakes/cake5.jpg",
+        "/images/cakes/cake5_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -415,7 +430,10 @@
       "slug": "banh-kem-trai-cay-nhiet-doi",
       "category": "Bánh kem",
       "description": "Bánh kem tươi trang trí trái cây nhiệt đới theo mùa",
-      "images": ["/images/cakes/cake6.jpg", "/images/cakes/cake6_2.jpg"],
+      "images": [
+        "/images/cakes/cake6.jpg",
+        "/images/cakes/cake6_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -447,7 +465,10 @@
       "slug": "banh-kem-tiramisu",
       "category": "Bánh kem",
       "description": "Bánh kem tiramisu Ý với lớp bánh quy ladyfinger và mascarpone",
-      "images": ["/images/cakes/cake7.jpg", "/images/cakes/cake7_2.jpg"],
+      "images": [
+        "/images/cakes/cake7.jpg",
+        "/images/cakes/cake7_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -479,7 +500,10 @@
       "slug": "banh-kem-bap-pho-mai",
       "category": "Bánh kem",
       "description": "Bánh kem bắp thơm ngọt kết hợp phô mai béo ngậy",
-      "images": ["/images/cakes/cake8.jpg", "/images/cakes/cake8_2.jpg"],
+      "images": [
+        "/images/cakes/cake8.jpg",
+        "/images/cakes/cake8_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -511,7 +535,10 @@
       "slug": "banh-kem-oreo",
       "category": "Bánh kem",
       "description": "Bánh kem socola với bánh quy Oreo giòn tan trên mặt",
-      "images": ["/images/cakes/cake9.jpg", "/images/cakes/cake9_2.jpg"],
+      "images": [
+        "/images/cakes/cake9.jpg",
+        "/images/cakes/cake9_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -543,7 +570,10 @@
       "slug": "banh-kem-dua-non",
       "category": "Bánh kem",
       "description": "Bánh kem dừa non thanh mát với cơm dừa tươi",
-      "images": ["/images/cakes/cake10.jpg", "/images/cakes/cake10_2.jpg"],
+      "images": [
+        "/images/cakes/cake10.jpg",
+        "/images/cakes/cake10_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -575,7 +605,10 @@
       "slug": "banh-kem-chanh-day",
       "category": "Bánh kem",
       "description": "Bánh kem chanh dây chua ngọt cân bằng vị giác",
-      "images": ["/images/cakes/cake11.jpg", "/images/cakes/cake11_2.jpg"],
+      "images": [
+        "/images/cakes/cake11.jpg",
+        "/images/cakes/cake11_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -607,7 +640,10 @@
       "slug": "banh-kem-pho-mai-nuong",
       "category": "Bánh kem",
       "description": "Bánh phô mai nướng Nhật Bản mềm mịn tan trong miệng",
-      "images": ["/images/cakes/cake12.jpg", "/images/cakes/cake12_2.jpg"],
+      "images": [
+        "/images/cakes/cake12.jpg",
+        "/images/cakes/cake12_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -639,7 +675,10 @@
       "slug": "banh-kem-tra-sua-tran-chau",
       "category": "Bánh kem",
       "description": "Bánh kem trà sữa với trân châu đen dai ngon",
-      "images": ["/images/cakes/cake13.jpg", "/images/cakes/cake13_2.jpg"],
+      "images": [
+        "/images/cakes/cake13.jpg",
+        "/images/cakes/cake13_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -671,7 +710,10 @@
       "slug": "banh-kem-hoa-hong",
       "category": "Bánh kem",
       "description": "Bánh kem trang trí hoa hồng kem bơ tinh tế",
-      "images": ["/images/cakes/cake14.jpg", "/images/cakes/cake14_2.jpg"],
+      "images": [
+        "/images/cakes/cake14.jpg",
+        "/images/cakes/cake14_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -703,7 +745,10 @@
       "slug": "banh-kem-sinh-nhat-hoat-hinh",
       "category": "Bánh kem",
       "description": "Bánh kem sinh nhật trang trí hình hoạt hình dễ thương cho bé",
-      "images": ["/images/cakes/cake15.jpg", "/images/cakes/cake15_2.jpg"],
+      "images": [
+        "/images/cakes/cake15.jpg",
+        "/images/cakes/cake15_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -735,7 +780,10 @@
       "slug": "banh-kem-xoai",
       "category": "Bánh kem",
       "description": "Bánh kem xoài tươi với lớp mousse xoài mịn màng",
-      "images": ["/images/cakes/cake16.jpg", "/images/cakes/cake16_2.jpg"],
+      "images": [
+        "/images/cakes/cake16.jpg",
+        "/images/cakes/cake16_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -767,7 +815,10 @@
       "slug": "banh-kem-hanh-nhan-caramel",
       "category": "Bánh kem",
       "description": "Bánh kem hạnh nhân với lớp caramel muối đậm đà",
-      "images": ["/images/cakes/cake17.jpg", "/images/cakes/cake17_2.jpg"],
+      "images": [
+        "/images/cakes/cake17.jpg",
+        "/images/cakes/cake17_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -799,7 +850,10 @@
       "slug": "banh-kem-sau-rieng",
       "category": "Bánh kem",
       "description": "Bánh kem sầu riêng thơm nồng cho tín đồ sầu riêng",
-      "images": ["/images/cakes/cake18.jpg", "/images/cakes/cake18_2.jpg"],
+      "images": [
+        "/images/cakes/cake18.jpg",
+        "/images/cakes/cake18_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -831,7 +885,10 @@
       "slug": "banh-kem-viet-quat",
       "category": "Bánh kem",
       "description": "Bánh kem việt quất tươi với sốt việt quất tự nhiên",
-      "images": ["/images/cakes/cake19.jpg", "/images/cakes/cake19_2.jpg"],
+      "images": [
+        "/images/cakes/cake19.jpg",
+        "/images/cakes/cake19_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -863,7 +920,10 @@
       "slug": "banh-kem-bo",
       "category": "Bánh kem",
       "description": "Bánh kem bơ truyền thống Việt Nam vị béo ngậy đặc trưng",
-      "images": ["/images/cakes/cake20.jpg", "/images/cakes/cake20_2.jpg"],
+      "images": [
+        "/images/cakes/cake20.jpg",
+        "/images/cakes/cake20_2.jpg"
+      ],
       "sizePrices": [
         {
           "sizeId": 1,
@@ -1231,7 +1291,10 @@
             "fillingId": 3,
             "creamId": 4,
             "colorId": 5,
-            "toppingIds": [1, 7],
+            "toppingIds": [
+              1,
+              7
+            ],
             "message": "Happy Birthday Mom"
           },
           "quantity": 1,
@@ -1287,7 +1350,11 @@
             "fillingId": 4,
             "creamId": 3,
             "colorId": 10,
-            "toppingIds": [3, 5, 9],
+            "toppingIds": [
+              3,
+              5,
+              9
+            ],
             "message": "Chúc mừng tốt nghiệp"
           },
           "quantity": 1,
@@ -1314,7 +1381,10 @@
             "fillingId": 2,
             "creamId": 1,
             "colorId": 17,
-            "toppingIds": [4, 12],
+            "toppingIds": [
+              4,
+              12
+            ],
             "message": "Mừng khai trương"
           },
           "quantity": 1,
@@ -1329,7 +1399,12 @@
             "fillingId": 4,
             "creamId": 1,
             "colorId": 11,
-            "toppingIds": [3, 7, 11, 12],
+            "toppingIds": [
+              3,
+              7,
+              11,
+              12
+            ],
             "message": "Kỷ niệm ngày cưới"
           },
           "quantity": 1,
@@ -1407,7 +1482,12 @@
             "fillingId": 1,
             "creamId": 2,
             "colorId": 13,
-            "toppingIds": [2, 6, 8, 11],
+            "toppingIds": [
+              2,
+              6,
+              8,
+              11
+            ],
             "message": "Yêu em"
           },
           "quantity": 1,
@@ -1481,7 +1561,11 @@
             "fillingId": 3,
             "creamId": 4,
             "colorId": 6,
-            "toppingIds": [10, 14, 15],
+            "toppingIds": [
+              10,
+              14,
+              15
+            ],
             "message": "Mừng sinh nhật bé"
           },
           "quantity": 1,
@@ -1496,7 +1580,10 @@
             "fillingId": 3,
             "creamId": 4,
             "colorId": 5,
-            "toppingIds": [1, 7],
+            "toppingIds": [
+              1,
+              7
+            ],
             "message": "Happy Birthday"
           },
           "quantity": 1,
@@ -1637,7 +1724,11 @@
             "fillingId": 3,
             "creamId": 4,
             "colorId": 6,
-            "toppingIds": [10, 14, 15],
+            "toppingIds": [
+              10,
+              14,
+              15
+            ],
             "message": "Mừng sinh nhật bé"
           },
           "quantity": 1,
@@ -1708,7 +1799,10 @@
             "fillingId": 2,
             "creamId": 1,
             "colorId": 17,
-            "toppingIds": [4, 12],
+            "toppingIds": [
+              4,
+              12
+            ],
             "message": "Mừng khai trương"
           },
           "quantity": 1,
@@ -1849,7 +1943,12 @@
             "fillingId": 2,
             "creamId": 5,
             "colorId": 14,
-            "toppingIds": [1, 4, 9, 15],
+            "toppingIds": [
+              1,
+              4,
+              9,
+              15
+            ],
             "message": "Chúc mừng năm mới"
           },
           "quantity": 1,
@@ -1871,7 +1970,10 @@
             "fillingId": 1,
             "creamId": 2,
             "colorId": 19,
-            "toppingIds": [6, 8],
+            "toppingIds": [
+              6,
+              8
+            ],
             "message": "Chúc sức khỏe"
           },
           "quantity": 1,
@@ -2003,7 +2105,11 @@
             "fillingId": 4,
             "creamId": 3,
             "colorId": 10,
-            "toppingIds": [3, 5, 9],
+            "toppingIds": [
+              3,
+              5,
+              9
+            ],
             "message": "Chúc mừng"
           },
           "quantity": 1,
@@ -2136,7 +2242,10 @@
             "fillingId": 1,
             "creamId": 2,
             "colorId": 19,
-            "toppingIds": [6, 8],
+            "toppingIds": [
+              6,
+              8
+            ],
             "message": "Chúc sức khỏe"
           },
           "quantity": 1,
@@ -2151,7 +2260,10 @@
             "fillingId": 2,
             "creamId": 1,
             "colorId": 17,
-            "toppingIds": [4, 12],
+            "toppingIds": [
+              4,
+              12
+            ],
             "message": "Mừng khai trương"
           },
           "quantity": 1,
@@ -2222,7 +2334,11 @@
             "fillingId": 5,
             "creamId": 3,
             "colorId": 8,
-            "toppingIds": [7, 9, 13],
+            "toppingIds": [
+              7,
+              9,
+              13
+            ],
             "message": "Chúc mừng tốt nghiệp"
           },
           "quantity": 1,
@@ -2237,7 +2353,10 @@
             "fillingId": 1,
             "creamId": 2,
             "colorId": 19,
-            "toppingIds": [6, 8],
+            "toppingIds": [
+              6,
+              8
+            ],
             "message": "Chúc sức khỏe"
           },
           "quantity": 1,
@@ -2365,7 +2484,10 @@
             "fillingId": 1,
             "creamId": 2,
             "colorId": 19,
-            "toppingIds": [6, 8],
+            "toppingIds": [
+              6,
+              8
+            ],
             "message": "Chúc sức khỏe"
           },
           "quantity": 1,
@@ -2513,7 +2635,11 @@
             "fillingId": 3,
             "creamId": 4,
             "colorId": 6,
-            "toppingIds": [10, 14, 15],
+            "toppingIds": [
+              10,
+              14,
+              15
+            ],
             "message": "Mừng sinh nhật bé"
           },
           "quantity": 1,
@@ -2605,7 +2731,11 @@
             "fillingId": 4,
             "creamId": 3,
             "colorId": 10,
-            "toppingIds": [3, 5, 9],
+            "toppingIds": [
+              3,
+              5,
+              9
+            ],
             "message": "Chúc mừng"
           },
           "quantity": 1,
@@ -2739,7 +2869,13 @@
             "fillingId": 6,
             "creamId": 5,
             "colorId": 3,
-            "toppingIds": [1, 2, 3, 4, 5],
+            "toppingIds": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
             "message": "Sinh nhật vui vẻ"
           },
           "quantity": 1,
@@ -2815,7 +2951,10 @@
             "fillingId": 1,
             "creamId": 2,
             "colorId": 19,
-            "toppingIds": [6, 8],
+            "toppingIds": [
+              6,
+              8
+            ],
             "message": "Chúc sức khỏe"
           },
           "quantity": 1,
@@ -2900,7 +3039,11 @@
             "fillingId": 4,
             "creamId": 3,
             "colorId": 10,
-            "toppingIds": [3, 5, 9],
+            "toppingIds": [
+              3,
+              5,
+              9
+            ],
             "message": "Chúc mừng"
           },
           "quantity": 1,
@@ -2963,7 +3106,12 @@
             "fillingId": 4,
             "creamId": 1,
             "colorId": 11,
-            "toppingIds": [3, 7, 11, 12],
+            "toppingIds": [
+              3,
+              7,
+              11,
+              12
+            ],
             "message": "Kỷ niệm ngày cưới"
           },
           "quantity": 1,
@@ -3029,7 +3177,12 @@
             "fillingId": 4,
             "creamId": 1,
             "colorId": 11,
-            "toppingIds": [3, 7, 11, 12],
+            "toppingIds": [
+              3,
+              7,
+              11,
+              12
+            ],
             "message": "Kỷ niệm ngày cưới"
           },
           "quantity": 1,
@@ -3184,7 +3337,11 @@
             "fillingId": 4,
             "creamId": 3,
             "colorId": 10,
-            "toppingIds": [3, 5, 9],
+            "toppingIds": [
+              3,
+              5,
+              9
+            ],
             "message": "Chúc mừng"
           },
           "quantity": 1,
@@ -3243,7 +3400,10 @@
             "fillingId": 3,
             "creamId": 4,
             "colorId": 5,
-            "toppingIds": [1, 7],
+            "toppingIds": [
+              1,
+              7
+            ],
             "message": "Happy Birthday"
           },
           "quantity": 1,
@@ -3314,7 +3474,11 @@
             "fillingId": 3,
             "creamId": 4,
             "colorId": 6,
-            "toppingIds": [10, 14, 15],
+            "toppingIds": [
+              10,
+              14,
+              15
+            ],
             "message": "Mừng sinh nhật bé"
           },
           "quantity": 1,
@@ -3329,7 +3493,10 @@
             "fillingId": 2,
             "creamId": 1,
             "colorId": 17,
-            "toppingIds": [4, 12],
+            "toppingIds": [
+              4,
+              12
+            ],
             "message": "Mừng khai trương"
           },
           "quantity": 1,
@@ -3344,7 +3511,12 @@
             "fillingId": 4,
             "creamId": 1,
             "colorId": 11,
-            "toppingIds": [3, 7, 11, 12],
+            "toppingIds": [
+              3,
+              7,
+              11,
+              12
+            ],
             "message": "Kỷ niệm ngày cưới"
           },
           "quantity": 1,
@@ -3484,7 +3656,12 @@
             "fillingId": 1,
             "creamId": 2,
             "colorId": 13,
-            "toppingIds": [2, 6, 8, 11],
+            "toppingIds": [
+              2,
+              6,
+              8,
+              11
+            ],
             "message": "Yêu em"
           },
           "quantity": 1,
@@ -3506,7 +3683,10 @@
             "fillingId": 1,
             "creamId": 2,
             "colorId": 19,
-            "toppingIds": [6, 8],
+            "toppingIds": [
+              6,
+              8
+            ],
             "message": "Chúc sức khỏe"
           },
           "quantity": 1,
@@ -4040,6 +4220,68 @@
       "content": "Giảm giá 20% cho tất cả bánh kem trong tuần này. Đừng bỏ lỡ!",
       "isRead": true,
       "createdAt": "2024-10-17T23:03:50Z"
+    }
+  ],
+  "cakeTemplates": [
+    {
+      "id": 1,
+      "name": "Bánh Dâu Tươi",
+      "category": "Kem tươi",
+      "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop"
+    },
+    {
+      "id": 2,
+      "name": "Bánh Socola Đen",
+      "category": "Socola",
+      "imageUrl": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=400&fit=crop"
+    },
+    {
+      "id": 3,
+      "name": "Bánh Matcha Nhật",
+      "category": "Matcha",
+      "imageUrl": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400&h=400&fit=crop"
+    },
+    {
+      "id": 4,
+      "name": "Bánh Vanilla Pastel",
+      "category": "Vanilla",
+      "imageUrl": "https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=400&h=400&fit=crop"
+    },
+    {
+      "id": 5,
+      "name": "Bánh Sinh Nhật Tím",
+      "category": "Cream cheese",
+      "imageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop"
+    },
+    {
+      "id": 6,
+      "name": "Bánh Trái Cây Nhiều Tầng",
+      "category": "Fresh fruit",
+      "imageUrl": "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=400&h=400&fit=crop"
+    },
+    {
+      "id": 7,
+      "name": "Bánh Fondant Cưới",
+      "category": "Fondant",
+      "imageUrl": "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=400&h=400&fit=crop"
+    },
+    {
+      "id": 8,
+      "name": "Bánh Macaron Pastel",
+      "category": "Macaron",
+      "imageUrl": "https://images.unsplash.com/photo-1519869325930-281384150729?w=400&h=400&fit=crop"
+    },
+    {
+      "id": 9,
+      "name": "Bánh Carrot Cinnamon",
+      "category": "Đặc biệt",
+      "imageUrl": "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=400&h=400&fit=crop"
+    },
+    {
+      "id": 10,
+      "name": "Bánh Hoa Anh Đào",
+      "category": "Kem tươi",
+      "imageUrl": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&h=400&fit=crop"
     }
   ]
 }
