@@ -1978,6 +1978,14 @@
       "title": "Cập nhật đơn hàng",
       "content": "Đơn hàng PD20260720RD7R1 của bạn đã chuyển sang trạng thái: Đã hủy.",
       "id": 8
+    },
+    {
+      "isRead": true,
+      "createdAt": "2026-07-20T06:36:15.756Z",
+      "userId": 3,
+      "title": "Đặt hàng thành công",
+      "content": "Đơn hàng PD202607205M2GM của bạn đã được ghi nhận. Vui lòng chờ xác nhận.",
+      "id": 9
     }
   ]
 }
