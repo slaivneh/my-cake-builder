@@ -15,10 +15,11 @@ import CakeDetail from "../pages/customer/CakeDetail";
 import Cart from "../pages/customer/Cart";
 import Checkout from "../pages/customer/Checkout";
 import OrderHistory from "../pages/customer/OrderHistory";
+import CustomerOrderDetail from "../pages/customer/CustomerOrderDetail";
 import OrderDetail from "../pages/customer/OrderDetail";
 import OrderSuccess from "../pages/customer/OrderSuccess";
 
-import CustomCake from "../pages/customCake/CustomCake";
+import CakeDesigner from "../pages/customCake/CakeDesigner";
 
 import OrderManagement from "../pages/admin/OrderManagement";
 
@@ -49,8 +50,7 @@ function AppRoutes() {
         {/* Customer protected */}
 
         <Route element={<ProtectedRoute role="customer" />}>
-          <Route path="/custom-cake" element={<CustomCake />} />
-
+          <Route path="/custom-cake" element={<CakeDesigner />} />
           <Route path="/cart" element={<Cart />} />
 
           <Route path="/checkout" element={<Checkout />} />
@@ -58,8 +58,7 @@ function AppRoutes() {
           <Route path="/order-success/:id" element={<OrderSuccess />} />
 
           <Route path="/orders" element={<OrderHistory />} />
-
-          <Route path="/orders/:id" element={<OrderDetail />} />
+          <Route path="/orders/:id" element={<CustomerOrderDetail />} />
         </Route>
       </Route>
 

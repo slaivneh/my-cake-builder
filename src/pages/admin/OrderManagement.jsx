@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getOrders, updateStatus } from "../../services/orderService";
 import { getCakes } from "../../services/cakeService";
 import axiosClient from "../../services/axiosClient";
+import notificationService from "../../services/notificationService";
 import Loading from "../../components/common/Loading";
 import OrderTable from "../../components/admin/OrderTable";
 import OrderDetailModal from "../../components/admin/OrderDetailModal";
@@ -154,6 +155,17 @@ function OrderManagement() {
         statusHistory: updatedHistory,
         updatedAt: new Date().toISOString(),
       });
+      
+      try {
+        await notificationService.create({
+          userId: orderToUpdate.userId || orderToUpdate.customerId || 4,
+          title: "Cập nhật đơn hàng",
+          content: `Đơn hàng ${orderToUpdate.orderCode || orderToUpdate.id} của bạn đã chuyển sang trạng thái: ${getStatusText(nextStatus)}.`
+        });
+      } catch (err) {
+        console.warn("Không thể tạo thông báo:", err);
+      }
+
       await fetchOrders();
       // Nếu đơn vừa cập nhật đang được mở trong modal chi tiết thì đồng bộ luôn state của modal
       if (selectedOrder && selectedOrder.id === orderId) {
