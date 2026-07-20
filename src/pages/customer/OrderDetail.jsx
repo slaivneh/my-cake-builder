@@ -8,6 +8,7 @@ import { getOrderById, updateStatus } from "../../services/orderService";
 
 import "../../assets/styles/orders.css";
 
+// Bảng tra cứu thông tin hiển thị cho từng mã trạng thái đơn hàng (nhãn, nhóm trạng thái, mốc tiến độ trên timeline)
 const STATUS_INFORMATION = {
   pending: {
     label: "Chờ xác nhận",
@@ -64,6 +65,7 @@ const STATUS_INFORMATION = {
   },
 };
 
+// Định dạng số tiền theo chuẩn VND
 const formatCurrency = (value) => {
   return Number(value || 0).toLocaleString("vi-VN", {
     style: "currency",
@@ -71,6 +73,7 @@ const formatCurrency = (value) => {
   });
 };
 
+// Định dạng ngày giờ hiển thị kiểu Việt Nam, trả về text mặc định nếu không có giá trị hoặc parse lỗi
 const formatDate = (value) => {
   if (!value) {
     return "Chưa cập nhật";
@@ -91,12 +94,14 @@ const formatDate = (value) => {
   });
 };
 
+// Chuẩn hoá chuỗi: bỏ khoảng trắng thừa và chuyển về chữ thường, để so sánh không phân biệt hoa/thường
 const normalizeText = (value) => {
   return String(value || "")
     .trim()
     .toLowerCase();
 };
 
+// Lấy thông tin hiển thị tương ứng với mã trạng thái, nếu không khớp mã nào thì trả về trạng thái mặc định "Đang xử lý"
 const getStatusInformation = (status) => {
   return (
     STATUS_INFORMATION[normalizeText(status)] || {
@@ -107,6 +112,8 @@ const getStatusInformation = (status) => {
   );
 };
 
+// Kiểm tra đơn hàng có thuộc về user đang đăng nhập không (so theo id, nếu không có id thì so theo email)
+// Mục đích: chặn user xem chi tiết đơn hàng của người khác chỉ bằng cách đổi id trên URL
 const belongsToCurrentUser = (order, user) => {
   const currentUserId = user?.id ?? user?.userId;
 
@@ -131,6 +138,7 @@ const belongsToCurrentUser = (order, user) => {
   return currentEmail !== "" && currentEmail === orderEmail;
 };
 
+// Trang chi tiết đơn hàng phía khách hàng: xem thông tin, tiến độ, sản phẩm, thanh toán và có thể tự hủy đơn
 function OrderDetail() {
   const { id } = useParams();
 
@@ -144,10 +152,11 @@ function OrderDetail() {
 
   const [error, setError] = useState("");
 
-  const [cancelling, setCancelling] = useState(false);
+  const [cancelling, setCancelling] = useState(false); // Đang xử lý huỷ đơn (disable nút, hiện loading text)
 
-  const [notice, setNotice] = useState("");
+  const [notice, setNotice] = useState(""); // Thông báo thành công (VD: sau khi huỷ đơn)
 
+  // Lấy chi tiết đơn hàng theo id trên URL, kiểm tra quyền sở hữu trước khi hiển thị
   useEffect(() => {
     const fetchOrder = async () => {
       try {
@@ -173,20 +182,24 @@ function OrderDetail() {
     fetchOrder();
   }, [id, user]);
 
+  // Thông tin trạng thái hiện tại (nhãn hiển thị, nhóm, tiến độ), tính lại khi order đổi
   const statusInformation = useMemo(() => {
     return getStatusInformation(order?.status);
   }, [order]);
 
+  // Danh sách sản phẩm trong đơn, đảm bảo luôn là mảng dù order chưa có data
   const orderItems = useMemo(() => {
     return Array.isArray(order?.items) ? order.items : [];
   }, [order]);
 
+  // Chỉ cho phép khách tự huỷ đơn khi đơn đang ở các trạng thái chờ xử lý ban đầu
   const canCancel = [
     "pending",
     "pending_confirmation",
     "pending_payment_verification",
   ].includes(normalizeText(order?.status));
 
+  // Xử lý khi khách bấm huỷ đơn: hỏi xác nhận rồi gọi API cập nhật trạng thái sang "cancelled"
   const handleCancelOrder = async () => {
     const confirmed = window.confirm(
       "Bạn có chắc muốn hủy đơn hàng này không?",
@@ -221,6 +234,7 @@ function OrderDetail() {
     }
   };
 
+  // Đang tải dữ liệu -> hiện loading
   if (loading) {
     return (
       <div className="pd-order-detail-page">
@@ -232,6 +246,7 @@ function OrderDetail() {
     );
   }
 
+  // Lỗi và chưa có dữ liệu đơn (VD: không có quyền xem, đơn không tồn tại) -> hiện màn hình lỗi kèm nút quay lại
   if (error && !order) {
     return (
       <div className="pd-order-detail-page">
@@ -257,32 +272,35 @@ function OrderDetail() {
     return null;
   }
 
-  const isPickup = order.fulfillmentMethod === "pickup";
+  const isPickup = order.fulfillmentMethod === "pickup"; // true nếu khách tự đến lấy, false nếu giao tận nơi
 
   const orderCode = order.orderCode || order.paymentCode || `#${order.id}`;
 
+  // Địa chỉ hiển thị: tuỳ theo hình thức nhận là lấy tại tiệm hay giao hàng
   const deliveryAddress = isPickup
     ? order.pickupAddress || order.address
     : order.deliveryAddress || order.address;
 
+  // Danh sách bước hiển thị trên timeline, đổi tên bước theo hình thức nhận (giao hàng / tự lấy)
   const timelineSteps = isPickup
     ? [
-        "Đã đặt hàng",
-        "Đã xác nhận",
-        "Đang chuẩn bị",
-        "Sẵn sàng nhận",
-        "Hoàn thành",
-      ]
+      "Đã đặt hàng",
+      "Đã xác nhận",
+      "Đang chuẩn bị",
+      "Sẵn sàng nhận",
+      "Hoàn thành",
+    ]
     : [
-        "Đã đặt hàng",
-        "Đã xác nhận",
-        "Đang chuẩn bị",
-        "Đang giao hàng",
-        "Hoàn thành",
-      ];
+      "Đã đặt hàng",
+      "Đã xác nhận",
+      "Đang chuẩn bị",
+      "Đang giao hàng",
+      "Hoàn thành",
+    ];
 
   return (
     <div className="pd-order-detail-page">
+      {/* Breadcrumb điều hướng */}
       <nav className="pd-order-detail-breadcrumb">
         <Link to="/home">Trang chủ</Link>
 
@@ -295,6 +313,7 @@ function OrderDetail() {
         <strong>{orderCode}</strong>
       </nav>
 
+      {/* Tiêu đề trang: mã đơn, thời gian đặt, badge trạng thái */}
       <header className="pd-order-detail-heading">
         <div>
           <p>Mã đơn hàng</p>
@@ -311,10 +330,12 @@ function OrderDetail() {
         </span>
       </header>
 
+      {/* Thông báo thành công / lỗi (nếu có) */}
       {notice && <div className="pd-order-detail-notice">✓ {notice}</div>}
 
       {error && <div className="pd-order-detail-error">{error}</div>}
 
+      {/* Timeline tiến độ đơn hàng, chỉ hiện khi đơn chưa bị huỷ */}
       {statusInformation.group !== "cancelled" && (
         <section className="pd-order-timeline">
           {timelineSteps.map((step, index) => {
@@ -340,6 +361,7 @@ function OrderDetail() {
         </section>
       )}
 
+      {/* Banner thông báo đơn đã huỷ, thay thế cho timeline */}
       {statusInformation.group === "cancelled" && (
         <div className="pd-order-cancelled-banner">
           <strong>Đơn hàng đã được hủy</strong>
@@ -349,7 +371,9 @@ function OrderDetail() {
       )}
 
       <div className="pd-order-detail-layout">
+        {/* Cột nội dung chính: sản phẩm, thông tin người nhận, ghi chú */}
         <section className="pd-order-detail-main">
+          {/* Danh sách sản phẩm đã đặt */}
           <div className="pd-order-detail-card">
             <div className="pd-order-detail-card__heading">
               <h2>Sản phẩm đã đặt</h2>
@@ -390,7 +414,7 @@ function OrderDetail() {
                     <strong>
                       {formatCurrency(
                         item.lineTotal ||
-                          Number(item.price) * Number(item.quantity),
+                        Number(item.price) * Number(item.quantity),
                       )}
                     </strong>
                   </div>
@@ -399,6 +423,7 @@ function OrderDetail() {
             </div>
           </div>
 
+          {/* Thông tin người nhận + hình thức nhận bánh */}
           <div className="pd-order-information-grid">
             <article>
               <h2>Thông tin người nhận</h2>
@@ -451,6 +476,7 @@ function OrderDetail() {
             </article>
           </div>
 
+          {/* Ghi chú đơn hàng, chỉ hiện nếu có */}
           {order.note && (
             <div className="pd-order-note">
               <h2>Ghi chú đơn hàng</h2>
@@ -460,6 +486,7 @@ function OrderDetail() {
           )}
         </section>
 
+        {/* Cột bên: thông tin thanh toán, tổng tiền, nút huỷ đơn */}
         <aside className="pd-order-detail-summary">
           <h2>Thanh toán</h2>
 
@@ -517,6 +544,7 @@ function OrderDetail() {
             <strong>{formatCurrency(order.totalAmount || order.total)}</strong>
           </div>
 
+          {/* Chỉ hiện nút huỷ đơn khi đơn còn ở trạng thái cho phép huỷ */}
           {canCancel && (
             <button
               type="button"
