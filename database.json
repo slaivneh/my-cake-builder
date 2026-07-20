@@ -1019,7 +1019,10 @@
             "fillingId": 1,
             "creamId": 2,
             "colorId": 2,
-            "toppingIds": [1, 3],
+            "toppingIds": [
+              1,
+              3
+            ],
             "message": "Happy Birthday",
             "shapeId": 1,
             "decorationStyleId": 1,
@@ -1163,7 +1166,10 @@
             "fillingId": 1,
             "creamId": 2,
             "colorId": 2,
-            "toppingIds": [1, 3],
+            "toppingIds": [
+              1,
+              3
+            ],
             "message": "Happy Birthday",
             "shapeId": 1,
             "decorationStyleId": 1,
@@ -1238,7 +1244,9 @@
             "fillingId": 4,
             "creamId": 1,
             "colorId": 5,
-            "toppingIds": [2],
+            "toppingIds": [
+              2
+            ],
             "message": "Chúc mừng",
             "shapeId": 1,
             "decorationStyleId": 1,
@@ -1362,7 +1370,10 @@
             "fillingId": 2,
             "creamId": 4,
             "colorId": 6,
-            "toppingIds": [4, 5],
+            "toppingIds": [
+              4,
+              5
+            ],
             "message": "Kỷ niệm",
             "shapeId": 1,
             "decorationStyleId": 1,
