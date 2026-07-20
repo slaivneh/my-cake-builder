@@ -1,0 +1,314 @@
+/* =====================================================
+   ORDER SUCCESS
+   ===================================================== */
+
+.pd-order-success-page {
+  width: min(
+    920px,
+    calc(100% - 40px)
+  );
+
+  min-height:
+    calc(100vh - 150px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto;
+
+  padding: 60px 0 90px;
+
+  color: #60433d;
+
+  font-family:
+    "Segoe UI",
+    Tahoma,
+    Arial,
+    sans-serif;
+}
+
+.pd-order-success-page *,
+.pd-order-success-page *::before,
+.pd-order-success-page *::after {
+  box-sizing: border-box;
+}
+
+.pd-order-success-card {
+  width: 100%;
+
+  padding: 48px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fff8fa
+    );
+
+  border:
+    1px solid #efbdc9;
+
+  border-radius: 30px;
+
+  box-shadow:
+    0 20px 48px
+    rgba(105, 57, 66, 0.1);
+}
+
+.pd-order-success-icon {
+  width: 82px;
+  height: 82px;
+
+  display: grid;
+  place-items: center;
+
+  margin: 0 auto 19px;
+
+  color: #ffffff;
+
+  font-size: 35px;
+  font-weight: 700;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f37c99,
+      #e94e76
+    );
+
+  border:
+    6px solid #fff0f4;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 12px 27px
+    rgba(220, 72, 108, 0.23);
+}
+
+.pd-order-success-eyebrow {
+  margin: 0 0 7px;
+
+  color: #e95077;
+
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.pd-order-success-card h1 {
+  margin: 0 0 13px;
+
+  color: #5b3e38;
+
+  font-size:
+    clamp(34px, 6vw, 48px);
+}
+
+.pd-order-success-description {
+  max-width: 590px;
+
+  margin: 0 auto 25px;
+
+  color: #92766f;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+.pd-order-success-code {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 13px;
+
+  margin-bottom: 28px;
+
+  padding: 13px 20px;
+
+  background: #fff0f4;
+
+  border:
+    1px solid #efbdc9;
+
+  border-radius: 999px;
+}
+
+.pd-order-success-code span {
+  color: #94766f;
+
+  font-size: 12px;
+}
+
+.pd-order-success-code strong {
+  color: #df4770;
+
+  font-size: 16px;
+}
+
+.pd-order-success-information {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 14px;
+
+  text-align: left;
+}
+
+.pd-order-success-information > div {
+  min-width: 0;
+
+  padding: 16px 18px;
+
+  background: #ffffff;
+
+  border:
+    1px solid #f1ccd5;
+
+  border-radius: 15px;
+}
+
+.pd-order-success-information span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #9a7d76;
+
+  font-size: 11px;
+}
+
+.pd-order-success-information strong {
+  display: block;
+
+  overflow-wrap: anywhere;
+
+  color: #60433d;
+
+  font-size: 14px;
+}
+
+.pd-order-success-status {
+  margin-top: 18px;
+
+  padding: 16px 18px;
+
+  text-align: left;
+
+  background: #fff8ef;
+
+  border:
+    1px solid #efd8bd;
+
+  border-radius: 15px;
+}
+
+.pd-order-success-status span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #96776e;
+
+  font-size: 11px;
+}
+
+.pd-order-success-status strong {
+  color: #9b6253;
+
+  font-size: 14px;
+}
+
+.pd-order-success-email {
+  margin: 23px 0 0;
+
+  color: #92766f;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+.pd-order-success-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 13px;
+
+  margin-top: 28px;
+}
+
+.pd-order-success-actions a {
+  min-width: 190px;
+  min-height: 51px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 22px;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f27394,
+      #e94c74
+    );
+
+  border:
+    1px solid #e95077;
+
+  border-radius: 999px;
+}
+
+.pd-order-success-actions
+  .pd-order-success-secondary {
+  color: #e95077;
+
+  background: #ffffff;
+}
+
+@media (max-width: 620px) {
+  .pd-order-success-page {
+    width:
+      calc(100% - 22px);
+
+    padding-top: 35px;
+  }
+
+  .pd-order-success-card {
+    padding: 30px 18px;
+
+    border-radius: 23px;
+  }
+
+  .pd-order-success-information {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-order-success-actions {
+    flex-direction: column;
+  }
+
+  .pd-order-success-actions a {
+    width: 100%;
+  }
+}

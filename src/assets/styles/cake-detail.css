@@ -1,0 +1,935 @@
+/* =====================================================
+   PETITE DOUCEUR
+   CAKE DETAIL - ONE IMAGE
+   ===================================================== */
+
+/* =====================================================
+   TRANG CHI TIẾT
+   ===================================================== */
+
+.pd-cake-detail-page {
+  width: min(
+    1420px,
+    calc(100% - 48px)
+  );
+
+  margin: 0 auto;
+  padding: 36px 0 90px;
+
+  font-family:
+    "Segoe UI",
+    Tahoma,
+    Arial,
+    sans-serif;
+
+  color: #60443e;
+}
+
+.pd-cake-detail-page *,
+.pd-cake-detail-page *::before,
+.pd-cake-detail-page *::after {
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   BREADCRUMB
+   ===================================================== */
+
+.pd-cake-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 9px;
+
+  margin-bottom: 24px;
+
+  color: #947870;
+
+  font-size: 13px;
+}
+
+.pd-cake-breadcrumb a {
+  color: #947870;
+
+  text-decoration: none;
+
+  transition: color 160ms ease;
+}
+
+.pd-cake-breadcrumb a:hover {
+  color: #e95077;
+}
+
+.pd-cake-breadcrumb strong {
+  max-width: 420px;
+
+  overflow: hidden;
+
+  color: #65473f;
+
+  font-weight: 700;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =====================================================
+   KHỐI CHI TIẾT CHÍNH
+   ===================================================== */
+
+.pd-cake-detail.pd-single-image-detail {
+  width: 100%;
+
+  display: grid !important;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 0.92fr) !important;
+
+  align-items: start !important;
+
+  gap: 46px !important;
+
+  margin: 0;
+  padding: 38px !important;
+
+  overflow: hidden !important;
+
+  background:
+    rgba(255, 255, 255, 0.97);
+
+  border:
+    1px solid #f0b9c6;
+
+  border-radius: 30px;
+
+  box-shadow:
+    0 18px 44px
+    rgba(103, 55, 64, 0.09);
+}
+
+/*
+  Bắt buộc hai cột không được vượt
+  ra ngoài kích thước grid.
+*/
+
+.pd-single-image-gallery,
+.pd-single-image-info {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* =====================================================
+   ẢNH DUY NHẤT
+   ===================================================== */
+
+.pd-single-image-gallery {
+  align-self: start;
+
+  overflow: hidden;
+}
+
+.pd-single-image-gallery__image {
+  position: relative;
+
+  width: 100%;
+  max-width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff5f7,
+      #fffaf3
+    );
+
+  border-radius: 25px;
+}
+
+.pd-single-image-gallery__image img {
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  max-width: 100% !important;
+
+  object-fit: cover !important;
+  object-position: center !important;
+
+  transform: none;
+
+  border: 0;
+}
+
+.pd-single-image-gallery__image:hover img {
+  transform: none;
+}
+
+/* Nhãn hết hàng */
+
+.pd-detail-sold-out {
+  position: absolute;
+  z-index: 2;
+
+  top: 20px;
+  left: 20px;
+
+  min-height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 17px;
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  background:
+    rgba(78, 51, 46, 0.86);
+
+  border-radius: 999px;
+}
+
+/* Không hiện thumbnail */
+
+.pd-cake-gallery__thumbs,
+.pd-cake-gallery__thumb,
+.pd-cake-gallery {
+  display: none !important;
+}
+
+/* =====================================================
+   THÔNG TIN BÁNH
+   ===================================================== */
+
+.pd-single-image-info {
+  align-self: start;
+
+  padding: 8px 0 0;
+
+  overflow: hidden;
+}
+
+.pd-single-image-info
+  .pd-cake-info__category {
+  margin: 0 0 9px;
+
+  color: #e84e74;
+
+  font-size: 12px;
+  font-weight: 750;
+
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.pd-single-image-info h1 {
+  max-width: 100%;
+
+  margin: 0 0 17px;
+
+  overflow-wrap: anywhere;
+
+  color: #5c3f38;
+
+  font-size:
+    clamp(
+      35px,
+      3.5vw,
+      49px
+    );
+
+  font-weight: 700;
+
+  line-height: 1.16;
+}
+
+.pd-single-image-info
+  .pd-cake-info__price {
+  margin-bottom: 21px;
+
+  color: #df4770;
+
+  font-size:
+    clamp(
+      28px,
+      3vw,
+      34px
+    );
+
+  font-weight: 750;
+}
+
+.pd-single-image-info
+  .pd-cake-info__description {
+  max-width: 100%;
+
+  margin: 0 0 29px;
+
+  color: #8e716a;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+/* =====================================================
+   LỰA CHỌN SIZE/QUY CÁCH
+   ===================================================== */
+
+.pd-single-image-info
+  .pd-cake-option-group,
+.pd-single-image-info
+  .pd-cake-quantity-group {
+  width: 100%;
+
+  margin-bottom: 26px;
+}
+
+.pd-single-image-info
+  .pd-cake-option-group h3,
+.pd-single-image-info
+  .pd-cake-quantity-group h3 {
+  margin: 0 0 12px;
+
+  color: #61443d;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.pd-single-image-info
+  .pd-cake-option-list {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 11px;
+}
+
+.pd-single-image-info
+  .pd-cake-option {
+  width: 100%;
+  min-width: 0;
+  min-height: 84px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 6px;
+
+  padding: 13px 15px;
+
+  overflow: hidden;
+
+  color: #61443d;
+
+  font-family: inherit;
+
+  text-align: left;
+
+  background: #ffffff;
+
+  border:
+    1px solid #efb9c6;
+
+  border-radius: 15px;
+
+  cursor: pointer;
+
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.pd-single-image-info
+  .pd-cake-option:hover {
+  background: #fff7f9;
+
+  transform: translateY(-2px);
+}
+
+.pd-single-image-info
+  .pd-cake-option strong {
+  max-width: 100%;
+
+  overflow: hidden;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pd-single-image-info
+  .pd-cake-option span {
+  color: #e94e76;
+
+  font-size: 12px;
+}
+
+.pd-single-image-info
+  .pd-cake-option--active {
+  color: #df4770;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff4f7,
+      #fff9fa
+    );
+
+  border:
+    2px solid #ec557b;
+
+  box-shadow:
+    0 8px 18px
+    rgba(224, 73, 109, 0.08);
+}
+
+/* =====================================================
+   SỐ LƯỢNG
+   ===================================================== */
+
+.pd-single-image-info
+  .pd-cake-quantity {
+  width: 175px;
+  height: 52px;
+
+  display: grid;
+
+  grid-template-columns:
+    52px
+    1fr
+    52px;
+
+  overflow: hidden;
+
+  border:
+    1px solid #efb9c6;
+
+  border-radius: 14px;
+}
+
+.pd-single-image-info
+  .pd-cake-quantity button {
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  color: #e95077;
+
+  font-family: inherit;
+  font-size: 21px;
+
+  background: #fff1f4;
+
+  border: 0;
+
+  cursor: pointer;
+
+  transition:
+    background 160ms ease;
+}
+
+.pd-single-image-info
+  .pd-cake-quantity
+  button:hover:not(:disabled) {
+  background: #ffe3ea;
+}
+
+.pd-single-image-info
+  .pd-cake-quantity button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.4;
+}
+
+.pd-single-image-info
+  .pd-cake-quantity input {
+  width: 100%;
+  min-width: 0;
+
+  padding: 0;
+
+  color: #60433c;
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 0;
+  outline: 0;
+
+  appearance: textfield;
+}
+
+.pd-single-image-info
+  .pd-cake-quantity
+  input::-webkit-inner-spin-button,
+.pd-single-image-info
+  .pd-cake-quantity
+  input::-webkit-outer-spin-button {
+  margin: 0;
+
+  appearance: none;
+}
+
+/* =====================================================
+   NÚT THÊM GIỎ VÀ MUA NGAY
+   ===================================================== */
+
+.pd-single-image-info
+  .pd-cake-detail-actions {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 14px;
+
+  margin-top: 30px;
+}
+
+.pd-single-image-info
+  .pd-cake-detail-actions
+  button {
+  width: 100%;
+  min-width: 0;
+  min-height: 57px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 18px;
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 750;
+
+  white-space: nowrap;
+
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.pd-single-image-info
+  .pd-detail-add-cart {
+  color: #e84e74;
+
+  background: #ffffff;
+
+  border:
+    1px solid #eb557a;
+}
+
+.pd-single-image-info
+  .pd-detail-add-cart:hover {
+  background: #fff0f4;
+
+  transform: translateY(-2px);
+}
+
+.pd-single-image-info
+  .pd-detail-buy-now {
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f27394,
+      #e94c74
+    );
+
+  border: 0;
+
+  box-shadow:
+    0 14px 27px
+    rgba(218, 69, 105, 0.22);
+}
+
+.pd-single-image-info
+  .pd-detail-buy-now:hover {
+  color: #ffffff;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 18px 32px
+    rgba(218, 69, 105, 0.28);
+}
+
+.pd-single-image-info
+  .pd-cake-detail-actions
+  button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.48;
+
+  transform: none;
+
+  box-shadow: none;
+}
+
+/* =====================================================
+   THÔNG BÁO
+   ===================================================== */
+
+.pd-single-image-info
+  .pd-detail-message {
+  margin-top: 14px;
+
+  padding: 12px 16px;
+
+  color: #347159;
+
+  font-size: 13px;
+  font-weight: 650;
+
+  background: #eefaf4;
+
+  border:
+    1px solid #bce1cd;
+
+  border-radius: 13px;
+}
+
+/* =====================================================
+   THÔNG TIN DỊCH VỤ
+   ===================================================== */
+
+.pd-single-product-notes {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 12px 18px;
+
+  margin-top: 30px;
+  padding-top: 22px;
+
+  border-top:
+    1px dashed #efb6c3;
+}
+
+.pd-single-product-notes > div {
+  min-width: 0;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 8px;
+}
+
+.pd-single-product-notes span {
+  flex: 0 0 auto;
+
+  color: #e95077;
+
+  font-size: 14px;
+}
+
+.pd-single-product-notes p {
+  min-width: 0;
+
+  margin: 0;
+
+  color: #8e716a;
+
+  font-size: 12px;
+
+  line-height: 1.55;
+}
+
+/* Ẩn ba box cũ */
+
+.pd-cake-detail-content {
+  display: none !important;
+}
+
+/* =====================================================
+   SẢN PHẨM LIÊN QUAN
+   ===================================================== */
+
+.pd-related-section {
+  width: 100%;
+
+  margin-top: 74px;
+}
+
+.pd-related-heading {
+  margin-bottom: 28px;
+
+  text-align: center;
+}
+
+.pd-related-heading p {
+  margin: 0 0 7px;
+
+  color: #e95077;
+
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.pd-related-heading h2 {
+  margin: 0;
+
+  color: #5c3f38;
+
+  font-size:
+    clamp(
+      29px,
+      4vw,
+      38px
+    );
+
+  font-weight: 700;
+}
+
+/* =====================================================
+   LOADING
+   ===================================================== */
+
+.pd-detail-loading {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 45px;
+
+  padding: 38px;
+
+  background: #ffffff;
+
+  border:
+    1px solid #f0b9c6;
+
+  border-radius: 30px;
+}
+
+.pd-detail-loading div {
+  height: 580px;
+
+  background:
+    linear-gradient(
+      100deg,
+      #fff0f3 20%,
+      #ffffff 40%,
+      #fff0f3 60%
+    );
+
+  background-size: 200% 100%;
+
+  border-radius: 24px;
+
+  animation:
+    pd-detail-loading
+    1.2s
+    infinite;
+}
+
+@keyframes pd-detail-loading {
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: -100% 0;
+  }
+}
+
+/* =====================================================
+   MÀN HÌNH DESKTOP NHỎ
+   ===================================================== */
+
+@media (max-width: 1180px) {
+  .pd-cake-detail-page {
+    width: calc(100% - 36px);
+  }
+
+  .pd-cake-detail.pd-single-image-detail {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 0.95fr) !important;
+
+    gap: 30px !important;
+
+    padding: 28px !important;
+  }
+
+  .pd-single-image-info
+    .pd-cake-option-list {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .pd-single-product-notes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 850px) {
+  .pd-cake-detail-page {
+    padding-top: 27px;
+  }
+
+  .pd-cake-detail.pd-single-image-detail {
+    grid-template-columns:
+      minmax(0, 1fr) !important;
+
+    gap: 30px !important;
+
+    padding: 24px !important;
+  }
+
+  .pd-single-image-gallery__image {
+    aspect-ratio: 4 / 3;
+  }
+
+  .pd-single-image-info {
+    padding: 0;
+  }
+
+  .pd-detail-loading {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-detail-loading div {
+    height: 480px;
+  }
+}
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 580px) {
+  .pd-cake-detail-page {
+    width: calc(100% - 22px);
+
+    padding:
+      23px
+      0
+      70px;
+  }
+
+  .pd-cake-detail.pd-single-image-detail {
+    gap: 23px !important;
+
+    padding: 13px !important;
+
+    border-radius: 22px;
+  }
+
+  .pd-single-image-gallery__image {
+    aspect-ratio: 1 / 1;
+
+    border-radius: 17px;
+  }
+
+  .pd-single-image-info h1 {
+    font-size: 32px;
+  }
+
+  .pd-single-image-info
+    .pd-cake-info__description {
+    font-size: 14px;
+  }
+
+  .pd-single-image-info
+    .pd-cake-option-list {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-single-image-info
+    .pd-cake-option {
+    min-height: 73px;
+  }
+
+  .pd-single-image-info
+    .pd-cake-detail-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-single-product-notes {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-cake-breadcrumb strong {
+    max-width: 180px;
+  }
+
+  .pd-detail-loading {
+    padding: 13px;
+  }
+
+  .pd-detail-loading div {
+    height: 390px;
+  }
+}
+
+.pd-detail-message--error {
+  color: #a23d50 !important;
+
+  background:
+    #fff0f3 !important;
+
+  border-color:
+    #efb2c0 !important;
+}
