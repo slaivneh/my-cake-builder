@@ -54,3 +54,7 @@ export const updateStatus = async (id, statusOrData) => {
 export const sendOrderConfirmationEmail = async (emailData) => {
   return axiosClient.post("/email/order-confirmation", emailData);
 };
+
+export const getOrdersByUserId = (userId) => {
+  return axiosClient.get(`/orders?userId=${userId}`);
+};
