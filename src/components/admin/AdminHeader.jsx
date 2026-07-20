@@ -9,20 +9,17 @@ function AdminHeader() {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const [mobileOpen, setMobileOpen] = useState(false); // Trạng thái đóng/mở sidebar trên mobile
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Đăng xuất rồi chuyển hướng về trang login
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
 
-  // Tự động đóng sidebar mobile mỗi khi chuyển trang
   useEffect(() => {
     setMobileOpen(false);
   }, [location.pathname]);
 
-  // Lấy chữ cái đầu của tên user để hiển thị avatar (VD: "Nguyen Van A" -> "NV")
   const getInitials = (name) => {
     if (!name) return "?";
     return name
@@ -33,12 +30,10 @@ function AdminHeader() {
       .slice(0, 2);
   };
 
-  // Kiểm tra menu nào đang được active dựa theo đường dẫn hiện tại
   const isActive = (path) => location.pathname === path;
 
   return (
     <>
-      {/* Lớp phủ nền tối khi sidebar mobile đang mở, click vào để đóng */}
       {mobileOpen && (
         <div
           className="admin-sidebar-overlay"
@@ -46,7 +41,6 @@ function AdminHeader() {
         />
       )}
 
-      {/* Nút mở sidebar (chỉ hiện trên mobile) */}
       <button
         className="admin-mobile-toggle"
         onClick={() => setMobileOpen(true)}
@@ -59,17 +53,17 @@ function AdminHeader() {
         </svg>
       </button>
 
-      {/* Sidebar chính của trang admin */}
+      {/* Đã xóa class collapsed và biến collapsed */}
       <aside className={`admin-sidebar ${mobileOpen ? "mobile-open" : ""}`}>
 
-        {/* Phần trên: logo và menu điều hướng */}
+        {/* Đã xóa nút <button className="admin-sidebar-toggle"> ... </button> */}
+
         <div className="admin-sidebar-top">
           <Link to="/home" className="pd-header__logo" aria-label="Petite Douceur">
             <img src={logo} alt="Petite Douceur" />
           </Link>
 
           <nav className="admin-nav">
-            {/* Menu quản lý đơn hàng */}
             <Link
               to="/admin/orders"
               className={`admin-nav-item ${isActive("/admin/orders") ? "active" : ""}`}
@@ -88,7 +82,6 @@ function AdminHeader() {
           </nav>
         </div>
 
-        {/* Phần dưới: thông tin user và nút đăng xuất */}
         <div className="admin-sidebar-bottom">
           <div className="admin-user-card">
             <div className="admin-user-avatar">

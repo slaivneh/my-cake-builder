@@ -2,32 +2,27 @@ import React, { useState, useEffect } from "react";
 import { getOrders, updateStatus } from "../../services/orderService";
 import { getCakes } from "../../services/cakeService";
 import axiosClient from "../../services/axiosClient";
-import notificationService from "../../services/notificationService";
 import Loading from "../../components/common/Loading";
 import OrderTable from "../../components/admin/OrderTable";
 import OrderDetailModal from "../../components/admin/OrderDetailModal";
 import "../../assets/styles/OrderManagement.css";
 
-// Trang quản lý đơn hàng cho admin: xem danh sách, lọc/tìm kiếm, xem chi tiết và cập nhật trạng thái đơn
 function OrderManagement() {
-  const [orders, setOrders] = useState([]); // Danh sách đơn hàng
-  const [cakes, setCakes] = useState([]); // Danh sách bánh (dùng để hiển thị thông tin trong modal chi tiết)
+  const [orders, setOrders] = useState([]);
+  const [cakes, setCakes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchOrder, setSearchOrder] = useState(""); // Từ khoá tìm theo mã đơn
-  const [searchCustomer, setSearchCustomer] = useState(""); // Từ khoá tìm theo tên khách hàng
-  const [statusFilter, setStatusFilter] = useState(""); // Trạng thái đang lọc
-  const [selectedOrder, setSelectedOrder] = useState(null); // Đơn đang được chọn để xem chi tiết
-  const [showModal, setShowModal] = useState(false); // Hiện/ẩn modal chi tiết đơn
+  const [searchOrder, setSearchOrder] = useState("");
+  const [searchCustomer, setSearchCustomer] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
+  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
-  // Dữ liệu phụ trợ (size, tầng, đế bánh, nhân, kem, màu, topping...) để hiển thị trong modal chi tiết
   const [metadata, setMetadata] = useState({
     sizes: [], layers: [], bases: [], fillings: [],
     creams: [], colors: [], toppings: [],
   });
 
   /* ---------- Fetch ---------- */
-
-  // Lấy danh sách đơn hàng, sắp xếp mới nhất lên đầu
   const fetchOrders = async () => {
     setLoading(true);
     try {
@@ -41,7 +36,6 @@ function OrderManagement() {
     }
   };
 
-  // Lấy danh sách bánh
   const fetchCakes = async () => {
     try {
       const res = await getCakes();
@@ -52,7 +46,6 @@ function OrderManagement() {
     }
   };
 
-  // Lấy các dữ liệu metadata song song (mỗi loại nếu lỗi thì trả về mảng rỗng)
   const fetchMetadata = async () => {
     try {
       const [sizes, layers, bases, fillings, creams, colors, toppings] =
@@ -76,7 +69,6 @@ function OrderManagement() {
     }
   };
 
-  // Gọi các API cần thiết ngay khi component được mount
   useEffect(() => {
     fetchOrders();
     fetchCakes();
@@ -84,15 +76,12 @@ function OrderManagement() {
   }, []);
 
   /* ---------- Helpers ---------- */
-
-  // Xác định trạng thái kế tiếp trong quy trình xử lý đơn (dùng cho nút "chuyển bước tiếp theo")
   const getNextStatus = (current) => {
     const flow = ["Pending", "Confirmed", "Preparing", "Ready", "Shipping", "Completed"];
     const idx = flow.indexOf(current);
     return idx !== -1 && idx < flow.length - 1 ? flow[idx + 1] : null;
   };
 
-  // Chuyển mã trạng thái (tiếng Anh) sang text hiển thị tiếng Việt
   const getStatusText = (status) => {
     const map = {
       Pending: "Chờ xác nhận",
@@ -107,7 +96,6 @@ function OrderManagement() {
     return map[status] || status;
   };
 
-  // Render badge màu tương ứng với từng trạng thái đơn hàng
   const getStatusBadge = (status) => {
     const styles = {
       Pending: { bg: "#FFEEC1", text: "#B27A00" },
@@ -128,8 +116,6 @@ function OrderManagement() {
   };
 
   /* ---------- Actions ---------- */
-
-  // Cập nhật trạng thái đơn hàng (xác nhận / chuyển bước tiếp theo / huỷ), có hỏi xác nhận trước khi thực hiện
   const handleUpdateStatus = async (orderId, currentStatus, actionType) => {
     let nextStatus = "";
     if (actionType === "confirm") nextStatus = "Confirmed";
@@ -142,7 +128,6 @@ function OrderManagement() {
     const orderToUpdate = orders.find((o) => o.id === orderId);
     if (!orderToUpdate) return;
 
-    // Thêm bản ghi mới vào lịch sử trạng thái của đơn
     const updatedHistory = [
       ...(orderToUpdate.statusHistory || []),
       { status: nextStatus, time: new Date().toISOString() },
@@ -155,19 +140,7 @@ function OrderManagement() {
         statusHistory: updatedHistory,
         updatedAt: new Date().toISOString(),
       });
-      
-      try {
-        await notificationService.create({
-          userId: orderToUpdate.userId || orderToUpdate.customerId || 4,
-          title: "Cập nhật đơn hàng",
-          content: `Đơn hàng ${orderToUpdate.orderCode || orderToUpdate.id} của bạn đã chuyển sang trạng thái: ${getStatusText(nextStatus)}.`
-        });
-      } catch (err) {
-        console.warn("Không thể tạo thông báo:", err);
-      }
-
       await fetchOrders();
-      // Nếu đơn vừa cập nhật đang được mở trong modal chi tiết thì đồng bộ luôn state của modal
       if (selectedOrder && selectedOrder.id === orderId) {
         setSelectedOrder((prev) => ({
           ...prev,
@@ -184,15 +157,12 @@ function OrderManagement() {
     }
   };
 
-  // Mở modal xem chi tiết đơn hàng
   const handleOpenDetail = (order) => {
     setSelectedOrder(order);
     setShowModal(true);
   };
 
   /* ---------- Filter + attach badge ---------- */
-
-  // Lọc đơn theo mã đơn, tên khách hàng và trạng thái, đồng thời gắn kèm badge trạng thái để truyền xuống bảng
   const filteredOrders = orders.filter((order) => {
     const matchCode = (order.orderCode || "")
       .toLowerCase()
@@ -209,7 +179,7 @@ function OrderManagement() {
 
   return (
     <div className="om-page">
-      {/* Tiêu đề trang + nút làm mới dữ liệu */}
+      {/* Header */}
       <div className="om-header">
         <h1 className="om-header_title">Quản lý đơn hàng</h1>
         <button
@@ -221,7 +191,7 @@ function OrderManagement() {
         </button>
       </div>
 
-      {/* Khu vực bộ lọc: mã đơn, tên khách hàng, trạng thái */}
+      {/* Filters */}
       <div className="om-filters">
         <div className="om-filter">
           <label className="om-filter_label">Tìm theo mã đơn</label>
@@ -262,7 +232,7 @@ function OrderManagement() {
         </div>
       </div>
 
-      {/* Bảng danh sách đơn hàng: hiện loading khi đang tải lần đầu, hiện thông báo khi không có kết quả */}
+      {/* Table */}
       {loading && orders.length === 0 ? (
         <Loading />
       ) : filteredOrders.length === 0 ? (
@@ -276,7 +246,7 @@ function OrderManagement() {
         />
       )}
 
-      {/* Modal xem/xử lý chi tiết đơn hàng */}
+      {/* Modal */}
       {showModal && selectedOrder && (
         <OrderDetailModal
           show={showModal}

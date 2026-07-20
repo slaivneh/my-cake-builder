@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import "../../assets/styles/OrderDetailModal.css";
 
-// Dùng chung cách lấy ảnh với trang chủ: ảnh được import tĩnh và match theo tên bánh,
-// KHÔNG dùng thẳng field "image" dạng string trong data vì file ảnh đó không tồn tại thật trong project
-import { getCakeHomeImage } from "../../utils/homeCakeData";
-
-// Modal hiển thị chi tiết 1 đơn hàng: thông tin khách, giao hàng, sản phẩm, lịch sử trạng thái và các nút xử lý đơn
 function OrderDetailModal({
   show,
   order,
@@ -17,19 +12,17 @@ function OrderDetailModal({
   getStatusText,
   metadata,
 }) {
-  const [zoomImage, setZoomImage] = useState(null); // Ảnh/SVG đang được phóng to xem chi tiết
+  const [zoomImage, setZoomImage] = useState(null);
 
   if (!show || !order) return null;
 
-  /* ---------- Lấy ảnh bánh từ danh sách cakes theo cakeId ---------- */
+  /* ---------- Map cake image from cakes DB ---------- */
   const getCakeImage = (cakeId) => {
     if (!cakes || !Array.isArray(cakes)) return null;
     const cake = cakes.find((c) => c.id === cakeId);
-    if (!cake) return null;
-    return getCakeHomeImage(cake);
+    return cake?.image || null;
   };
 
-  // Các hàm tra tên từ metadata theo id (dùng cho bánh custom), có fallback nếu không tìm thấy
   const getSizeName = (id) => metadata.sizes.find((s) => s.id === id)?.name || `Size #${id}`;
   const getLayerName = (id) => metadata.layers.find((l) => l.id === id)?.name || `${id} tầng`;
   const getBaseName = (id) => metadata.bases.find((b) => b.id === id)?.name || `Cốt #${id}`;
@@ -42,7 +35,7 @@ function OrderDetailModal({
     return ids.map((id) => metadata.toppings.find((t) => t.id === id)?.name || `Topping #${id}`).join(", ");
   };
 
-  /* ---------- Vẽ hình ảnh minh hoạ (SVG) cho bánh custom, vì bánh custom không có ảnh thật ---------- */
+  /* ---------- SVG Preview cho Custom Cake ---------- */
   const renderCustomSVG = (config) => {
     if (!config) return null;
     const colorHex = getColorHex(config.colorId);
@@ -51,10 +44,10 @@ function OrderDetailModal({
 
     return (
       <svg viewBox="0 0 200 160" className="odm-svg-preview">
-        {/* Đĩa đặt bánh */}
+        {/* Plate */}
         <ellipse cx="100" cy="145" rx="80" ry="10" fill="#e8e8e8" />
 
-        {/* Các tầng bánh, vẽ theo số tầng đã chọn */}
+        {/* Cake layers */}
         {Array.from({ length: layerCount }).map((_, i) => (
           <g key={i}>
             <rect
@@ -82,7 +75,7 @@ function OrderDetailModal({
           </g>
         ))}
 
-        {/* Vệt kem chảy trang trí */}
+        {/* Drip */}
         <path
           d={`M 50 ${height - 30} Q 60 ${height - 15} 70 ${height - 30} Q 80 ${height - 10} 90 ${height - 30} Q 100 ${height - 18} 110 ${height - 30} Q 120 ${height - 12} 130 ${height - 30} Q 140 ${height - 20} 150 ${height - 30}`}
           fill="none"
@@ -91,7 +84,7 @@ function OrderDetailModal({
           strokeLinecap="round"
         />
 
-        {/* Các chấm tròn tượng trưng cho topping */}
+        {/* Toppings dots */}
         {config.toppingIds?.map((_, i) => (
           <circle
             key={i}
@@ -102,7 +95,7 @@ function OrderDetailModal({
           />
         ))}
 
-        {/* Thông điệp trên bánh (cắt ngắn nếu quá dài) */}
+        {/* Message */}
         {config.message && (
           <text
             x="100"
@@ -122,7 +115,7 @@ function OrderDetailModal({
 
   return (
     <>
-      {/* Lớp phóng to ảnh/SVG khi click vào hình sản phẩm */}
+      {/* Zoom Overlay */}
       {zoomImage && (
         <div className="odm-zoom-overlay" onClick={() => setZoomImage(null)}>
           <div className="odm-zoom-content" onClick={(e) => e.stopPropagation()}>
@@ -137,11 +130,10 @@ function OrderDetailModal({
         </div>
       )}
 
-      {/* Nền mờ phía sau modal, click ra ngoài để đóng */}
       <div className="odm-overlay" onClick={onClose}>
         <div className="odm-dialog" onClick={(e) => e.stopPropagation()}>
           <div className="odm-content">
-            {/* Header: mã đơn + nút đóng */}
+            {/* Header */}
             <div className="odm-header">
               <h5 className="odm-header_title">
                 Chi tiết đơn hàng
@@ -150,17 +142,17 @@ function OrderDetailModal({
               <button type="button" className="odm-close" onClick={onClose}>×</button>
             </div>
 
-            {/* Nội dung chính */}
+            {/* Body */}
             <div className="odm-body">
-              {/* Thanh hiển thị trạng thái hiện tại của đơn */}
+              {/* Status bar */}
               <div className="odm-status-bar">
                 <span className="odm-status-bar_label">Trạng thái hiện tại:</span>
                 {getStatusBadge(order.status)}
               </div>
 
-              {/* Lưới thông tin: khách hàng + giao hàng/thanh toán */}
+              {/* Info Grid */}
               <div className="odm-grid">
-                {/* Thông tin khách hàng */}
+                {/* Customer */}
                 <div className="odm-card">
                   <h6 className="odm-card_title">Thông tin khách hàng</h6>
                   <div className="odm-field">
@@ -185,7 +177,7 @@ function OrderDetailModal({
                   </div>
                 </div>
 
-                {/* Thông tin giao hàng và thanh toán */}
+                {/* Delivery */}
                 <div className="odm-card">
                   <h6 className="odm-card_title">Giao hàng & Thanh toán</h6>
                   <div className="odm-field">
@@ -211,11 +203,11 @@ function OrderDetailModal({
                 </div>
               </div>
 
-              {/* Danh sách sản phẩm đặt mua kèm ảnh */}
+              {/* Items with Images */}
               <div className="odm-card odm-card--full">
                 <h6 className="odm-card_title">Sản phẩm đặt mua</h6>
 
-                {/* Danh sách card từng sản phẩm trong đơn */}
+                {/* Item Cards */}
                 <div className="odm-item-cards">
                   {order.items?.map((item, index) => {
                     const isCustom = item.type === "custom";
@@ -223,10 +215,9 @@ function OrderDetailModal({
 
                     return (
                       <div className="odm-item-card" key={index}>
-                        {/* Ảnh sản phẩm hoặc placeholder */}
+                        {/* Image / Placeholder */}
                         <div className="odm-item-card_visual">
                           {isCustom ? (
-                            // Bánh custom: hiện SVG minh hoạ, click để phóng to
                             <div
                               className="odm-item-card_placeholder"
                               onClick={() => setZoomImage({
@@ -239,7 +230,6 @@ function OrderDetailModal({
                               <span className="odm-item-card_placeholder-text">Custom</span>
                             </div>
                           ) : cakeImage ? (
-                            // Bánh có sẵn: hiện ảnh thật, click để phóng to
                             <div
                               className="odm-item-card_img-wrap"
                               onClick={() => setZoomImage({
@@ -255,14 +245,13 @@ function OrderDetailModal({
                               />
                             </div>
                           ) : (
-                            // Không có ảnh
                             <div className="odm-item-card_placeholder odm-item-card_placeholder--empty">
                               <span className="odm-item-card_placeholder-text">Không có ảnh</span>
                             </div>
                           )}
                         </div>
 
-                        {/* Thông tin sản phẩm */}
+                        {/* Info */}
                         <div className="odm-item-card_info">
                           <div className="odm-item-card_header">
                             <div>
@@ -284,7 +273,7 @@ function OrderDetailModal({
                             </div>
                           </div>
 
-                          {/* Chi tiết cấu hình bánh custom (size, cốt, nhân, kem, màu, topping, thông điệp...) */}
+                          {/* Custom Config */}
                           {isCustom && item.customConfig && (
                             <div className="odm-custom_config">
                               <div className="odm-config-row">
@@ -323,7 +312,7 @@ function OrderDetailModal({
                   })}
                 </div>
 
-                {/* Bảng tính tiền: tạm tính, phí ship, giảm giá, tổng cộng */}
+                {/* Pricing */}
                 <div className="odm-pricing">
                   <div className="odm-pricing_row">
                     <span>Tạm tính</span>
@@ -346,7 +335,7 @@ function OrderDetailModal({
                 </div>
               </div>
 
-              {/* Dòng thời gian lịch sử thay đổi trạng thái đơn */}
+              {/* Timeline */}
               <div className="odm-card odm-card--full">
                 <h6 className="odm-card_title">Lịch sử trạng thái</h6>
                 {order.statusHistory?.length > 0 ? (
@@ -372,14 +361,13 @@ function OrderDetailModal({
               </div>
             </div>
 
-            {/* Footer: các nút hành động xử lý đơn */}
+            {/* Footer */}
             <div className="odm-footer">
               <div className="odm-footer_actions">
                 <button className="odm-btn odm-btn--secondary" onClick={onClose}>
                   Đóng
                 </button>
 
-                {/* Đơn đang chờ xác nhận -> hiện nút xác nhận */}
                 {order.status === "Pending" && (
                   <button
                     className="odm-btn odm-btn--primary"
@@ -389,7 +377,6 @@ function OrderDetailModal({
                   </button>
                 )}
 
-                {/* Đơn đang xử lý (chưa hoàn thành/huỷ) -> hiện nút chuyển sang trạng thái kế tiếp */}
                 {order.status !== "Pending" &&
                   order.status !== "Completed" &&
                   order.status !== "Cancelled" &&
@@ -403,7 +390,6 @@ function OrderDetailModal({
                     </button>
                   )}
 
-                {/* Đơn chưa hoàn thành/huỷ -> luôn cho phép huỷ đơn */}
                 {order.status !== "Completed" &&
                   order.status !== "Cancelled" &&
                   order.status !== "Cancel" && (
