@@ -6,13 +6,7 @@
   font-family: 'Inter', sans-serif;
   color: #333;
   min-height: calc(100vh - 80px);
-  background: repeating-linear-gradient(
-    90deg,
-    #ffffff,
-    #ffffff 45px,
-    #fce4ec 45px,
-    #fce4ec 90px
-  );
+  background: transparent;
 }
 
 .order-history-page h1, .order-detail-page h1 {
@@ -21,6 +15,7 @@
   text-align: center;
   background: -webkit-linear-gradient(45deg, #f06285, #f06285);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

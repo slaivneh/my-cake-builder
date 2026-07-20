@@ -4,7 +4,8 @@ import CakeOptions from '../../components/customCake/CakeOptions';
 import CustomizationSummary from '../../components/customCake/CustomizationSummary';
 import PriceSummary from '../../components/customCake/PriceSummary';
 import CakeGallery from '../../components/customCake/CakeGallery';
-import { addCart } from "../../services/cartService";
+import { readCart, writeCart } from "../../utils/cartStorage";
+import calculatePrice from "../../utils/priceCalculator";
 import '../../components/customCake/CustomCake.css';
 
 const CakeDesigner = () => {
@@ -26,19 +27,28 @@ const CakeDesigner = () => {
   });
 
   const handleAddToCart = async () => {
-    // Lấy userId từ AuthContext, nếu chưa có (do Thành viên 3 chưa làm xong) thì dùng tạm ID 4
-    const userId = currentUser?.id || 4;
-
-    // Nếu sau này bắt buộc đăng nhập mới cho mua, mở comment đoạn dưới ra:
-    // if (!userId) {
-    //   alert('Vui lòng đăng nhập để thêm bánh vào giỏ hàng.');
-    //   return;
-    // }
+    if (!selections.deliveryDate) {
+      alert('Vui lòng chọn ngày nhận bánh (ít nhất sau 2 ngày)!');
+      return;
+    }
 
     try {
+      const currentCart = readCart();
+      const itemKey = `custom-${Date.now()}`;
+      const price = calculatePrice(selections);
+
+      const CUSTOM_CAKE_PLACEHOLDER = "data:image/svg+xml;charset=utf-8," + encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='#fff0f4'/><text x='50%' y='45%' font-family='sans-serif' font-size='60' text-anchor='middle' fill='#e95077'>🎨</text><text x='50%' y='60%' font-family='sans-serif' font-size='24' font-weight='bold' text-anchor='middle' fill='#e95077'>Thiết Kế Riêng</text></svg>");
+
       const cartItem = {
-        userId: userId,
-        type: 'custom',
+        itemKey,
+        cakeId: 'custom',
+        name: 'Bánh Thiết Kế Custom',
+        category: 'Bánh thiết kế riêng',
+        image: selections.referenceImage || CUSTOM_CAKE_PLACEHOLDER,
+        optionId: 'custom',
+        optionLabel: 'Thiết kế riêng',
+        price: price,
+        quantity: 1,
         customConfig: {
           sizeId: selections.size,
           layerId: selections.layer,
@@ -50,12 +60,13 @@ const CakeDesigner = () => {
           message: selections.text,
           referenceImage: selections.referenceImage,
         },
-        quantity: 1,
-        // Calculate price can be done via priceCalculator if needed, or left to Cart
+        deliveryDate: selections.deliveryDate,
+        deliveryTime: selections.deliveryTime,
         note: `Giao lúc: ${selections.deliveryTime}, ngày ${selections.deliveryDate}`
       };
 
-      await addCart(cartItem);
+      const updatedCart = [...currentCart, cartItem];
+      writeCart(updatedCart);
 
       alert('Đã thêm vào giỏ hàng thành công!');
     } catch (error) {

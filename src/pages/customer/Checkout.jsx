@@ -8,6 +8,7 @@ import {
   createOrder,
   sendOrderConfirmationEmail,
 } from "../../services/orderService";
+import notificationService from "../../services/notificationService";
 
 import { clearCart, getCartSummary, readCart } from "../../utils/cartStorage";
 
@@ -74,6 +75,13 @@ function Checkout() {
 
   const [cartItems] = useState(() => readCart());
 
+  const requiredDeliveryDate = cartItems.reduce((latest, item) => {
+    if (item.deliveryDate && (!latest || item.deliveryDate > latest)) return item.deliveryDate;
+    return latest;
+  }, null);
+
+  const requiredDeliveryTime = cartItems.find(i => i.deliveryTime)?.deliveryTime;
+
   const [paymentCode] = useState(() => getOrCreatePaymentCode());
 
   const [copied, setCopied] = useState(false);
@@ -88,9 +96,9 @@ function Checkout() {
 
     deliveryAddress: "",
 
-    scheduledDate: "",
+    scheduledDate: requiredDeliveryDate || "",
 
-    scheduledTime: "08:00 - 11:00",
+    scheduledTime: requiredDeliveryTime || "08:00 - 11:00",
 
     note: "",
 
@@ -363,6 +371,16 @@ function Checkout() {
           console.warn("Đơn đã tạo nhưng chưa gửi được email:", emailError);
         });
       }
+      
+      try {
+        await notificationService.create({
+          userId: user?.id || 4,
+          title: "Đặt hàng thành công",
+          content: `Đơn hàng ${paymentCode} của bạn đã được ghi nhận. Vui lòng chờ xác nhận.`
+        });
+      } catch (err) {
+        console.warn("Không thể tạo thông báo:", err);
+      }
 
       clearCart();
 
@@ -599,7 +617,9 @@ function Checkout() {
                 min={getTodayString()}
                 value={formData.scheduledDate}
                 onChange={handleChange}
+                disabled={!!requiredDeliveryDate}
               />
+              {!!requiredDeliveryDate && <small style={{ color: "#e95077", marginTop: "4px", display: "block" }}>Ngày nhận được cố định theo bánh thiết kế.</small>}
 
               {errors.scheduledDate && <small>{errors.scheduledDate}</small>}
             </div>
@@ -615,6 +635,7 @@ function Checkout() {
                 name="scheduledTime"
                 value={formData.scheduledTime}
                 onChange={handleChange}
+                disabled={!!requiredDeliveryTime}
               >
                 <option value="08:00 - 11:00">08:00 - 11:00</option>
 
@@ -623,6 +644,10 @@ function Checkout() {
                 <option value="14:00 - 17:00">14:00 - 17:00</option>
 
                 <option value="17:00 - 20:00">17:00 - 20:00</option>
+
+                {requiredDeliveryTime && !["08:00 - 11:00", "11:00 - 14:00", "14:00 - 17:00", "17:00 - 20:00"].includes(requiredDeliveryTime) && (
+                  <option value={requiredDeliveryTime}>{requiredDeliveryTime}</option>
+                )}
               </select>
             </div>
 
@@ -735,6 +760,12 @@ function Checkout() {
                   <strong>{item.name}</strong>
 
                   <span>{item.optionLabel}</span>
+                  {item.customConfig && (
+                    <div style={{ fontSize: "11px", color: "#92766f", marginTop: "4px", lineHeight: "1.3" }}>
+                      Tầng: {item.customConfig.layerId} &bull; Cốt: {item.customConfig.baseId}<br/>
+                      Nhân: {item.customConfig.fillingId} &bull; Kem: {item.customConfig.creamId}
+                    </div>
+                  )}
                 </div>
 
                 <b>{formatCurrency(item.price * item.quantity)}</b>

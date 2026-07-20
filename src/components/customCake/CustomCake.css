@@ -267,7 +267,7 @@
   max-height: 200px;
   border-radius: 12px;
   object-fit: contain;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .summary-note-text {
@@ -411,13 +411,7 @@
   font-family: 'Inter', sans-serif;
   min-height: calc(100vh - 80px);
   position: relative;
-  background: repeating-linear-gradient(
-    90deg,
-    #ffffff,
-    #ffffff 45px,
-    #fce4ec 45px,
-    #fce4ec 90px
-  );
+  background: linear-gradient(180deg, #fff5f8 0%, #ffffff 100%);
 }
 
 .designer-header {
@@ -439,6 +433,7 @@
   margin-bottom: 10px;
   background: -webkit-linear-gradient(45deg, #f06285, #f06285);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

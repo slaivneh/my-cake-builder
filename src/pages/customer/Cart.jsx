@@ -125,6 +125,14 @@ function Cart() {
                     Quy cách: <strong>{item.optionLabel}</strong>
                   </span>
 
+                  {item.customConfig && (
+                    <div style={{ fontSize: "12px", color: "#92766f", marginBottom: "14px", lineHeight: "1.4" }}>
+                      Tầng: {item.customConfig.layerId} &bull; Kích thước: {item.customConfig.sizeId}<br/>
+                      Cốt bánh: {item.customConfig.baseId} &bull; Nhân: {item.customConfig.fillingId}<br/>
+                      Kem: {item.customConfig.creamId}
+                    </div>
+                  )}
+
                   <button
                     type="button"
                     onClick={() => {

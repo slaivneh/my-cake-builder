@@ -1071,10 +1071,134 @@
       "quantity": 1,
       "note": "Giao lúc: 10:00-12:00, ngày ",
       "id": 4
+    },
+    {
+      "userId": 3,
+      "type": "custom",
+      "customConfig": {
+        "sizeId": "small",
+        "layerId": 1,
+        "baseId": "vanilla",
+        "fillingId": "none",
+        "creamId": "buttercream",
+        "colorId": "#f8f9fa",
+        "toppingIds": [],
+        "message": "",
+        "referenceImage": null
+      },
+      "quantity": 1,
+      "note": "Giao lúc: 10:00-12:00, ngày ",
+      "id": 5
     }
   ],
   "orders": [
-    
+    {
+      "orderCode": "PD20260720XJIVY",
+      "customerId": 3,
+      "userId": 3,
+      "purchaserId": 3,
+      "purchaserName": "Phạm Thị Hương",
+      "purchaserEmail": "customer1@gmail.com",
+      "customerName": "abc",
+      "recipientName": "abc",
+      "phone": "0374559719",
+      "recipientPhone": "0374559719",
+      "email": "customer1@gmail.com",
+      "contactEmail": "customer1@gmail.com",
+      "fulfillmentMethod": "delivery",
+      "deliveryAddress": "abc,de",
+      "pickupAddress": "",
+      "address": "abc,de",
+      "scheduledDate": "2026-07-21",
+      "deliveryDate": "2026-07-21",
+      "scheduledTime": "11:00 - 14:00",
+      "deliveryTime": "11:00 - 14:00",
+      "note": "không có",
+      "paymentMethod": "bank_transfer",
+      "paymentCode": "PD20260720XJIVY",
+      "paymentReference": "ádfghjk",
+      "paymentStatus": "pending_verification",
+      "status": "pending_confirmation",
+      "items": [
+        {
+          "cakeId": "custom",
+          "name": "Bánh Thiết Kế Custom",
+          "image": "https://i.pinimg.com/1200x/72/50/dc/7250dc81c1aeaf43050707693466ae22.jpg",
+          "category": "Bánh thiết kế riêng",
+          "optionId": "custom",
+          "optionLabel": "Thiết kế riêng",
+          "price": 250000,
+          "quantity": 1,
+          "lineTotal": 250000
+        }
+      ],
+      "subtotal": 250000,
+      "shippingFee": 30000,
+      "total": 280000,
+      "totalAmount": 280000,
+      "createdAt": "2026-07-20T03:46:09.414Z",
+      "updatedAt": "2026-07-20T03:46:09.414Z",
+      "id": 1
+    },
+    {
+      "orderCode": "PD20260720BH3M8",
+      "customerId": 3,
+      "userId": 3,
+      "purchaserId": 3,
+      "purchaserName": "Phạm Thị Hương",
+      "purchaserEmail": "customer1@gmail.com",
+      "customerName": "abc",
+      "recipientName": "abc",
+      "phone": "0374559719",
+      "recipientPhone": "0374559719",
+      "email": "customer1@gmail.com",
+      "contactEmail": "customer1@gmail.com",
+      "fulfillmentMethod": "pickup",
+      "deliveryAddress": "",
+      "pickupAddress": "Địa chỉ cửa hàng Petite Douceur",
+      "address": "Địa chỉ cửa hàng Petite Douceur",
+      "scheduledDate": "2026-07-22",
+      "deliveryDate": "2026-07-22",
+      "scheduledTime": "10:00-12:00",
+      "deliveryTime": "10:00-12:00",
+      "note": "",
+      "paymentMethod": "bank_transfer",
+      "paymentCode": "PD20260720BH3M8",
+      "paymentReference": "abcd",
+      "paymentStatus": "pending_verification",
+      "status": "pending_confirmation",
+      "items": [
+        {
+          "cakeId": "custom",
+          "name": "Bánh Thiết Kế Custom",
+          "image": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20400%20400'%3E%3Crect%20width%3D'400'%20height%3D'400'%20fill%3D'%23fff0f4'%2F%3E%3Ctext%20x%3D'50%25'%20y%3D'45%25'%20font-family%3D'sans-serif'%20font-size%3D'60'%20text-anchor%3D'middle'%20fill%3D'%23e95077'%3E%F0%9F%8E%A8%3C%2Ftext%3E%3Ctext%20x%3D'50%25'%20y%3D'60%25'%20font-family%3D'sans-serif'%20font-size%3D'24'%20font-weight%3D'bold'%20text-anchor%3D'middle'%20fill%3D'%23e95077'%3EThi%E1%BA%BFt%20K%E1%BA%BF%20Ri%C3%AAng%3C%2Ftext%3E%3C%2Fsvg%3E",
+          "category": "Bánh thiết kế riêng",
+          "optionId": "custom",
+          "optionLabel": "Thiết kế riêng",
+          "price": 150000,
+          "quantity": 1,
+          "lineTotal": 150000
+        },
+        {
+          "cakeId": "custom",
+          "name": "Bánh Thiết Kế Custom",
+          "image": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20400%20400'%3E%3Crect%20width%3D'400'%20height%3D'400'%20fill%3D'%23fff0f4'%2F%3E%3Ctext%20x%3D'50%25'%20y%3D'45%25'%20font-family%3D'sans-serif'%20font-size%3D'60'%20text-anchor%3D'middle'%20fill%3D'%23e95077'%3E%F0%9F%8E%A8%3C%2Ftext%3E%3Ctext%20x%3D'50%25'%20y%3D'60%25'%20font-family%3D'sans-serif'%20font-size%3D'24'%20font-weight%3D'bold'%20text-anchor%3D'middle'%20fill%3D'%23e95077'%3EThi%E1%BA%BFt%20K%E1%BA%BF%20Ri%C3%AAng%3C%2Ftext%3E%3C%2Fsvg%3E",
+          "category": "Bánh thiết kế riêng",
+          "optionId": "custom",
+          "optionLabel": "Thiết kế riêng",
+          "price": 150000,
+          "quantity": 1,
+          "lineTotal": 150000
+        }
+      ],
+      "subtotal": 300000,
+      "shippingFee": 0,
+      "total": 300000,
+      "totalAmount": 300000,
+      "createdAt": "2026-07-20T04:02:56.151Z",
+      "updatedAt": "2026-07-20T04:02:56.151Z",
+      "id": 2
+    }
   ],
   "cakeShapes": [
     {
@@ -1406,6 +1530,14 @@
       "content": "Đơn hàng của bạn đã được giao thành công.",
       "isRead": true,
       "createdAt": "2026-07-20T03:36:29.831Z"
+    },
+    {
+      "isRead": true,
+      "createdAt": "2026-07-20T04:02:56.180Z",
+      "userId": 3,
+      "title": "Đặt hàng thành công",
+      "content": "Đơn hàng PD20260720BH3M8 của bạn đã được ghi nhận. Vui lòng chờ xác nhận.",
+      "id": 4
     }
   ]
 }

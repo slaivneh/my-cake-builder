@@ -9,6 +9,7 @@ import {
   CAKE_COLORS
 } from '../../utils/constants';
 import './CustomCake.css';
+import DynamicCakePreview from './DynamicCakePreview';
 
 const CustomizationSummary = ({ selections }) => {
   const getLabel = (array, id) => {
@@ -35,10 +36,17 @@ const CustomizationSummary = ({ selections }) => {
           )}
         </div>
       ) : (
-        <div className="empty-reference-section">
-          <span className="empty-reference-icon">📸</span>
-          <p>Bạn chưa chọn ảnh mẫu</p>
-          <small>Vui lòng chọn từ thư viện bên dưới hoặc tải ảnh của bạn lên!</small>
+        <div className="empty-reference-section" style={{ 
+          padding: '20px 0', 
+          backgroundColor: '#fff5f8', 
+          borderRadius: '16px', 
+          border: '1px dashed #f89fb3',
+          boxShadow: 'inset 0 0 20px rgba(255, 182, 193, 0.2)'
+        }}>
+          <DynamicCakePreview selections={selections} />
+          <p style={{ marginTop: '15px', color: '#f06285', fontSize: '0.95rem', fontWeight: '600' }}>
+            ✨ Bản xem trước thiết kế bánh ✨
+          </p>
         </div>
       )}
 
