@@ -8,7 +8,8 @@ import { addCart } from "../../services/cartService";
 import '../../components/customCake/CustomCake.css';
 
 const CakeDesigner = () => {
-  const { currentUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const currentUser = user;
 
   const [selections, setSelections] = useState({
     size: 'small',

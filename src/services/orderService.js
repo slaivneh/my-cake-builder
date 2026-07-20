@@ -22,3 +22,7 @@ export const createOrder = (data) => {
 export const updateStatus = (id, data) => {
   return axiosClient.patch(`/orders/${id}`, data);
 };
+
+export const getOrdersByUserId = (userId) => {
+  return axiosClient.get(`/orders?userId=${userId}`);
+};

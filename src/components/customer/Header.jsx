@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import useAuth from "../../hooks/useAuth";
+import NotificationBell from "../notification/NotificationBell";
 
 import logo from "../../assets/images/auth/logo.png";
 import "../../assets/styles/header.css";
@@ -127,6 +128,8 @@ function Header() {
                   Quản lý đơn
                 </NavLink>
               )}
+
+              <NotificationBell />
 
               <div className="pd-header__account">
                 <div className="pd-header__avatar">{avatarText}</div>

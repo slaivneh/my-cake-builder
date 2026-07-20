@@ -1053,6 +1053,24 @@
       "userId": 5,
       "items": [],
       "updatedAt": "2026-07-19T08:00:00Z"
+    },
+    {
+      "userId": 3,
+      "type": "custom",
+      "customConfig": {
+        "sizeId": "large",
+        "layerId": 1,
+        "baseId": "vanilla",
+        "fillingId": "none",
+        "creamId": "buttercream",
+        "colorId": "#f8f9fa",
+        "toppingIds": [],
+        "message": "",
+        "referenceImage": "https://i.pinimg.com/736x/1e/93/2d/1e932dbab3528aa199e59cfc3d362ca8.jpg"
+      },
+      "quantity": 1,
+      "note": "Giao lúc: 10:00-12:00, ngày ",
+      "id": 4
     }
   ],
   "orders": [
@@ -1912,6 +1930,32 @@
       "name": "Nến pháo hoa",
       "extraPrice": 25000,
       "isAvailable": true
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "userId": 4,
+      "title": "Đơn hàng mới",
+      "content": "Đơn hàng custom của bạn đã được tiếp nhận.",
+      "isRead": false,
+      "createdAt": "2026-07-20T03:36:29.830Z"
+    },
+    {
+      "id": 2,
+      "userId": 4,
+      "title": "Khuyến mãi",
+      "content": "Giảm giá 10% cho đơn hàng tiếp theo.",
+      "isRead": true,
+      "createdAt": "2026-07-19T03:36:29.831Z"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "title": "Đơn hàng hoàn thành",
+      "content": "Đơn hàng của bạn đã được giao thành công.",
+      "isRead": true,
+      "createdAt": "2026-07-20T03:36:29.831Z"
     }
   ]
 }
