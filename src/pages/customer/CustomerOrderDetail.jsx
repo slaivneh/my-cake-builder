@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getOrderById } from '../../services/orderService';
+import orderService from '../../services/orderService';
 import OrderStatusTracker from '../../components/order/OrderStatusTracker';
 import '../../components/order/OrderHistory.css';
 
@@ -13,7 +13,7 @@ const CustomerOrderDetail = () => {
     const pathParts = window.location.pathname.split('/');
     const orderId = pathParts[pathParts.length - 1] || 'ORD-002'; // fallback to ORD-002 for demo
 
-    getOrderById(orderId)
+    orderService.getById(orderId)
       .then(data => {
         setOrder(data);
         setLoading(false);

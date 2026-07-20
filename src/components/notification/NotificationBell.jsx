@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import AuthContext from '../../contexts/AuthContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import notificationService from '../../services/notificationService';
 import './Notification.css';
 
@@ -7,8 +7,7 @@ const NotificationBell = () => {
   const [notifications, setNotifications] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const { user } = useContext(AuthContext);
-  const currentUser = user;
+  const { currentUser } = useContext(AuthContext);
   const userId = currentUser?.id || 4; // TODO: Fallback 4 for testing, Member 3 will provide AuthContext
 
   const fetchNotifications = () => {

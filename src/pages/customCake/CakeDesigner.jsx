@@ -30,20 +30,19 @@ const CakeDesigner = () => {
   });
 
   const handleAddToCart = async () => {
-    if (!selections.deliveryDate) {
-      alert('Vui lòng chọn ngày nhận bánh (ít nhất sau 2 ngày)!');
-      return;
-    }
+    // Lấy userId từ AuthContext, nếu chưa có (do Thành viên 3 chưa làm xong) thì dùng tạm ID 4
+    const userId = currentUser?.id || 4;
+
+    // Nếu sau này bắt buộc đăng nhập mới cho mua, mở comment đoạn dưới ra:
+    // if (!userId) {
+    //   alert('Vui lòng đăng nhập để thêm bánh vào giỏ hàng.');
+    //   return;
+    // }
 
     try {
       const currentCart = readCart();
       const itemKey = `custom-${Date.now()}`;
       const price = calculatePrice(selections);
-
-      // Create a data URI from the pure SVG string generator
-      const svgString = generateCakeSvgString(selections);
-      const CUSTOM_CAKE_SVG = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgString);
-
       const cartItem = {
         itemKey,
         cakeId: 'custom',
@@ -62,17 +61,15 @@ const CakeDesigner = () => {
           fillingId: selections.filling,
           creamId: selections.cream,
           colorId: selections.color,
-          toppingIds: selections.toppings,
           message: selections.text,
           referenceImage: selections.referenceImage,
         },
-        deliveryDate: selections.deliveryDate,
-        deliveryTime: selections.deliveryTime,
+        quantity: 1,
+        // Calculate price can be done via priceCalculator if needed, or left to Cart
         note: `Giao lúc: ${selections.deliveryTime}, ngày ${selections.deliveryDate}`
       };
 
-      const updatedCart = [...currentCart, cartItem];
-      writeCart(updatedCart);
+      await addCart(cartItem);
 
       alert('Đã thêm vào giỏ hàng thành công! Đang chuyển đến giỏ hàng...');
       navigate('/cart');
