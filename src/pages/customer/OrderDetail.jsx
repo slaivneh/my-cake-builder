@@ -9,20 +9,9 @@ import { getOrderById, updateStatus } from "../../services/orderService";
 import "../../assets/styles/orders.css";
 
 const STATUS_INFORMATION = {
-  pending: {
-    label: "Chờ xác nhận",
-    group: "pending",
-    progress: 1,
-  },
 
-  pending_confirmation: {
+  Pending: {
     label: "Chờ xác nhận",
-    group: "pending",
-    progress: 1,
-  },
-
-  pending_payment_verification: {
-    label: "Chờ đối soát thanh toán",
     group: "pending",
     progress: 1,
   },
@@ -182,9 +171,7 @@ function OrderDetail() {
   }, [order]);
 
   const canCancel = [
-    "pending",
-    "pending_confirmation",
-    "pending_payment_verification",
+    "Pending"
   ].includes(normalizeText(order?.status));
 
   const handleCancelOrder = async () => {
@@ -267,19 +254,19 @@ function OrderDetail() {
 
   const timelineSteps = isPickup
     ? [
-        "Đã đặt hàng",
-        "Đã xác nhận",
-        "Đang chuẩn bị",
-        "Sẵn sàng nhận",
-        "Hoàn thành",
-      ]
+      "Đã đặt hàng",
+      "Đã xác nhận",
+      "Đang chuẩn bị",
+      "Sẵn sàng nhận",
+      "Hoàn thành",
+    ]
     : [
-        "Đã đặt hàng",
-        "Đã xác nhận",
-        "Đang chuẩn bị",
-        "Đang giao hàng",
-        "Hoàn thành",
-      ];
+      "Đã đặt hàng",
+      "Đã xác nhận",
+      "Đang chuẩn bị",
+      "Đang giao hàng",
+      "Hoàn thành",
+    ];
 
   return (
     <div className="pd-order-detail-page">
@@ -390,7 +377,7 @@ function OrderDetail() {
                     <strong>
                       {formatCurrency(
                         item.lineTotal ||
-                          Number(item.price) * Number(item.quantity),
+                        Number(item.price) * Number(item.quantity),
                       )}
                     </strong>
                   </div>

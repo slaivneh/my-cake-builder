@@ -6,7 +6,6 @@ const STATUS_STEPS = [
   { key: 'Pending', label: 'Chờ Xử Lý' },
   { key: 'Preparing', label: 'Chuẩn Bị' },
   { key: 'Baking', label: 'Đang Nướng' },
-  { key: 'Decorating', label: 'Trang Trí' },
   { key: 'Ready', label: 'Đã Xong' },
   { key: 'Shipping', label: 'Đang Giao' },
   { key: 'Completed', label: 'Hoàn Thành' }
@@ -30,7 +29,7 @@ const OrderStatusTracker = ({ currentStatus }) => {
         {STATUS_STEPS.map((step, index) => {
           const isCompleted = index < currentIndex;
           const isActive = index === currentIndex;
-          
+
           return (
             <div key={step.key} className={`status-step ${isCompleted ? 'completed' : ''} ${isActive ? 'active' : ''}`}>
               <div className="step-circle">
@@ -41,8 +40,8 @@ const OrderStatusTracker = ({ currentStatus }) => {
           );
         })}
         {/* Line behind the circles */}
-        <div 
-          className="progress-line" 
+        <div
+          className="progress-line"
           style={{ width: `${(Math.max(0, currentIndex) / (STATUS_STEPS.length - 1)) * 100}%` }}
         ></div>
       </div>

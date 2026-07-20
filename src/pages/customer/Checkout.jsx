@@ -306,7 +306,7 @@ function Checkout() {
 
         paymentStatus: "pending_verification",
 
-        status: "pending_confirmation",
+        status: "Pending",
 
         items: cartItems.map((item) => ({
           cakeId: item.cakeId,
@@ -371,7 +371,7 @@ function Checkout() {
           console.warn("Đơn đã tạo nhưng chưa gửi được email:", emailError);
         });
       }
-      
+
       try {
         await notificationService.create({
           userId: user?.id || 4,
@@ -762,7 +762,7 @@ function Checkout() {
                   <span>{item.optionLabel}</span>
                   {item.customConfig && (
                     <div style={{ fontSize: "11px", color: "#92766f", marginTop: "4px", lineHeight: "1.3" }}>
-                      Tầng: {item.customConfig.layerId} &bull; Cốt: {item.customConfig.baseId}<br/>
+                      Tầng: {item.customConfig.layerId} &bull; Cốt: {item.customConfig.baseId}<br />
                       Nhân: {item.customConfig.fillingId} &bull; Kem: {item.customConfig.creamId}
                     </div>
                   )}

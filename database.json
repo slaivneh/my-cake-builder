@@ -1053,268 +1053,771 @@
       "userId": 5,
       "items": [],
       "updatedAt": "2026-07-19T08:00:00Z"
-    },
-    {
-      "userId": 3,
-      "type": "custom",
-      "customConfig": {
-        "sizeId": "large",
-        "layerId": 1,
-        "baseId": "vanilla",
-        "fillingId": "none",
-        "creamId": "buttercream",
-        "colorId": "#f8f9fa",
-        "toppingIds": [],
-        "message": "",
-        "referenceImage": "https://i.pinimg.com/736x/1e/93/2d/1e932dbab3528aa199e59cfc3d362ca8.jpg"
-      },
-      "quantity": 1,
-      "note": "Giao lúc: 10:00-12:00, ngày ",
-      "id": 4
-    },
-    {
-      "userId": 3,
-      "type": "custom",
-      "customConfig": {
-        "sizeId": "small",
-        "layerId": 1,
-        "baseId": "vanilla",
-        "fillingId": "none",
-        "creamId": "buttercream",
-        "colorId": "#f8f9fa",
-        "toppingIds": [],
-        "message": "",
-        "referenceImage": null
-      },
-      "quantity": 1,
-      "note": "Giao lúc: 10:00-12:00, ngày ",
-      "id": 5
     }
   ],
   "orders": [
     {
-      "orderCode": "PD20260720XJIVY",
-      "customerId": 3,
+      "id": 1,
+      "orderCode": "ORD000001",
       "userId": 3,
-      "purchaserId": 3,
-      "purchaserName": "Phạm Thị Hương",
-      "purchaserEmail": "customer1@gmail.com",
-      "customerName": "abc",
-      "recipientName": "abc",
-      "phone": "0374559719",
-      "recipientPhone": "0374559719",
-      "email": "customer1@gmail.com",
-      "contactEmail": "customer1@gmail.com",
-      "fulfillmentMethod": "delivery",
-      "deliveryAddress": "abc,de",
-      "pickupAddress": "",
-      "address": "abc,de",
-      "scheduledDate": "2026-07-21",
-      "deliveryDate": "2026-07-21",
-      "scheduledTime": "11:00 - 14:00",
-      "deliveryTime": "11:00 - 14:00",
-      "note": "không có",
-      "paymentMethod": "bank_transfer",
-      "paymentCode": "PD20260720XJIVY",
-      "paymentReference": "ádfghjk",
-      "paymentStatus": "pending_verification",
-      "status": "pending_confirmation",
+      "customerName": "Phạm Thị Hương",
+      "phone": "0934567890",
       "items": [
         {
-          "cakeId": "custom",
-          "name": "Bánh Thiết Kế Custom",
-          "image": "https://i.pinimg.com/1200x/72/50/dc/7250dc81c1aeaf43050707693466ae22.jpg",
-          "category": "Bánh thiết kế riêng",
-          "optionId": "custom",
-          "optionLabel": "Thiết kế riêng",
-          "price": 250000,
+          "id": 1,
+          "type": "preset",
+          "cakeId": 1,
           "quantity": 1,
-          "lineTotal": 250000
+          "unitPrice": 170000,
+          "lineTotal": 170000,
+          "cakeName": "Cupcake Dâu Kem Hồng",
+          "optionId": 2,
+          "optionLabel": "Hộp 4 chiếc"
         }
       ],
-      "subtotal": 250000,
+      "subtotal": 170000,
       "shippingFee": 30000,
-      "total": 280000,
-      "totalAmount": 280000,
-      "createdAt": "2026-07-20T03:46:09.414Z",
-      "updatedAt": "2026-07-20T03:46:09.414Z",
-      "id": 1
+      "discount": 0,
+      "total": 200000,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "receiveMethod": "delivery",
+      "shippingAddress": "123 Nguyễn Văn A, Bình Thạnh, TP.HCM",
+      "status": "Preparing",
+      "statusHistory": [
+        {
+          "status": "Pending",
+          "time": "2026-07-19T08:00:00Z"
+        },
+        {
+          "status": "Confirmed",
+          "time": "2026-07-19T21:13:03.799Z"
+        },
+        {
+          "status": "Preparing",
+          "time": "2026-07-19T21:13:08.527Z"
+        }
+      ],
+      "deliveryDate": "2026-07-20",
+      "deliveryTime": "08:00-10:00",
+      "note": "Gọi trước khi giao",
+      "createdAt": "2026-07-19T08:00:00Z",
+      "updatedAt": "2026-07-19T21:13:08.527Z"
     },
     {
-      "orderCode": "PD20260720BH3M8",
+      "id": 2,
+      "orderCode": "ORD000002",
+      "userId": 4,
+      "customerName": "Hoàng Văn Tùng",
+      "phone": "0945678901",
+      "items": [
+        {
+          "id": 1,
+          "type": "preset",
+          "cakeId": 2,
+          "quantity": 1,
+          "unitPrice": 50000,
+          "lineTotal": 50000,
+          "cakeName": "Cupcake Hoa Kem Bơ",
+          "optionId": 1,
+          "optionLabel": "1 chiếc"
+        }
+      ],
+      "subtotal": 50000,
+      "shippingFee": 0,
+      "discount": 0,
+      "total": 50000,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "receiveMethod": "pickup",
+      "shippingAddress": "Nhận tại cửa hàng",
+      "status": "Preparing",
+      "statusHistory": [
+        {
+          "status": "Pending",
+          "time": "2026-07-18T08:00:00Z"
+        },
+        {
+          "status": "Confirmed",
+          "time": "2026-07-18T09:00:00Z"
+        },
+        {
+          "status": "Preparing",
+          "time": "2026-07-20T07:31:12.905Z"
+        }
+      ],
+      "deliveryDate": "2026-07-20",
+      "deliveryTime": "10:00-12:00",
+      "note": "",
+      "createdAt": "2026-07-18T08:00:00Z",
+      "updatedAt": "2026-07-20T07:31:12.906Z"
+    },
+    {
+      "id": 3,
+      "orderCode": "ORD000003",
+      "userId": 5,
+      "customerName": "Vũ Thị Mai",
+      "phone": "0956789012",
+      "items": [
+        {
+          "id": 1,
+          "type": "custom",
+          "name": "Bánh custom",
+          "customConfig": {
+            "sizeId": 2,
+            "layerId": 1,
+            "baseId": 2,
+            "fillingId": 1,
+            "creamId": 2,
+            "colorId": 2,
+            "toppingIds": [
+              1,
+              3
+            ],
+            "message": "Happy Birthday",
+            "shapeId": 1,
+            "decorationStyleId": 1,
+            "dripSauceId": 1,
+            "messageStyleId": 1,
+            "topperId": 1,
+            "packagingId": 1,
+            "candleOptionId": 1,
+            "referenceImage": "",
+            "specialRequest": ""
+          },
+          "quantity": 1,
+          "unitPrice": 430000,
+          "lineTotal": 430000
+        }
+      ],
+      "subtotal": 430000,
+      "shippingFee": 30000,
+      "discount": 0,
+      "total": 460000,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "receiveMethod": "delivery",
+      "shippingAddress": "56 Cách Mạng Tháng 8, Quận 10, TP.HCM",
+      "status": "Completed",
+      "statusHistory": [
+        {
+          "status": "Pending",
+          "time": "2026-07-17T08:00:00Z"
+        },
+        {
+          "status": "Confirmed",
+          "time": "2026-07-17T09:00:00Z"
+        },
+        {
+          "status": "Preparing",
+          "time": "2026-07-17T10:00:00Z"
+        },
+        {
+          "status": "Ready",
+          "time": "2026-07-20T07:26:00.018Z"
+        },
+        {
+          "status": "Shipping",
+          "time": "2026-07-20T07:26:02.658Z"
+        },
+        {
+          "status": "Completed",
+          "time": "2026-07-20T07:26:07.705Z"
+        }
+      ],
+      "deliveryDate": "2026-07-20",
+      "deliveryTime": "13:00-15:00",
+      "note": "",
+      "createdAt": "2026-07-17T08:00:00Z",
+      "updatedAt": "2026-07-20T07:26:07.705Z"
+    },
+    {
+      "id": 4,
+      "orderCode": "ORD000004",
+      "userId": 3,
+      "customerName": "Phạm Thị Hương",
+      "phone": "0934567890",
+      "items": [
+        {
+          "id": 1,
+          "type": "preset",
+          "cakeId": 5,
+          "quantity": 1,
+          "unitPrice": 240000,
+          "lineTotal": 240000,
+          "cakeName": "Mini Cake Dâu Pastel",
+          "optionId": 1,
+          "optionLabel": "12cm"
+        },
+        {
+          "id": 2,
+          "type": "custom",
+          "name": "Bánh custom",
+          "customConfig": {
+            "sizeId": 1,
+            "layerId": 2,
+            "baseId": 1,
+            "fillingId": 4,
+            "creamId": 1,
+            "colorId": 5,
+            "toppingIds": [
+              2
+            ],
+            "message": "Chúc mừng",
+            "shapeId": 1,
+            "decorationStyleId": 1,
+            "dripSauceId": 1,
+            "messageStyleId": 1,
+            "topperId": 1,
+            "packagingId": 1,
+            "candleOptionId": 1,
+            "referenceImage": "",
+            "specialRequest": ""
+          },
+          "quantity": 1,
+          "unitPrice": 405000,
+          "lineTotal": 405000
+        }
+      ],
+      "subtotal": 645000,
+      "shippingFee": 30000,
+      "discount": 50000,
+      "total": 625000,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "receiveMethod": "delivery",
+      "shippingAddress": "123 Nguyễn Văn A, Bình Thạnh, TP.HCM",
+      "status": "Decorating",
+      "statusHistory": [
+        {
+          "status": "Pending",
+          "time": "2026-07-16T08:00:00Z"
+        },
+        {
+          "status": "Confirmed",
+          "time": "2026-07-16T09:00:00Z"
+        },
+        {
+          "status": "Preparing",
+          "time": "2026-07-16T10:00:00Z"
+        },
+        {
+          "status": "Decorating",
+          "time": "2026-07-16T14:00:00Z"
+        }
+      ],
+      "deliveryDate": "2026-07-20",
+      "deliveryTime": "15:00-17:00",
+      "note": "",
+      "createdAt": "2026-07-16T08:00:00Z",
+      "updatedAt": "2026-07-16T14:00:00Z"
+    },
+    {
+      "id": 5,
+      "orderCode": "ORD000005",
+      "userId": 4,
+      "customerName": "Hoàng Văn Tùng",
+      "phone": "0945678901",
+      "items": [
+        {
+          "id": 1,
+          "type": "preset",
+          "cakeId": 6,
+          "quantity": 1,
+          "unitPrice": 380000,
+          "lineTotal": 380000,
+          "cakeName": "Mini Cake Trái Tim Mâm Xôi",
+          "optionId": 2,
+          "optionLabel": "15cm"
+        }
+      ],
+      "subtotal": 380000,
+      "shippingFee": 0,
+      "discount": 0,
+      "total": 380000,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "receiveMethod": "pickup",
+      "shippingAddress": "Nhận tại cửa hàng",
+      "status": "Ready",
+      "statusHistory": [
+        {
+          "status": "Pending",
+          "time": "2026-07-15T08:00:00Z"
+        },
+        {
+          "status": "Confirmed",
+          "time": "2026-07-15T09:00:00Z"
+        },
+        {
+          "status": "Preparing",
+          "time": "2026-07-15T10:00:00Z"
+        },
+        {
+          "status": "Decorating",
+          "time": "2026-07-15T14:00:00Z"
+        },
+        {
+          "status": "Ready",
+          "time": "2026-07-16T08:00:00Z"
+        }
+      ],
+      "deliveryDate": "2026-07-19",
+      "deliveryTime": "17:00-19:00",
+      "note": "",
+      "createdAt": "2026-07-15T08:00:00Z",
+      "updatedAt": "2026-07-16T08:00:00Z"
+    },
+    {
+      "id": 6,
+      "orderCode": "ORD000006",
+      "userId": 5,
+      "customerName": "Vũ Thị Mai",
+      "phone": "0956789012",
+      "items": [
+        {
+          "id": 1,
+          "type": "custom",
+          "name": "Bánh custom",
+          "customConfig": {
+            "sizeId": 3,
+            "layerId": 2,
+            "baseId": 3,
+            "fillingId": 2,
+            "creamId": 4,
+            "colorId": 6,
+            "toppingIds": [
+              4,
+              5
+            ],
+            "message": "Kỷ niệm",
+            "shapeId": 1,
+            "decorationStyleId": 1,
+            "dripSauceId": 1,
+            "messageStyleId": 1,
+            "topperId": 1,
+            "packagingId": 1,
+            "candleOptionId": 1,
+            "referenceImage": "",
+            "specialRequest": ""
+          },
+          "quantity": 1,
+          "unitPrice": 720000,
+          "lineTotal": 720000
+        }
+      ],
+      "subtotal": 720000,
+      "shippingFee": 30000,
+      "discount": 0,
+      "total": 750000,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "receiveMethod": "delivery",
+      "shippingAddress": "56 Cách Mạng Tháng 8, Quận 10, TP.HCM",
+      "status": "Completed",
+      "statusHistory": [
+        {
+          "status": "Pending",
+          "time": "2026-07-14T08:00:00Z"
+        },
+        {
+          "status": "Confirmed",
+          "time": "2026-07-14T09:00:00Z"
+        },
+        {
+          "status": "Preparing",
+          "time": "2026-07-14T10:00:00Z"
+        },
+        {
+          "status": "Decorating",
+          "time": "2026-07-14T14:00:00Z"
+        },
+        {
+          "status": "Ready",
+          "time": "2026-07-15T08:00:00Z"
+        },
+        {
+          "status": "Shipping",
+          "time": "2026-07-15T09:00:00Z"
+        },
+        {
+          "status": "Completed",
+          "time": "2026-07-19T21:08:20.616Z"
+        }
+      ],
+      "deliveryDate": "2026-07-19",
+      "deliveryTime": "08:00-10:00",
+      "note": "",
+      "createdAt": "2026-07-14T08:00:00Z",
+      "updatedAt": "2026-07-19T21:08:20.616Z"
+    },
+    {
+      "id": 7,
+      "orderCode": "ORD000007",
+      "userId": 3,
+      "customerName": "Phạm Thị Hương",
+      "phone": "0934567890",
+      "items": [
+        {
+          "id": 1,
+          "type": "preset",
+          "cakeId": 8,
+          "quantity": 2,
+          "unitPrice": 180000,
+          "lineTotal": 360000,
+          "cakeName": "Bento Cake Hoa Nhí",
+          "optionId": 1,
+          "optionLabel": "10cm"
+        }
+      ],
+      "subtotal": 360000,
+      "shippingFee": 0,
+      "discount": 0,
+      "total": 360000,
+      "paymentMethod": "COD",
+      "paymentStatus": "paid",
+      "receiveMethod": "pickup",
+      "shippingAddress": "Nhận tại cửa hàng",
+      "status": "Completed",
+      "statusHistory": [
+        {
+          "status": "Pending",
+          "time": "2026-07-10T08:00:00Z"
+        },
+        {
+          "status": "Confirmed",
+          "time": "2026-07-10T09:00:00Z"
+        },
+        {
+          "status": "Preparing",
+          "time": "2026-07-10T10:00:00Z"
+        },
+        {
+          "status": "Decorating",
+          "time": "2026-07-10T14:00:00Z"
+        },
+        {
+          "status": "Ready",
+          "time": "2026-07-11T08:00:00Z"
+        },
+        {
+          "status": "Completed",
+          "time": "2026-07-11T09:00:00Z"
+        }
+      ],
+      "deliveryDate": "2026-07-11",
+      "deliveryTime": "08:00-10:00",
+      "note": "",
+      "createdAt": "2026-07-10T08:00:00Z",
+      "updatedAt": "2026-07-11T09:00:00Z"
+    },
+    {
+      "id": 8,
+      "orderCode": "ORD000008",
+      "userId": 4,
+      "customerName": "Hoàng Văn Tùng",
+      "phone": "0945678901",
+      "items": [
+        {
+          "id": 1,
+          "type": "preset",
+          "cakeId": 9,
+          "quantity": 1,
+          "unitPrice": 225000,
+          "lineTotal": 225000,
+          "cakeName": "Tart Dâu Vanilla",
+          "optionId": 2,
+          "optionLabel": "Hộp 4 chiếc"
+        }
+      ],
+      "subtotal": 225000,
+      "shippingFee": 30000,
+      "discount": 0,
+      "total": 255000,
+      "paymentMethod": "COD",
+      "paymentStatus": "paid",
+      "receiveMethod": "delivery",
+      "shippingAddress": "34 Võ Văn Tần, Quận 3, TP.HCM",
+      "status": "Completed",
+      "statusHistory": [
+        {
+          "status": "Pending",
+          "time": "2026-07-09T08:00:00Z"
+        },
+        {
+          "status": "Confirmed",
+          "time": "2026-07-09T09:00:00Z"
+        },
+        {
+          "status": "Preparing",
+          "time": "2026-07-09T10:00:00Z"
+        },
+        {
+          "status": "Decorating",
+          "time": "2026-07-09T14:00:00Z"
+        },
+        {
+          "status": "Ready",
+          "time": "2026-07-10T08:00:00Z"
+        },
+        {
+          "status": "Shipping",
+          "time": "2026-07-10T09:00:00Z"
+        },
+        {
+          "status": "Completed",
+          "time": "2026-07-10T11:00:00Z"
+        }
+      ],
+      "deliveryDate": "2026-07-10",
+      "deliveryTime": "10:00-12:00",
+      "note": "",
+      "createdAt": "2026-07-09T08:00:00Z",
+      "updatedAt": "2026-07-10T11:00:00Z"
+    },
+    {
+      "id": 9,
+      "orderCode": "ORD000009",
+      "userId": 5,
+      "customerName": "Vũ Thị Mai",
+      "phone": "0956789012",
+      "items": [
+        {
+          "id": 1,
+          "type": "preset",
+          "cakeId": 10,
+          "quantity": 1,
+          "unitPrice": 58000,
+          "lineTotal": 58000,
+          "cakeName": "Tart Chanh Meringue",
+          "optionId": 1,
+          "optionLabel": "1 chiếc"
+        }
+      ],
+      "subtotal": 58000,
+      "shippingFee": 30000,
+      "discount": 0,
+      "total": 88000,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "receiveMethod": "delivery",
+      "shippingAddress": "56 Cách Mạng Tháng 8, Quận 10, TP.HCM",
+      "status": "Cancelled",
+      "statusHistory": [
+        {
+          "status": "Pending",
+          "time": "2026-07-08T08:00:00Z"
+        },
+        {
+          "status": "Confirmed",
+          "time": "2026-07-08T09:00:00Z"
+        },
+        {
+          "status": "Cancelled",
+          "time": "2026-07-08T10:00:00Z"
+        }
+      ],
+      "deliveryDate": "2026-07-10",
+      "deliveryTime": "13:00-15:00",
+      "note": "Khách yêu cầu hủy",
+      "createdAt": "2026-07-08T08:00:00Z",
+      "updatedAt": "2026-07-08T10:00:00Z"
+    },
+    {
+      "orderCode": "PD20260720VC4A5",
       "customerId": 3,
       "userId": 3,
       "purchaserId": 3,
       "purchaserName": "Phạm Thị Hương",
       "purchaserEmail": "customer1@gmail.com",
-      "customerName": "abc",
-      "recipientName": "abc",
-      "phone": "0374559719",
-      "recipientPhone": "0374559719",
+      "customerName": "helllo em",
+      "recipientName": "helllo em",
+      "phone": "0394103199",
+      "recipientPhone": "0394103199",
       "email": "customer1@gmail.com",
       "contactEmail": "customer1@gmail.com",
       "fulfillmentMethod": "pickup",
       "deliveryAddress": "",
       "pickupAddress": "Địa chỉ cửa hàng Petite Douceur",
       "address": "Địa chỉ cửa hàng Petite Douceur",
-      "scheduledDate": "2026-07-22",
-      "deliveryDate": "2026-07-22",
+      "scheduledDate": "2026-07-23",
+      "deliveryDate": "2026-07-23",
       "scheduledTime": "10:00-12:00",
       "deliveryTime": "10:00-12:00",
       "note": "",
       "paymentMethod": "bank_transfer",
-      "paymentCode": "PD20260720BH3M8",
-      "paymentReference": "abcd",
+      "paymentCode": "PD20260720VC4A5",
+      "paymentReference": "PD20260720VC4A5",
       "paymentStatus": "pending_verification",
       "status": "pending_confirmation",
       "items": [
         {
           "cakeId": "custom",
           "name": "Bánh Thiết Kế Custom",
-          "image": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20400%20400'%3E%3Crect%20width%3D'400'%20height%3D'400'%20fill%3D'%23fff0f4'%2F%3E%3Ctext%20x%3D'50%25'%20y%3D'45%25'%20font-family%3D'sans-serif'%20font-size%3D'60'%20text-anchor%3D'middle'%20fill%3D'%23e95077'%3E%F0%9F%8E%A8%3C%2Ftext%3E%3Ctext%20x%3D'50%25'%20y%3D'60%25'%20font-family%3D'sans-serif'%20font-size%3D'24'%20font-weight%3D'bold'%20text-anchor%3D'middle'%20fill%3D'%23e95077'%3EThi%E1%BA%BFt%20K%E1%BA%BF%20Ri%C3%AAng%3C%2Ftext%3E%3C%2Fsvg%3E",
+          "image": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20400%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22standGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%220%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23fdfdfd%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23e0e0e0%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22cylinderShade%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0.15)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2220%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2280%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22dripGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%220%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%233e1d04%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232a1201%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%3C%2Fdefs%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22365%22%20rx%3D%22130%22%20ry%3D%2225%22%20fill%3D%22rgba(0%2C0%2C0%2C0.1)%22%20%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%20160%20360%20Q%20160%20375%20180%20375%20L%20220%20375%20Q%20240%20375%20240%20360%20Z%22%20fill%3D%22%23d0d0d0%22%20%2F%3E%0A%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22350%22%20rx%3D%22140%22%20ry%3D%2230%22%20fill%3D%22url(%23standGrad)%22%20%2F%3E%0A%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22345%22%20rx%3D%22130%22%20ry%3D%2225%22%20fill%3D%22%23f5f5f5%22%20%2F%3E%3Cg%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22320%22%20rx%3D%22120%22%20ry%3D%2242%22%20fill%3D%22%23ffb6c1%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2280%22%20y%3D%22260%22%20width%3D%22240%22%20height%3D%2260%22%20fill%3D%22%23ffb6c1%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2280%22%20y%3D%22260%22%20width%3D%22240%22%20height%3D%2260%22%20fill%3D%22url(%23cylinderShade)%22%20%2F%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%22120%22%20ry%3D%2242%22%20fill%3D%22%23ffb6c1%22%20%2F%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%22120%22%20ry%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2Fg%3E%3Cg%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%22100%22%20ry%3D%2235%22%20fill%3D%22%23ffb6c1%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22100%22%20y%3D%22200%22%20width%3D%22200%22%20height%3D%2260%22%20fill%3D%22%23ffb6c1%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22100%22%20y%3D%22200%22%20width%3D%22200%22%20height%3D%2260%22%20fill%3D%22url(%23cylinderShade)%22%20%2F%3E%3Cpath%20d%3D%22M%20100%20200%20Q%20102%20215%20105%20225%20C%20109%20225%2C%20111%20275%2C%20115%20275%20C%20119%20275%2C%20121%20225%2C%20125%20225%20C%20130%20225%2C%20132.5%20245%2C%20137.5%20245%20C%20142.5%20245%2C%20145%20225%2C%20150%20225%20C%20155%20225%2C%20157.5%20295%2C%20162.5%20295%20C%20167.5%20295%2C%20170%20225%2C%20175%20225%20C%20180%20225%2C%20182.5%20255%2C%20187.5%20255%20C%20192.5%20255%2C%20195%20225%2C%20200%20225%20C%20205%20225%2C%20207.5%20285%2C%20212.5%20285%20C%20217.5%20285%2C%20220%20225%2C%20225%20225%20C%20230%20225%2C%20232.5%20240%2C%20237.5%20240%20C%20242.5%20240%2C%20245%20225%2C%20250%20225%20C%20255%20225%2C%20257.5%20270%2C%20262.5%20270%20C%20267.5%20270%2C%20270%20225%2C%20275%20225%20C%20279%20225%2C%20281%20250%2C%20285%20250%20C%20289%20250%2C%20291%20225%2C%20295%20225%20Q%20298%20215%20300%20200%20Z%22%20fill%3D%22url(%23dripGrad)%22%20%2F%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22200%22%20rx%3D%22100%22%20ry%3D%2235%22%20fill%3D%22%23ffb6c1%22%20%2F%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22200%22%20rx%3D%22100%22%20ry%3D%2235%22%20fill%3D%22rgba(255%2C255%2C255%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2Fg%3E%3Cg%20transform%3D%22translate(0%2C%20190)%22%3E%3C%2Fg%3E%3C%2Fsvg%3E",
           "category": "Bánh thiết kế riêng",
           "optionId": "custom",
           "optionLabel": "Thiết kế riêng",
-          "price": 150000,
+          "price": 500000,
           "quantity": 1,
-          "lineTotal": 150000
-        },
-        {
-          "cakeId": "custom",
-          "name": "Bánh Thiết Kế Custom",
-          "image": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20400%20400'%3E%3Crect%20width%3D'400'%20height%3D'400'%20fill%3D'%23fff0f4'%2F%3E%3Ctext%20x%3D'50%25'%20y%3D'45%25'%20font-family%3D'sans-serif'%20font-size%3D'60'%20text-anchor%3D'middle'%20fill%3D'%23e95077'%3E%F0%9F%8E%A8%3C%2Ftext%3E%3Ctext%20x%3D'50%25'%20y%3D'60%25'%20font-family%3D'sans-serif'%20font-size%3D'24'%20font-weight%3D'bold'%20text-anchor%3D'middle'%20fill%3D'%23e95077'%3EThi%E1%BA%BFt%20K%E1%BA%BF%20Ri%C3%AAng%3C%2Ftext%3E%3C%2Fsvg%3E",
-          "category": "Bánh thiết kế riêng",
-          "optionId": "custom",
-          "optionLabel": "Thiết kế riêng",
-          "price": 150000,
-          "quantity": 1,
-          "lineTotal": 150000
+          "lineTotal": 500000
         }
       ],
-      "subtotal": 300000,
+      "subtotal": 500000,
       "shippingFee": 0,
-      "total": 300000,
-      "totalAmount": 300000,
-      "createdAt": "2026-07-20T04:02:56.151Z",
-      "updatedAt": "2026-07-20T04:02:56.151Z",
-      "id": 2
+      "total": 500000,
+      "totalAmount": 500000,
+      "createdAt": "2026-07-20T07:25:24.466Z",
+      "updatedAt": "2026-07-20T07:25:24.466Z",
+      "id": 10
     },
     {
-      "orderCode": "PD20260720L1VLS",
-      "customerId": 5,
-      "userId": 5,
-      "purchaserId": 5,
-      "purchaserName": "Vũ Thị Mai",
-      "purchaserEmail": "customer3@gmail.com",
-      "customerName": "abc",
-      "recipientName": "abc",
-      "phone": "0374559719",
-      "recipientPhone": "0374559719",
-      "email": "customer3@gmail.com",
-      "contactEmail": "customer3@gmail.com",
-      "fulfillmentMethod": "pickup",
-      "deliveryAddress": "",
-      "pickupAddress": "Địa chỉ cửa hàng Petite Douceur",
-      "address": "Địa chỉ cửa hàng Petite Douceur",
-      "scheduledDate": "2026-07-22",
-      "deliveryDate": "2026-07-22",
-      "scheduledTime": "10:00-12:00",
-      "deliveryTime": "10:00-12:00",
-      "note": "",
-      "paymentMethod": "bank_transfer",
-      "paymentCode": "PD20260720L1VLS",
-      "paymentReference": "abcd",
-      "paymentStatus": "pending_verification",
-      "status": "Cancelled",
-      "items": [
-        {
-          "cakeId": "custom",
-          "name": "Bánh Thiết Kế Custom",
-          "image": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20400%20400'%3E%3Crect%20width%3D'400'%20height%3D'400'%20fill%3D'%23fff0f4'%2F%3E%3Ctext%20x%3D'50%25'%20y%3D'45%25'%20font-family%3D'sans-serif'%20font-size%3D'60'%20text-anchor%3D'middle'%20fill%3D'%23e95077'%3E%F0%9F%8E%A8%3C%2Ftext%3E%3Ctext%20x%3D'50%25'%20y%3D'60%25'%20font-family%3D'sans-serif'%20font-size%3D'24'%20font-weight%3D'bold'%20text-anchor%3D'middle'%20fill%3D'%23e95077'%3EThi%E1%BA%BFt%20K%E1%BA%BF%20Ri%C3%AAng%3C%2Ftext%3E%3C%2Fsvg%3E",
-          "category": "Bánh thiết kế riêng",
-          "optionId": "custom",
-          "optionLabel": "Thiết kế riêng",
-          "price": 450000,
-          "quantity": 1,
-          "lineTotal": 450000
-        },
-        {
-          "cakeId": "custom",
-          "name": "Bánh Thiết Kế Custom",
-          "image": "https://i.pinimg.com/1200x/59/6a/36/596a36440d0e3bb3cb5f0994aedfd70c.jpg",
-          "category": "Bánh thiết kế riêng",
-          "optionId": "custom",
-          "optionLabel": "Thiết kế riêng",
-          "price": 150000,
-          "quantity": 1,
-          "lineTotal": 150000
-        }
-      ],
-      "subtotal": 600000,
-      "shippingFee": 0,
-      "total": 600000,
-      "totalAmount": 600000,
-      "createdAt": "2026-07-20T06:03:49.711Z",
-      "updatedAt": "2026-07-20T06:04:40.096Z",
-      "id": 3,
-      "statusHistory": [
-        {
-          "status": "Cancelled",
-          "time": "2026-07-20T06:04:40.096Z"
-        }
-      ]
-    },
-    {
-      "orderCode": "PD20260720RD7R1",
+      "orderCode": "PD20260720PQ07G",
       "customerId": 3,
       "userId": 3,
       "purchaserId": 3,
       "purchaserName": "Phạm Thị Hương",
       "purchaserEmail": "customer1@gmail.com",
-      "customerName": "abc",
-      "recipientName": "abc",
-      "phone": "0374559719",
-      "recipientPhone": "0374559719",
+      "customerName": "helllo em",
+      "recipientName": "helllo em",
+      "phone": "0394101399",
+      "recipientPhone": "0394101399",
       "email": "customer1@gmail.com",
       "contactEmail": "customer1@gmail.com",
       "fulfillmentMethod": "pickup",
       "deliveryAddress": "",
       "pickupAddress": "Địa chỉ cửa hàng Petite Douceur",
       "address": "Địa chỉ cửa hàng Petite Douceur",
-      "scheduledDate": "2026-07-22",
-      "deliveryDate": "2026-07-22",
+      "scheduledDate": "2026-07-23",
+      "deliveryDate": "2026-07-23",
       "scheduledTime": "10:00-12:00",
       "deliveryTime": "10:00-12:00",
       "note": "",
       "paymentMethod": "bank_transfer",
-      "paymentCode": "PD20260720RD7R1",
-      "paymentReference": "abcd",
+      "paymentCode": "PD20260720PQ07G",
+      "paymentReference": "PD20260720PQ07G",
       "paymentStatus": "pending_verification",
-      "status": "Cancelled",
+      "status": "pending_confirmation",
       "items": [
         {
           "cakeId": "custom",
           "name": "Bánh Thiết Kế Custom",
-          "image": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20400%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22standGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%220%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23fdfdfd%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23e0e0e0%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22cylinderShade%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0.15)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2220%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2280%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22dripGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%220%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%233e1d04%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232a1201%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%3C%2Fdefs%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22365%22%20rx%3D%22130%22%20ry%3D%2225%22%20fill%3D%22rgba(0%2C0%2C0%2C0.1)%22%20%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%20160%20360%20Q%20160%20375%20180%20375%20L%20220%20375%20Q%20240%20375%20240%20360%20Z%22%20fill%3D%22%23d0d0d0%22%20%2F%3E%0A%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22350%22%20rx%3D%22140%22%20ry%3D%2230%22%20fill%3D%22url(%23standGrad)%22%20%2F%3E%0A%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22345%22%20rx%3D%22130%22%20ry%3D%2225%22%20fill%3D%22%23f5f5f5%22%20%2F%3E%3Cg%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22320%22%20rx%3D%22100%22%20ry%3D%2235%22%20fill%3D%22%23a0522d%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22100%22%20y%3D%22260%22%20width%3D%22200%22%20height%3D%2260%22%20fill%3D%22%23a0522d%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22100%22%20y%3D%22260%22%20width%3D%22200%22%20height%3D%2260%22%20fill%3D%22url(%23cylinderShade)%22%20%2F%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%22100%22%20ry%3D%2235%22%20fill%3D%22%23a0522d%22%20%2F%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%22100%22%20ry%3D%2235%22%20fill%3D%22rgba(255%2C255%2C255%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2Fg%3E%3Cg%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%2280%22%20ry%3D%2228%22%20fill%3D%22%23a0522d%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22120%22%20y%3D%22200%22%20width%3D%22160%22%20height%3D%2260%22%20fill%3D%22%23a0522d%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22120%22%20y%3D%22200%22%20width%3D%22160%22%20height%3D%2260%22%20fill%3D%22url(%23cylinderShade)%22%20%2F%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22200%22%20rx%3D%2280%22%20ry%3D%2228%22%20fill%3D%22%23a0522d%22%20%2F%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22200%22%20rx%3D%2280%22%20ry%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2Fg%3E%3Cg%20transform%3D%22translate(0%2C%20190)%22%3E%0A%20%20%20%20%20%20%3Cg%20transform%3D%22translate(150%2C%2015)%20rotate(-25)%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%220%22%20rx%3D%2216%22%20ry%3D%228%22%20fill%3D%22%23ffb3ba%22%20%2F%3E%3Crect%20x%3D%22-15%22%20y%3D%22-2%22%20width%3D%2230%22%20height%3D%224%22%20fill%3D%22%23fff%22%20rx%3D%222%22%20%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20transform%3D%22translate(180%2C%20-5)%20rotate(10)%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%220%22%20rx%3D%2216%22%20ry%3D%228%22%20fill%3D%22%23baffc9%22%20%2F%3E%3Crect%20x%3D%22-15%22%20y%3D%22-2%22%20width%3D%2230%22%20height%3D%224%22%20fill%3D%22%23fff%22%20rx%3D%222%22%20%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20transform%3D%22translate(220%2C%20-10)%20rotate(40)%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%220%22%20rx%3D%2216%22%20ry%3D%228%22%20fill%3D%22%23bae1ff%22%20%2F%3E%3Crect%20x%3D%22-15%22%20y%3D%22-2%22%20width%3D%2230%22%20height%3D%224%22%20fill%3D%22%23fff%22%20rx%3D%222%22%20%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20transform%3D%22translate(240%2C%2015)%20rotate(-15)%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%220%22%20rx%3D%2216%22%20ry%3D%228%22%20fill%3D%22%23ffffba%22%20%2F%3E%3Crect%20x%3D%22-15%22%20y%3D%22-2%22%20width%3D%2230%22%20height%3D%224%22%20fill%3D%22%23fff%22%20rx%3D%222%22%20%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20transform%3D%22translate(195%2C%2020)%20rotate(-45)%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%220%22%20rx%3D%2216%22%20ry%3D%228%22%20fill%3D%22%23e6e6fa%22%20%2F%3E%3Crect%20x%3D%22-15%22%20y%3D%22-2%22%20width%3D%2230%22%20height%3D%224%22%20fill%3D%22%23fff%22%20rx%3D%222%22%20%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+          "image": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20400%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22standGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%220%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23fdfdfd%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23e0e0e0%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22cylinderShade%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0.15)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2220%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2280%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22dripGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%220%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%233e1d04%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232a1201%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%3C%2Fdefs%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22365%22%20rx%3D%22130%22%20ry%3D%2225%22%20fill%3D%22rgba(0%2C0%2C0%2C0.1)%22%20%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%20160%20360%20Q%20160%20375%20180%20375%20L%20220%20375%20Q%20240%20375%20240%20360%20Z%22%20fill%3D%22%23d0d0d0%22%20%2F%3E%0A%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22350%22%20rx%3D%22140%22%20ry%3D%2230%22%20fill%3D%22url(%23standGrad)%22%20%2F%3E%0A%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22345%22%20rx%3D%22130%22%20ry%3D%2225%22%20fill%3D%22%23f5f5f5%22%20%2F%3E%3Cg%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22320%22%20rx%3D%2280%22%20ry%3D%2228%22%20fill%3D%22%23f8f9fa%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22120%22%20y%3D%22260%22%20width%3D%22160%22%20height%3D%2260%22%20fill%3D%22%23f8f9fa%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22120%22%20y%3D%22260%22%20width%3D%22160%22%20height%3D%2260%22%20fill%3D%22url(%23cylinderShade)%22%20%2F%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%2280%22%20ry%3D%2228%22%20fill%3D%22%23f8f9fa%22%20%2F%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%2280%22%20ry%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2Fg%3E%3Cg%20transform%3D%22translate(0%2C%20250)%22%3E%3C%2Fg%3E%3C%2Fsvg%3E",
           "category": "Bánh thiết kế riêng",
           "optionId": "custom",
           "optionLabel": "Thiết kế riêng",
-          "price": 330000,
+          "price": 150000,
           "quantity": 1,
-          "lineTotal": 330000
+          "lineTotal": 150000
         }
       ],
-      "subtotal": 330000,
+      "subtotal": 150000,
       "shippingFee": 0,
-      "total": 330000,
-      "totalAmount": 330000,
-      "createdAt": "2026-07-20T06:16:08.095Z",
-      "updatedAt": "2026-07-20T06:16:35.881Z",
-      "id": 4,
+      "total": 150000,
+      "totalAmount": 150000,
+      "createdAt": "2026-07-20T07:34:19.705Z",
+      "updatedAt": "2026-07-20T07:34:19.705Z",
+      "id": 11
+    },
+    {
+      "orderCode": "PD202607201P28O",
+      "customerId": 3,
+      "userId": 3,
+      "purchaserId": 3,
+      "purchaserName": "Phạm Thị Hương",
+      "purchaserEmail": "customer1@gmail.com",
+      "customerName": "helllo em",
+      "recipientName": "helllo em",
+      "phone": "0394103199",
+      "recipientPhone": "0394103199",
+      "email": "customer1@gmail.com",
+      "contactEmail": "customer1@gmail.com",
+      "fulfillmentMethod": "pickup",
+      "deliveryAddress": "",
+      "pickupAddress": "Địa chỉ cửa hàng Petite Douceur",
+      "address": "Địa chỉ cửa hàng Petite Douceur",
+      "scheduledDate": "2026-07-23",
+      "deliveryDate": "2026-07-23",
+      "scheduledTime": "10:00-12:00",
+      "deliveryTime": "10:00-12:00",
+      "note": "",
+      "paymentMethod": "bank_transfer",
+      "paymentCode": "PD202607201P28O",
+      "paymentReference": "PD202607201P28O",
+      "paymentStatus": "pending_verification",
+      "status": "pending_confirmation",
+      "items": [
+        {
+          "cakeId": "custom",
+          "name": "Bánh Thiết Kế Custom",
+          "image": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20400%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22standGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%220%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23fdfdfd%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23e0e0e0%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22cylinderShade%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0.15)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2220%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2280%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22dripGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%220%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%233e1d04%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232a1201%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%3C%2Fdefs%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22365%22%20rx%3D%22130%22%20ry%3D%2225%22%20fill%3D%22rgba(0%2C0%2C0%2C0.1)%22%20%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%20160%20360%20Q%20160%20375%20180%20375%20L%20220%20375%20Q%20240%20375%20240%20360%20Z%22%20fill%3D%22%23d0d0d0%22%20%2F%3E%0A%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22350%22%20rx%3D%22140%22%20ry%3D%2230%22%20fill%3D%22url(%23standGrad)%22%20%2F%3E%0A%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22345%22%20rx%3D%22130%22%20ry%3D%2225%22%20fill%3D%22%23f5f5f5%22%20%2F%3E%3Cg%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22320%22%20rx%3D%22120%22%20ry%3D%2242%22%20fill%3D%22%23a0522d%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2280%22%20y%3D%22260%22%20width%3D%22240%22%20height%3D%2260%22%20fill%3D%22%23a0522d%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2280%22%20y%3D%22260%22%20width%3D%22240%22%20height%3D%2260%22%20fill%3D%22url(%23cylinderShade)%22%20%2F%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%22120%22%20ry%3D%2242%22%20fill%3D%22%23a0522d%22%20%2F%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%22120%22%20ry%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2Fg%3E%3Cg%20transform%3D%22translate(0%2C%20250)%22%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+          "category": "Bánh thiết kế riêng",
+          "optionId": "custom",
+          "optionLabel": "Thiết kế riêng",
+          "price": 350000,
+          "quantity": 1,
+          "lineTotal": 350000
+        }
+      ],
+      "subtotal": 350000,
+      "shippingFee": 0,
+      "total": 350000,
+      "totalAmount": 350000,
+      "createdAt": "2026-07-20T07:37:08.362Z",
+      "updatedAt": "2026-07-20T07:37:08.362Z",
+      "id": 12
+    },
+    {
+      "orderCode": "PD20260720TP8RC",
+      "customerId": 3,
+      "userId": 3,
+      "purchaserId": 3,
+      "purchaserName": "Phạm Thị Hương",
+      "purchaserEmail": "customer1@gmail.com",
+      "customerName": "helllo em",
+      "recipientName": "helllo em",
+      "phone": "0394103199",
+      "recipientPhone": "0394103199",
+      "email": "customer1@gmail.com",
+      "contactEmail": "customer1@gmail.com",
+      "fulfillmentMethod": "pickup",
+      "deliveryAddress": "",
+      "pickupAddress": "Địa chỉ cửa hàng Petite Douceur",
+      "address": "Địa chỉ cửa hàng Petite Douceur",
+      "scheduledDate": "2026-07-24",
+      "deliveryDate": "2026-07-24",
+      "scheduledTime": "10:00-12:00",
+      "deliveryTime": "10:00-12:00",
+      "note": "",
+      "paymentMethod": "bank_transfer",
+      "paymentCode": "PD20260720TP8RC",
+      "paymentReference": "PD20260720TP8RC",
+      "paymentStatus": "pending_verification",
+      "status": "Confirmed",
+      "items": [
+        {
+          "cakeId": "custom",
+          "name": "Bánh Thiết Kế Custom",
+          "image": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20400%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22standGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%220%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23fdfdfd%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23e0e0e0%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22cylinderShade%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0.15)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2220%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2280%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22dripGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%220%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%233e1d04%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232a1201%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%3C%2Fdefs%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22365%22%20rx%3D%22130%22%20ry%3D%2225%22%20fill%3D%22rgba(0%2C0%2C0%2C0.1)%22%20%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%20160%20360%20Q%20160%20375%20180%20375%20L%20220%20375%20Q%20240%20375%20240%20360%20Z%22%20fill%3D%22%23d0d0d0%22%20%2F%3E%0A%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22350%22%20rx%3D%22140%22%20ry%3D%2230%22%20fill%3D%22url(%23standGrad)%22%20%2F%3E%0A%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22345%22%20rx%3D%22130%22%20ry%3D%2225%22%20fill%3D%22%23f5f5f5%22%20%2F%3E%3Cg%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22320%22%20rx%3D%2280%22%20ry%3D%2228%22%20fill%3D%22%2398fb98%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22120%22%20y%3D%22260%22%20width%3D%22160%22%20height%3D%2260%22%20fill%3D%22%2398fb98%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22120%22%20y%3D%22260%22%20width%3D%22160%22%20height%3D%2260%22%20fill%3D%22url(%23cylinderShade)%22%20%2F%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%2280%22%20ry%3D%2228%22%20fill%3D%22%2398fb98%22%20%2F%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%2280%22%20ry%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2Fg%3E%3Cg%20transform%3D%22translate(0%2C%20250)%22%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+          "category": "Bánh thiết kế riêng",
+          "optionId": "custom",
+          "optionLabel": "Thiết kế riêng",
+          "price": 150000,
+          "quantity": 1,
+          "lineTotal": 150000
+        }
+      ],
+      "subtotal": 150000,
+      "shippingFee": 0,
+      "total": 150000,
+      "totalAmount": 150000,
+      "createdAt": "2026-07-20T07:39:21.665Z",
+      "updatedAt": "2026-07-20T07:39:57.555Z",
+      "id": 13,
       "statusHistory": [
         {
-          "status": "Cancelled",
-          "time": "2026-07-20T06:16:35.881Z"
+          "status": "Confirmed",
+          "time": "2026-07-20T07:39:57.554Z"
         }
       ]
     }
@@ -1623,72 +2126,6 @@
       "name": "Nến pháo hoa",
       "extraPrice": 25000,
       "isAvailable": true
-    }
-  ],
-  "notifications": [
-    {
-      "id": 1,
-      "userId": 4,
-      "title": "Đơn hàng mới",
-      "content": "Đơn hàng custom của bạn đã được tiếp nhận.",
-      "isRead": false,
-      "createdAt": "2026-07-20T03:36:29.830Z"
-    },
-    {
-      "id": 2,
-      "userId": 4,
-      "title": "Khuyến mãi",
-      "content": "Giảm giá 10% cho đơn hàng tiếp theo.",
-      "isRead": true,
-      "createdAt": "2026-07-19T03:36:29.831Z"
-    },
-    {
-      "id": 3,
-      "userId": 3,
-      "title": "Đơn hàng hoàn thành",
-      "content": "Đơn hàng của bạn đã được giao thành công.",
-      "isRead": true,
-      "createdAt": "2026-07-20T03:36:29.831Z"
-    },
-    {
-      "isRead": true,
-      "createdAt": "2026-07-20T04:02:56.180Z",
-      "userId": 3,
-      "title": "Đặt hàng thành công",
-      "content": "Đơn hàng PD20260720BH3M8 của bạn đã được ghi nhận. Vui lòng chờ xác nhận.",
-      "id": 4
-    },
-    {
-      "isRead": false,
-      "createdAt": "2026-07-20T06:03:49.757Z",
-      "userId": 5,
-      "title": "Đặt hàng thành công",
-      "content": "Đơn hàng PD20260720L1VLS của bạn đã được ghi nhận. Vui lòng chờ xác nhận.",
-      "id": 5
-    },
-    {
-      "isRead": false,
-      "createdAt": "2026-07-20T06:04:40.149Z",
-      "userId": 5,
-      "title": "Cập nhật đơn hàng",
-      "content": "Đơn hàng PD20260720L1VLS của bạn đã chuyển sang trạng thái: Đã hủy.",
-      "id": 6
-    },
-    {
-      "isRead": true,
-      "createdAt": "2026-07-20T06:16:08.136Z",
-      "userId": 3,
-      "title": "Đặt hàng thành công",
-      "content": "Đơn hàng PD20260720RD7R1 của bạn đã được ghi nhận. Vui lòng chờ xác nhận.",
-      "id": 7
-    },
-    {
-      "isRead": true,
-      "createdAt": "2026-07-20T06:16:35.971Z",
-      "userId": 3,
-      "title": "Cập nhật đơn hàng",
-      "content": "Đơn hàng PD20260720RD7R1 của bạn đã chuyển sang trạng thái: Đã hủy.",
-      "id": 8
     }
   ]
 }

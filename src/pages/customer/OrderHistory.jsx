@@ -16,15 +16,6 @@ const STATUS_INFORMATION = {
     group: "pending",
   },
 
-  pending_confirmation: {
-    label: "Chờ xác nhận",
-    group: "pending",
-  },
-
-  pending_payment_verification: {
-    label: "Chờ đối soát",
-    group: "pending",
-  },
 
   confirmed: {
     label: "Đã xác nhận",
