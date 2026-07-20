@@ -1,14 +1,19 @@
 import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../contexts/AuthContext';
 import CakeOptions from '../../components/customCake/CakeOptions';
 import CustomizationSummary from '../../components/customCake/CustomizationSummary';
 import PriceSummary from '../../components/customCake/PriceSummary';
 import CakeGallery from '../../components/customCake/CakeGallery';
-import { addCart } from "../../services/cartService";
+import { readCart, writeCart } from "../../utils/cartStorage";
+import calculatePrice from "../../utils/priceCalculator";
+import { generateCakeSvgString } from "../../utils/generateCakeSvg";
 import '../../components/customCake/CustomCake.css';
 
 const CakeDesigner = () => {
-  const { currentUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const currentUser = user;
+  const navigate = useNavigate();
 
   const [selections, setSelections] = useState({
     size: 'small',
@@ -35,9 +40,20 @@ const CakeDesigner = () => {
     // }
 
     try {
+      const currentCart = readCart();
+      const itemKey = `custom-${Date.now()}`;
+      const price = calculatePrice(selections);
       const cartItem = {
-        userId: userId,
-        type: 'custom',
+        itemKey,
+        cakeId: 'custom',
+        name: 'Bánh Thiết Kế Custom',
+        category: 'Bánh thiết kế riêng',
+        image: selections.referenceImage || CUSTOM_CAKE_SVG,
+        optionId: 'custom',
+
+        optionLabel: 'Thiết kế riêng',
+        price: price,
+        quantity: 1,
         customConfig: {
           sizeId: selections.size,
           layerId: selections.layer,
@@ -45,7 +61,6 @@ const CakeDesigner = () => {
           fillingId: selections.filling,
           creamId: selections.cream,
           colorId: selections.color,
-          toppingIds: selections.toppings,
           message: selections.text,
           referenceImage: selections.referenceImage,
         },
@@ -56,7 +71,8 @@ const CakeDesigner = () => {
 
       await addCart(cartItem);
 
-      alert('Đã thêm vào giỏ hàng thành công!');
+      alert('Đã thêm vào giỏ hàng thành công! Đang chuyển đến giỏ hàng...');
+      navigate('/cart');
     } catch (error) {
       console.error(error);
       alert('Có lỗi xảy ra khi thêm vào giỏ hàng.');

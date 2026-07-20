@@ -210,14 +210,29 @@ function OrderDetailModal({
                 {/* Item Cards */}
                 <div className="odm-item-cards">
                   {order.items?.map((item, index) => {
-                    const isCustom = item.type === "custom";
-                    const cakeImage = !isCustom ? getCakeImage(item.cakeId) : null;
+                    const isCustom = item.cakeId === "custom" || item.type === "custom";
+                    const cakeImage = item.image || getCakeImage(item.cakeId);
 
                     return (
                       <div className="odm-item-card" key={index}>
                         {/* Image / Placeholder */}
                         <div className="odm-item-card_visual">
-                          {isCustom ? (
+                          {cakeImage ? (
+                            <div
+                              className="odm-item-card_img-wrap"
+                              onClick={() => setZoomImage({
+                                type: "image",
+                                src: cakeImage,
+                                alt: item.cakeName || item.name || "Bánh"
+                              })}
+                            >
+                              <img
+                                src={cakeImage}
+                                alt={item.cakeName || item.name || "Bánh"}
+                                className="odm-item-card_img"
+                              />
+                            </div>
+                          ) : isCustom ? (
                             <div
                               className="odm-item-card_placeholder"
                               onClick={() => setZoomImage({
@@ -228,21 +243,6 @@ function OrderDetailModal({
                             >
                               {renderCustomSVG(item.customConfig)}
                               <span className="odm-item-card_placeholder-text">Custom</span>
-                            </div>
-                          ) : cakeImage ? (
-                            <div
-                              className="odm-item-card_img-wrap"
-                              onClick={() => setZoomImage({
-                                type: "image",
-                                src: cakeImage,
-                                alt: item.cakeName
-                              })}
-                            >
-                              <img
-                                src={cakeImage}
-                                alt={item.cakeName}
-                                className="odm-item-card_img"
-                              />
                             </div>
                           ) : (
                             <div className="odm-item-card_placeholder odm-item-card_placeholder--empty">
