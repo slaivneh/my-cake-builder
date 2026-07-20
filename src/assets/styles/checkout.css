@@ -1,0 +1,1030 @@
+/* =====================================================
+   PETITE DOUCEUR CHECKOUT
+   ===================================================== */
+
+.pd-checkout-page {
+  width: min(
+    1380px,
+    calc(100% - 48px)
+  );
+
+  margin: 0 auto;
+  padding: 42px 0 90px;
+
+  color: #60433d;
+
+  font-family:
+    "Segoe UI",
+    Tahoma,
+    Arial,
+    sans-serif;
+}
+
+.pd-checkout-page *,
+.pd-checkout-page *::before,
+.pd-checkout-page *::after {
+  box-sizing: border-box;
+}
+
+.pd-checkout-heading {
+  margin-bottom: 30px;
+
+  text-align: center;
+}
+
+.pd-checkout-heading > p {
+  margin: 0 0 6px;
+
+  color: #e95077;
+
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.pd-checkout-heading h1 {
+  margin: 0 0 8px;
+
+  color: #5b3e38;
+
+  font-size:
+    clamp(35px, 5vw, 48px);
+}
+
+.pd-checkout-heading > span {
+  color: #92766f;
+
+  font-size: 14px;
+}
+
+.pd-checkout-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    420px;
+
+  align-items: start;
+
+  gap: 28px;
+}
+
+/* =====================================================
+   FORM
+   ===================================================== */
+
+.pd-checkout-form {
+  min-width: 0;
+
+  padding: 30px;
+
+  background: #ffffff;
+
+  border:
+    1px solid #efbdc9;
+
+  border-radius: 26px;
+
+  box-shadow:
+    0 14px 34px
+    rgba(105, 57, 66, 0.08);
+}
+
+.pd-checkout-orderer {
+  margin-bottom: 28px;
+
+  padding: 17px 19px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff7f9,
+      #fff1f4
+    );
+
+  border:
+    1px solid #efbdc9;
+
+  border-radius: 15px;
+}
+
+.pd-checkout-orderer span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #a18079;
+
+  font-size: 11px;
+}
+
+.pd-checkout-orderer strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #5e413b;
+
+  font-size: 15px;
+}
+
+.pd-checkout-orderer p {
+  margin: 0;
+
+  color: #92766f;
+
+  font-size: 12px;
+}
+
+/* Tiêu đề phần */
+
+.pd-checkout-section-heading {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 22px;
+}
+
+.pd-checkout-section-heading > span {
+  width: 43px;
+  height: 43px;
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 43px;
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f27a98,
+      #e94e76
+    );
+
+  border-radius: 50%;
+}
+
+.pd-checkout-section-heading h2 {
+  margin: 0 0 3px;
+
+  color: #5d4039;
+
+  font-size: 21px;
+}
+
+.pd-checkout-section-heading p {
+  margin: 0;
+
+  color: #977a73;
+
+  font-size: 12px;
+}
+
+/* =====================================================
+   FIELD
+   ===================================================== */
+
+.pd-checkout-fields {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 19px;
+}
+
+.pd-checkout-field {
+  min-width: 0;
+}
+
+.pd-checkout-field--full {
+  grid-column: 1 / -1;
+}
+
+.pd-checkout-field label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #654840;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pd-checkout-field label strong {
+  margin-left: 4px;
+
+  color: #e95077;
+}
+
+.pd-checkout-field input,
+.pd-checkout-field select,
+.pd-checkout-field textarea {
+  width: 100%;
+
+  padding: 14px 15px;
+
+  color: #60433d;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  background: #fffdfd;
+
+  border:
+    1px solid #efbdc9;
+
+  border-radius: 13px;
+
+  outline: 0;
+
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.pd-checkout-field input,
+.pd-checkout-field select {
+  min-height: 50px;
+}
+
+.pd-checkout-field textarea {
+  resize: vertical;
+
+  line-height: 1.55;
+}
+
+.pd-checkout-field input:focus,
+.pd-checkout-field select:focus,
+.pd-checkout-field textarea:focus {
+  border-color: #e95077;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(233, 80, 119, 0.1);
+}
+
+.pd-checkout-field small {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #d64665;
+
+  font-size: 11px;
+}
+
+.pd-checkout-field > span {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #a28881;
+
+  font-size: 10px;
+
+  text-align: right;
+}
+
+.pd-checkout-divider {
+  height: 1px;
+
+  margin: 31px 0;
+
+  background:
+    repeating-linear-gradient(
+      to right,
+      #efb9c6 0,
+      #efb9c6 7px,
+      transparent 7px,
+      transparent 13px
+    );
+}
+
+/* =====================================================
+   HÌNH THỨC NHẬN
+   ===================================================== */
+
+.pd-fulfillment-options {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 14px;
+}
+
+.pd-fulfillment-card {
+  min-width: 0;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 13px;
+
+  padding: 18px;
+
+  background: #ffffff;
+
+  border:
+    1px solid #efbdc9;
+
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.pd-fulfillment-card:hover {
+  transform:
+    translateY(-2px);
+}
+
+.pd-fulfillment-card--active {
+  background: #fff3f6;
+
+  border:
+    2px solid #e95077;
+}
+
+.pd-fulfillment-card input {
+  position: absolute;
+
+  opacity: 0;
+}
+
+.pd-fulfillment-card > span {
+  width: 37px;
+  height: 37px;
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 37px;
+
+  color: #e95077;
+
+  font-size: 17px;
+
+  background: #fff0f4;
+
+  border-radius: 50%;
+}
+
+.pd-fulfillment-card strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #5e413b;
+
+  font-size: 14px;
+}
+
+.pd-fulfillment-card p {
+  margin: 0;
+
+  color: #93766f;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+.pd-checkout-delivery-address {
+  margin-top: 19px;
+}
+
+.pd-pickup-address {
+  margin-top: 19px;
+
+  padding: 16px 18px;
+
+  background: #fff8ef;
+
+  border:
+    1px solid #efd8bd;
+
+  border-radius: 14px;
+}
+
+.pd-pickup-address strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #68483f;
+
+  font-size: 13px;
+}
+
+.pd-pickup-address p {
+  margin: 0;
+
+  color: #94756d;
+
+  font-size: 12px;
+
+  line-height: 1.55;
+}
+
+.pd-checkout-schedule {
+  margin-top: 20px;
+}
+
+/* =====================================================
+   THANH TOÁN QR
+   ===================================================== */
+
+.pd-online-payment {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(280px, 340px)
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 26px;
+
+  padding: 22px;
+
+  overflow: visible;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff8fa,
+      #fffdf8
+    );
+
+  border:
+    1px solid #efbdc9;
+
+  border-radius: 20px;
+}
+
+/*
+  Không đặt height cố định để ảnh QR
+  dọc được hiển thị đầy đủ.
+*/
+
+.pd-online-payment__qr {
+  width: 100%;
+  max-width: 340px;
+
+  overflow: visible;
+
+  background: #ffffff;
+
+  border:
+    1px solid #efbdc9;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 12px 26px
+    rgba(105, 57, 66, 0.08);
+}
+
+.pd-online-payment__qr img {
+  display: block !important;
+
+  width: 100% !important;
+  height: auto !important;
+
+  max-width: 100% !important;
+  max-height: none !important;
+
+  margin: 0 !important;
+
+  object-fit: contain !important;
+  object-position: center !important;
+
+  border-radius: 15px;
+}
+
+.pd-online-payment__info {
+  min-width: 0;
+}
+
+.pd-online-payment__info > span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #94766f;
+
+  font-size: 11px;
+}
+
+.pd-online-payment__info > strong {
+  display: block;
+
+  margin-bottom: 21px;
+
+  color: #df4770;
+
+  font-size: 28px;
+}
+
+.pd-online-payment__info p {
+  margin: 0 0 9px;
+
+  color: #654840;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pd-online-payment__info button {
+  min-height: 44px;
+
+  padding: 0 18px;
+
+  color: #e95077;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+
+  background: #ffffff;
+
+  border:
+    1px solid #e95077;
+
+  border-radius: 999px;
+
+  cursor: pointer;
+}
+
+.pd-online-payment__info small {
+  display: block;
+
+  max-width: 330px;
+
+  margin-top: 11px;
+
+  color: #9a7b74;
+
+  font-size: 10px;
+
+  line-height: 1.55;
+}
+
+.pd-payment-reference {
+  margin-top: 20px;
+}
+
+/* Xác nhận thanh toán */
+
+.pd-payment-confirmation {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  margin-top: 17px;
+
+  cursor: pointer;
+}
+
+.pd-payment-confirmation input {
+  position: absolute;
+
+  opacity: 0;
+}
+
+.pd-payment-confirmation > span {
+  width: 21px;
+  height: 21px;
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 21px;
+
+  background: #ffffff;
+
+  border:
+    1px solid #e95077;
+
+  border-radius: 6px;
+}
+
+.pd-payment-confirmation
+  input:checked
+  + span {
+  background: #e95077;
+}
+
+.pd-payment-confirmation
+  input:checked
+  + span::after {
+  content: "✓";
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pd-payment-confirmation p {
+  margin: 0;
+
+  color: #654840;
+
+  font-size: 12px;
+}
+
+.pd-payment-confirmation-error {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #d64665;
+
+  font-size: 11px;
+}
+
+/* =====================================================
+   SUMMARY
+   ===================================================== */
+
+.pd-checkout-summary {
+  position: sticky;
+  top: 145px;
+
+  min-width: 0;
+
+  padding: 27px;
+
+  background: #ffffff;
+
+  border:
+    1px solid #efbdc9;
+
+  border-radius: 25px;
+
+  box-shadow:
+    0 14px 34px
+    rgba(105, 57, 66, 0.08);
+}
+
+.pd-checkout-summary > h2 {
+  margin: 0 0 22px;
+
+  color: #5d4039;
+
+  font-size: 22px;
+}
+
+.pd-checkout-products {
+  margin-bottom: 23px;
+  padding-bottom: 12px;
+
+  border-bottom:
+    1px dashed #efb9c6;
+}
+
+.pd-checkout-products article {
+  display: grid;
+
+  grid-template-columns:
+    66px
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin-bottom: 15px;
+}
+
+.pd-checkout-product__image {
+  position: relative;
+
+  width: 66px;
+  height: 66px;
+}
+
+.pd-checkout-product__image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+}
+
+.pd-checkout-product__image span {
+  position: absolute;
+
+  top: -7px;
+  right: -7px;
+
+  width: 23px;
+  height: 23px;
+
+  display: grid;
+  place-items: center;
+
+  color: #ffffff;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  background: #e95077;
+
+  border:
+    2px solid #ffffff;
+
+  border-radius: 50%;
+}
+
+.pd-checkout-product__info {
+  min-width: 0;
+}
+
+.pd-checkout-product__info strong {
+  display: block;
+
+  overflow: hidden;
+
+  margin-bottom: 4px;
+
+  color: #60433d;
+
+  font-size: 13px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pd-checkout-product__info span {
+  color: #9a7d76;
+
+  font-size: 11px;
+}
+
+.pd-checkout-products article > b {
+  color: #df4770;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+}
+
+.pd-checkout-summary__line {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 15px;
+
+  color: #8d716a;
+
+  font-size: 14px;
+}
+
+.pd-checkout-summary__line strong {
+  color: #61453e;
+}
+
+.pd-checkout-summary__total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-top: 20px;
+  padding-top: 20px;
+
+  border-top:
+    1px dashed #efb9c6;
+}
+
+.pd-checkout-summary__total span {
+  color: #5d4039;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.pd-checkout-summary__total strong {
+  color: #df4770;
+
+  font-size: 24px;
+}
+
+.pd-checkout-error {
+  margin-top: 17px;
+
+  padding: 12px 14px;
+
+  color: #a13e51;
+
+  font-size: 12px;
+
+  background: #fff0f3;
+
+  border:
+    1px solid #efb2c0;
+
+  border-radius: 12px;
+}
+
+.pd-checkout-summary > button {
+  width: 100%;
+  min-height: 55px;
+
+  margin-top: 24px;
+
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f27394,
+      #e94c74
+    );
+
+  border: 0;
+
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 13px 25px
+    rgba(218, 69, 105, 0.2);
+}
+
+.pd-checkout-summary
+  > button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.6;
+}
+
+.pd-checkout-summary > a {
+  display: block;
+
+  margin-top: 16px;
+
+  color: #e95077;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-align: center;
+  text-decoration: none;
+}
+
+.pd-checkout-policy {
+  margin: 20px 0 0;
+
+  color: #9a7d76;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+/* =====================================================
+   EMPTY
+   ===================================================== */
+
+.pd-checkout-empty {
+  max-width: 650px;
+
+  margin: 30px auto;
+
+  padding: 70px 35px;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border:
+    1px solid #efbdc9;
+
+  border-radius: 27px;
+}
+
+.pd-checkout-empty h1 {
+  color: #5d4039;
+}
+
+.pd-checkout-empty p {
+  color: #91746d;
+}
+
+.pd-checkout-empty a {
+  min-height: 48px;
+
+  display: inline-flex;
+  align-items: center;
+
+  margin-top: 15px;
+  padding: 0 23px;
+
+  color: #ffffff;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  background: #e95077;
+
+  border-radius: 999px;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 1100px) {
+  .pd-checkout-layout {
+    grid-template-columns:
+      minmax(0, 1fr)
+      360px;
+  }
+
+  .pd-online-payment {
+    grid-template-columns:
+      minmax(230px, 280px)
+      minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 850px) {
+  .pd-checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-checkout-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 580px) {
+  .pd-checkout-page {
+    width:
+      calc(100% - 22px);
+
+    padding-top: 30px;
+  }
+
+  .pd-checkout-form,
+  .pd-checkout-summary {
+    padding: 19px;
+
+    border-radius: 20px;
+  }
+
+  .pd-checkout-fields,
+  .pd-fulfillment-options,
+  .pd-online-payment {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-checkout-field--full {
+    grid-column: auto;
+  }
+
+  .pd-online-payment__qr {
+    max-width: 310px;
+
+    margin: 0 auto;
+  }
+}
