@@ -7,4 +7,22 @@ Bao gồm:
 - Search
 - Filter
 */
-export default function useCake() {}
+import { useEffect, useState } from "react";
+import { getAllCake } from "../services/cakeService";
+
+const useCake = () => {
+  const [cakes, setCakes] = useState([]);
+
+  useEffect(() => {
+    loadCake();
+  }, []);
+
+  const loadCake = async () => {
+    const res = await getAllCake();
+    setCakes(res.data);
+  };
+
+  return { cakes, loadCake };
+};
+
+export default useCake;

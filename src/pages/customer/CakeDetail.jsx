@@ -7,3 +7,8 @@ Hiển thị:
 - Giá
 - Add Cart
 */
+function CakeDetail() {
+    return <div>Cake Detail</div>;
+}
+
+export default CakeDetail;

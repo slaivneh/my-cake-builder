@@ -1,0 +1,818 @@
+/* ======================================================
+   AUTHENTICATION PAGE
+   Login / Register
+   ====================================================== */
+
+:root {
+  --auth-pink-50: #fff9fb;
+  --auth-pink-100: #fff0f4;
+  --auth-pink-200: #f9d7df;
+  --auth-pink-300: #f1b7c5;
+  --auth-pink-400: #ed8fa7;
+  --auth-pink-500: #ec6889;
+  --auth-pink-600: #dc4e73;
+
+  --auth-brown-500: #8a6862;
+  --auth-brown-600: #6d4a45;
+  --auth-brown-700: #583530;
+
+  --auth-error: #c23d59;
+  --auth-success: #337359;
+
+  --auth-card-background: rgba(255, 252, 252, 0.96);
+  --auth-border: rgba(231, 154, 170, 0.72);
+}
+
+/* Chỉ áp dụng box-sizing cho khu vực Auth */
+
+.auth-layout,
+.auth-layout *,
+.auth-layout *::before,
+.auth-layout *::after {
+  box-sizing: border-box;
+}
+
+/* ======================================================
+   AUTH LAYOUT
+   ====================================================== */
+
+.auth-layout {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  display: grid;
+  place-items: center;
+
+  padding: 38px 18px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  background:
+    #fff8fa
+    url("../images/auth/background.jpg")
+    center center / cover fixed no-repeat;
+}
+
+/* Lớp phủ làm background nhẹ hơn */
+
+.auth-layout__overlay {
+  position: absolute;
+  z-index: -1;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(255, 252, 252, 0.2),
+      rgba(255, 249, 250, 0.45)
+    );
+}
+
+/* Nơi AuthLayout hiển thị Outlet */
+
+.auth-layout__content {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+
+  display: grid;
+  place-items: center;
+}
+
+/* ======================================================
+   AUTH CARD
+   ====================================================== */
+
+.auth-card {
+  position: relative;
+
+  width: min(500px, 100%);
+
+  padding: 24px 42px 34px;
+
+  color: var(--auth-brown-700);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.97),
+      var(--auth-card-background)
+    );
+
+  border: 1px solid var(--auth-border);
+  border-radius: 36px;
+
+  box-shadow:
+    0 28px 65px rgba(91, 47, 55, 0.17),
+    0 5px 14px rgba(224, 95, 126, 0.08);
+}
+
+/* Register rộng hơn Login */
+
+.auth-card--register {
+  width: min(720px, 100%);
+}
+
+/* Viền nét đứt bên trong */
+
+.auth-card__inner-border {
+  position: absolute;
+
+  inset: 8px;
+
+  pointer-events: none;
+
+  border: 1px dashed rgba(232, 145, 164, 0.52);
+  border-radius: 29px;
+}
+
+/* Đảm bảo toàn bộ nội dung nằm trên viền trang trí */
+
+.auth-card > *:not(.auth-card__inner-border) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ======================================================
+   LOGO
+   ====================================================== */
+
+/*
+  File logo của bạn là ảnh vuông 800x800.
+
+  Phần hình logo thật chỉ nằm ở vùng giữa ảnh.
+  Khung bên dưới sẽ cắt khoảng trắng thừa nhưng vẫn giữ
+  đầy đủ nơ, bảng tên và đường trang trí phía dưới.
+*/
+
+.auth-logo-frame {
+  position: relative;
+
+  width: min(370px, 92%);
+
+  /*
+    Tạo khung ngang phù hợp với phần hình thật của logo.
+    Không dùng height cố định để tránh cắt mất chiếc nơ.
+  */
+  aspect-ratio: 720 / 460;
+
+  margin: 0 auto 4px;
+
+  overflow: hidden;
+
+  border: 0;
+  background: transparent;
+}
+
+.auth-logo-frame img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  /*
+    cover chỉ cắt khoảng trắng trên và dưới của ảnh vuông.
+    Toàn bộ phần hình logo vẫn nằm trong khung.
+  */
+  object-fit: cover;
+  object-position: center center;
+
+  border: 0;
+
+  mix-blend-mode: multiply;
+}
+
+/* ======================================================
+   HEADING
+   ====================================================== */
+
+.auth-heading {
+  position: relative;
+
+  height: auto;
+
+  margin: 0 0 22px;
+
+  overflow: visible;
+
+  text-align: center;
+}
+
+.auth-heading h1 {
+  margin: 2px 0 10px;
+
+  color: var(--auth-brown-700);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(34px, 5vw, 47px);
+  font-weight: 500;
+
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Nội dung mô tả dưới tiêu đề */
+
+.auth-heading > p:not(.auth-eyebrow) {
+  max-width: 520px;
+
+  margin: 0 auto;
+
+  color: var(--auth-brown-500);
+
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  font-size: 15px;
+  font-style: normal;
+
+  line-height: 1.65;
+}
+
+/*
+  Dòng chữ nghiêng màu hồng.
+
+  line-height và padding giúp dấu tiếng Việt
+  không bị cắt hoặc chồng lên dòng phía trên.
+*/
+
+.auth-heading .auth-eyebrow {
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 3px;
+  padding: 4px 0 5px;
+
+  overflow: visible;
+
+  color: var(--auth-pink-600);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 400;
+
+  line-height: 1.55;
+  letter-spacing: 0;
+
+  white-space: normal;
+
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+}
+
+/* ======================================================
+   FORM
+   ====================================================== */
+
+.auth-form {
+  position: relative;
+
+  display: grid;
+
+  gap: 16px;
+}
+
+/* Hai cột ở trang Register */
+
+.auth-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+/* Mỗi field */
+
+.auth-field {
+  display: grid;
+
+  gap: 7px;
+}
+
+.auth-field label {
+  margin: 0;
+
+  color: var(--auth-brown-600);
+
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  font-size: 13px;
+  font-weight: 650;
+
+  line-height: 1.4;
+}
+
+/* Chữ không bắt buộc */
+
+.auth-optional {
+  color: #a88d88;
+
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* ======================================================
+   INPUT
+   ====================================================== */
+
+.auth-input {
+  width: 100%;
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 14px;
+
+  color: #a06f6b;
+
+  background: rgba(255, 255, 255, 0.85);
+
+  border: 1px solid #edbdc8;
+  border-radius: 14px;
+
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+.auth-input:hover {
+  border-color: #e9a8b7;
+}
+
+.auth-input:focus-within {
+  background: #ffffff;
+
+  border-color: var(--auth-pink-500);
+
+  box-shadow:
+    0 0 0 4px rgba(236, 104, 137, 0.12);
+}
+
+/* Input có lỗi */
+
+.auth-input--error {
+  border-color: var(--auth-error);
+
+  box-shadow:
+    0 0 0 3px rgba(194, 61, 89, 0.08);
+}
+
+/* Icon bên trái input */
+
+.auth-input__icon {
+  flex: 0 0 auto;
+
+  width: 18px;
+
+  color: #ad7479;
+
+  font-size: 16px;
+
+  text-align: center;
+}
+
+/* Thẻ input thật */
+
+.auth-input input {
+  width: 100%;
+  min-width: 0;
+
+  margin: 0;
+  padding: 14px 0;
+
+  color: var(--auth-brown-700);
+
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  font-size: 15px;
+
+  background: transparent;
+
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+}
+
+.auth-input input::placeholder {
+  color: #bea7a3;
+
+  opacity: 1;
+}
+
+/*
+  Bootstrap đôi khi thêm background hoặc box-shadow
+  vào input, nên ghi đè tại đây.
+*/
+
+.auth-input input:focus {
+  background: transparent;
+
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+}
+
+/* ======================================================
+   SHOW / HIDE PASSWORD
+   ====================================================== */
+
+.auth-eye-button {
+  flex: 0 0 auto;
+
+  margin: 0;
+  padding: 7px 8px;
+
+  color: #a86e75;
+
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  background: transparent;
+
+  border: 0;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  transition:
+    color 150ms ease,
+    background-color 150ms ease;
+}
+
+.auth-eye-button:hover {
+  color: var(--auth-pink-600);
+
+  background: var(--auth-pink-100);
+}
+
+.auth-eye-button:focus-visible {
+  outline: 2px solid var(--auth-pink-400);
+  outline-offset: 2px;
+}
+
+/* ======================================================
+   VALIDATION ERROR
+   ====================================================== */
+
+.auth-error-text {
+  display: block;
+
+  margin: 0;
+
+  color: var(--auth-error);
+
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  font-size: 12px;
+
+  line-height: 1.45;
+}
+
+/* ======================================================
+   REMEMBER LOGIN
+   ====================================================== */
+
+.auth-checkbox {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin: 0;
+
+  color: #765751;
+
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+
+  cursor: pointer;
+}
+
+.auth-checkbox input {
+  width: 17px;
+  height: 17px;
+
+  flex: 0 0 auto;
+
+  margin: 0;
+
+  accent-color: var(--auth-pink-500);
+
+  cursor: pointer;
+}
+
+/* ======================================================
+   SUBMIT BUTTON
+   ====================================================== */
+
+.auth-submit {
+  width: 100%;
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 2px 0 0;
+  padding: 0 24px;
+
+  color: #ffffff;
+
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f17e9a,
+      #e94d76
+    );
+
+  border: 0;
+  border-radius: 999px;
+
+  box-shadow:
+    0 11px 23px rgba(219, 70, 107, 0.23);
+
+  cursor: pointer;
+
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    opacity 150ms ease;
+}
+
+.auth-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 28px rgba(219, 70, 107, 0.29);
+}
+
+.auth-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.auth-submit:focus-visible {
+  outline: 3px solid rgba(236, 104, 137, 0.3);
+  outline-offset: 3px;
+}
+
+.auth-submit:disabled {
+  opacity: 0.65;
+
+  cursor: wait;
+}
+
+/* ======================================================
+   LOGIN / REGISTER LINK
+   ====================================================== */
+
+.auth-switch {
+  position: relative;
+
+  margin: 22px 0 0;
+
+  color: #755550;
+
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+.auth-switch a {
+  color: var(--auth-pink-600);
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+/* ======================================================
+   ALERT
+   ====================================================== */
+
+.auth-alert {
+  position: relative;
+
+  margin: 0 0 16px;
+  padding: 12px 14px;
+
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  border-radius: 12px;
+}
+
+.auth-alert--error {
+  color: #982d45;
+
+  background: #fff0f4;
+
+  border: 1px solid #f1bac7;
+}
+
+.auth-alert--success {
+  color: #2c684d;
+
+  background: #eefbf5;
+
+  border: 1px solid #bde1d0;
+}
+
+/* ======================================================
+   LOADING
+   ====================================================== */
+
+.route-loading {
+  width: 100%;
+  min-height: 100vh;
+
+  display: grid;
+  place-items: center;
+
+  color: var(--auth-brown-700);
+
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  background: #fff8fa;
+}
+
+/* ======================================================
+   TABLET
+   ====================================================== */
+
+@media (max-width: 760px) {
+  .auth-layout {
+    padding: 26px 12px;
+
+    background:
+      linear-gradient(
+        rgba(255, 250, 251, 0.35),
+        rgba(255, 250, 251, 0.4)
+      ),
+      url("../images/auth/background_nocake.jpg")
+      center center / cover no-repeat;
+  }
+
+  .auth-card,
+  .auth-card--register {
+    width: min(540px, 100%);
+
+    padding: 22px 21px 30px;
+
+    border-radius: 29px;
+  }
+
+  .auth-card__inner-border {
+    inset: 7px;
+
+    border-radius: 23px;
+  }
+
+  .auth-logo-frame {
+    width: min(335px, 94%);
+
+    margin-bottom: 4px;
+  }
+
+  .auth-heading h1 {
+    font-size: 36px;
+  }
+
+  .auth-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ======================================================
+   MOBILE
+   ====================================================== */
+
+@media (max-width: 460px) {
+  .auth-layout {
+    padding: 18px 9px;
+  }
+
+  .auth-card,
+  .auth-card--register {
+    padding: 19px 17px 27px;
+
+    border-radius: 25px;
+  }
+
+  .auth-card__inner-border {
+    inset: 6px;
+
+    border-radius: 20px;
+  }
+
+  .auth-logo-frame {
+    width: min(305px, 96%);
+  }
+
+  .auth-heading {
+    margin-bottom: 19px;
+  }
+
+  .auth-heading h1 {
+    margin-top: 0;
+
+    font-size: 31px;
+
+    line-height: 1.25;
+  }
+
+  .auth-heading .auth-eyebrow {
+    padding-top: 5px;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+  }
+
+  .auth-heading > p:not(.auth-eyebrow) {
+    font-size: 13px;
+  }
+
+  .auth-input {
+    min-height: 49px;
+
+    padding-inline: 12px;
+  }
+
+  .auth-input input {
+    font-size: 14px;
+  }
+}

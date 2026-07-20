@@ -1,21 +1,36 @@
-/*
-API liên quan đến bánh
-
-- Lấy danh sách bánh
-- Chi tiết bánh
-- Search
-- Filter
-*/
 import axiosClient from "./axiosClient";
 
-const cakeService = {
-  getAll() {},
+/*
+  Lấy tất cả bánh từ JSON Server.
 
-  getById(id) {},
+  Home sẽ tự chọn:
+  - 6 bánh bán chạy
+  - 6 bánh thuộc danh mục
+*/
+export const getAllCakes = async () => {
+  const cakes = await axiosClient.get("/cakes");
 
-  search(keyword) {},
-
-  filter(filters) {},
+  return Array.isArray(cakes) ? cakes : [];
 };
 
-export default cakeService;
+/*
+  Lấy chi tiết bánh theo id.
+*/
+export const getCakeById = async (id) => {
+  return axiosClient.get(`/cakes/${id}`);
+};
+
+/*
+  Tìm kiếm bánh.
+*/
+export const searchCakes = async (keyword) => {
+  const cakes = await axiosClient.get("/cakes", {
+    params: {
+      q: keyword.trim(),
+    },
+  });
+
+  return Array.isArray(cakes) ? cakes : [];
+};
+
+export const getCakes = getAllCakes;

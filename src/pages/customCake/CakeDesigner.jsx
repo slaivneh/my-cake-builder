@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
+import AuthContext from '../../contexts/AuthContext';
 import CakeOptions from '../../components/customCake/CakeOptions';
 import CustomizationSummary from '../../components/customCake/CustomizationSummary';
 import PriceSummary from '../../components/customCake/PriceSummary';
 import CakeGallery from '../../components/customCake/CakeGallery';
-import cartService from '../../services/cartService';
+import { addCart } from "../../services/cartService";
 import '../../components/customCake/CustomCake.css';
 
 const CakeDesigner = () => {
@@ -26,7 +26,7 @@ const CakeDesigner = () => {
 
   const handleAddToCart = async () => {
     // Lấy userId từ AuthContext, nếu chưa có (do Thành viên 3 chưa làm xong) thì dùng tạm ID 4
-    const userId = currentUser?.id || 4; 
+    const userId = currentUser?.id || 4;
 
     // Nếu sau này bắt buộc đăng nhập mới cho mua, mở comment đoạn dưới ra:
     // if (!userId) {
@@ -54,8 +54,8 @@ const CakeDesigner = () => {
         note: `Giao lúc: ${selections.deliveryTime}, ngày ${selections.deliveryDate}`
       };
 
-      await cartService.addItem(cartItem);
-      
+      await addCart(cartItem);
+
       alert('Đã thêm vào giỏ hàng thành công!');
     } catch (error) {
       console.error(error);

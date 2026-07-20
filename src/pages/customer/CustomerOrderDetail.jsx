@@ -59,8 +59,8 @@ const CustomerOrderDetail = () => {
                     <li><strong>Size:</strong> {item.details.size}</li>
                     <li><strong>Số tầng:</strong> {item.details.layer}</li>
                     <li><strong>Cốt bánh:</strong> {item.details.sponge}</li>
-                    <li><strong>Màu sắc:</strong> 
-                      <span className="color-swatch" style={{backgroundColor: item.details.color}}></span> 
+                    <li><strong>Màu sắc:</strong>
+                      <span className="color-swatch" style={{ backgroundColor: item.details.color }}></span>
                       ({item.details.color})
                     </li>
                     {item.details.text && <li><strong>Nội dung:</strong> {item.details.text}</li>}

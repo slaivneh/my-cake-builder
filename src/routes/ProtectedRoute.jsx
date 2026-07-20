@@ -1,14 +1,33 @@
-/*
-Kiểm tra quyền truy cập
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
-Customer
+import useAuth from "../hooks/useAuth";
 
-Staff
+function ProtectedRoute({ role }) {
+  const location = useLocation();
+  const { user } = useAuth();
 
-Owner
-*/
-import { Navigate } from "react-router-dom";
+  if (!user) {
+    return (
+      <Navigate
+        to="/login"
+        state={{
+          from: `${location.pathname}${location.search}`,
+        }}
+        replace
+      />
+    );
+  }
 
-export default function ProtectedRoute({ children }) {
-  return children;
+  // Cho phép nhiều role
+  if (role) {
+    const allowedRoles = Array.isArray(role) ? role : [role];
+
+    if (!allowedRoles.includes(user.role)) {
+      return <Navigate to="/" replace />;
+    }
+  }
+
+  return <Outlet />;
 }
+
+export default ProtectedRoute;

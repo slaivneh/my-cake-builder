@@ -53,7 +53,7 @@ const NotificationBell = () => {
       if (unreadNotifs.length > 0) {
         // Update UI immediately
         setNotifications(prev => prev.map(n => ({ ...n, isRead: true })));
-        
+
         // Sync with database
         Promise.all(unreadNotifs.map(n => notificationService.markAsRead(n.id)))
           .catch(err => console.error("Error marking all as read:", err));

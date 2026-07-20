@@ -7,4 +7,11 @@ Bao gồm:
 - Xóa sản phẩm
 - Cập nhật số lượng
 */
-export default function useCart() {}
+import { useContext } from "react";
+import CartContext from "../contexts/CartContext";
+
+const useCart = () => {
+  return useContext(CartContext);
+};
+
+export default useCart;
