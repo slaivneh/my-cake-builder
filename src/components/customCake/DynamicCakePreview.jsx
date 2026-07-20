@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DynamicCakePreview = ({ selections }) => {
+const DynamicCakePreview = ({ selections, svgOnly = false }) => {
   const { layer, color, toppings, size } = selections;
   
   const numLayers = parseInt(layer, 10) || 1;
@@ -30,9 +30,9 @@ const DynamicCakePreview = ({ selections }) => {
   const topLayer = layers[layers.length - 1];
   const hasTopping = (toppingId) => (toppings || []).includes(toppingId);
 
-  return (
-    <div className="dynamic-cake-preview" style={{ width: '100%', maxWidth: '350px', margin: '0 auto', padding: '20px' }}>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%" style={{ filter: 'drop-shadow(0 15px 25px rgba(0,0,0,0.15))' }}>
+  const svgContent = (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%" style={!svgOnly ? { filter: 'drop-shadow(0 15px 25px rgba(0,0,0,0.15))' } : {}}>
+
         <defs>
           <linearGradient id="standGrad" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="#fdfdfd" />
@@ -214,6 +214,15 @@ const DynamicCakePreview = ({ selections }) => {
           )}
         </g>
       </svg>
+  );
+
+  if (svgOnly) {
+    return svgContent;
+  }
+
+  return (
+    <div className="dynamic-cake-preview" style={{ width: '100%', maxWidth: '350px', margin: '0 auto', padding: '20px' }}>
+      {svgContent}
     </div>
   );
 };

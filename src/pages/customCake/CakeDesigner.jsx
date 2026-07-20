@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../contexts/AuthContext';
 import CakeOptions from '../../components/customCake/CakeOptions';
 import CustomizationSummary from '../../components/customCake/CustomizationSummary';
@@ -6,11 +7,13 @@ import PriceSummary from '../../components/customCake/PriceSummary';
 import CakeGallery from '../../components/customCake/CakeGallery';
 import { readCart, writeCart } from "../../utils/cartStorage";
 import calculatePrice from "../../utils/priceCalculator";
+import { generateCakeSvgString } from "../../utils/generateCakeSvg";
 import '../../components/customCake/CustomCake.css';
 
 const CakeDesigner = () => {
   const { user } = useContext(AuthContext);
   const currentUser = user;
+  const navigate = useNavigate();
 
   const [selections, setSelections] = useState({
     size: 'small',
@@ -37,15 +40,18 @@ const CakeDesigner = () => {
       const itemKey = `custom-${Date.now()}`;
       const price = calculatePrice(selections);
 
-      const CUSTOM_CAKE_PLACEHOLDER = "data:image/svg+xml;charset=utf-8," + encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='#fff0f4'/><text x='50%' y='45%' font-family='sans-serif' font-size='60' text-anchor='middle' fill='#e95077'>🎨</text><text x='50%' y='60%' font-family='sans-serif' font-size='24' font-weight='bold' text-anchor='middle' fill='#e95077'>Thiết Kế Riêng</text></svg>");
+      // Create a data URI from the pure SVG string generator
+      const svgString = generateCakeSvgString(selections);
+      const CUSTOM_CAKE_SVG = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgString);
 
       const cartItem = {
         itemKey,
         cakeId: 'custom',
         name: 'Bánh Thiết Kế Custom',
         category: 'Bánh thiết kế riêng',
-        image: selections.referenceImage || CUSTOM_CAKE_PLACEHOLDER,
+        image: selections.referenceImage || CUSTOM_CAKE_SVG,
         optionId: 'custom',
+
         optionLabel: 'Thiết kế riêng',
         price: price,
         quantity: 1,
@@ -68,7 +74,8 @@ const CakeDesigner = () => {
       const updatedCart = [...currentCart, cartItem];
       writeCart(updatedCart);
 
-      alert('Đã thêm vào giỏ hàng thành công!');
+      alert('Đã thêm vào giỏ hàng thành công! Đang chuyển đến giỏ hàng...');
+      navigate('/cart');
     } catch (error) {
       console.error(error);
       alert('Có lỗi xảy ra khi thêm vào giỏ hàng.');
