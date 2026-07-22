@@ -4,8 +4,8 @@ import { ORDER_STATUS } from '../../utils/constants';
 
 const STATUS_STEPS = [
   { key: 'Pending', label: 'Chờ Xử Lý' },
+  { key: 'Confirmed', label: 'Đã Xác Nhận' },
   { key: 'Preparing', label: 'Chuẩn Bị' },
-  { key: 'Baking', label: 'Đang Nướng' },
   { key: 'Ready', label: 'Đã Xong' },
   { key: 'Shipping', label: 'Đang Giao' },
   { key: 'Completed', label: 'Hoàn Thành' }

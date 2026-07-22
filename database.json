@@ -1820,6 +1820,122 @@
           "time": "2026-07-20T07:39:57.554Z"
         }
       ]
+    },
+    {
+      "orderCode": "PD20260722RXYWX",
+      "customerId": 3,
+      "userId": 3,
+      "purchaserId": 3,
+      "purchaserName": "Phạm Thị Hương",
+      "purchaserEmail": "customer1@gmail.com",
+      "customerName": "abc",
+      "recipientName": "abc",
+      "phone": "0374559719",
+      "recipientPhone": "0374559719",
+      "email": "customer1@gmail.com",
+      "contactEmail": "customer1@gmail.com",
+      "fulfillmentMethod": "delivery",
+      "deliveryAddress": "abc",
+      "pickupAddress": "",
+      "address": "abc",
+      "scheduledDate": "2026-07-24",
+      "deliveryDate": "2026-07-24",
+      "scheduledTime": "10:00-12:00",
+      "deliveryTime": "10:00-12:00",
+      "note": "ádfghj",
+      "paymentMethod": "bank_transfer",
+      "paymentCode": "PD20260722RXYWX",
+      "paymentReference": "PD20260722RXYWX",
+      "paymentStatus": "pending_verification",
+      "status": "Ready",
+      "items": [
+        {
+          "cakeId": "custom",
+          "name": "Bánh Thiết Kế Custom",
+          "image": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20400%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22standGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%220%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23fdfdfd%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23e0e0e0%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22cylinderShade%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0.15)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2220%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2280%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22dripGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%220%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%233e1d04%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232a1201%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%3C%2Fdefs%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22365%22%20rx%3D%22130%22%20ry%3D%2225%22%20fill%3D%22rgba(0%2C0%2C0%2C0.1)%22%20%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%20160%20360%20Q%20160%20375%20180%20375%20L%20220%20375%20Q%20240%20375%20240%20360%20Z%22%20fill%3D%22%23d0d0d0%22%20%2F%3E%0A%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22350%22%20rx%3D%22140%22%20ry%3D%2230%22%20fill%3D%22url(%23standGrad)%22%20%2F%3E%0A%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22345%22%20rx%3D%22130%22%20ry%3D%2225%22%20fill%3D%22%23f5f5f5%22%20%2F%3E%3Cg%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22320%22%20rx%3D%22120%22%20ry%3D%2242%22%20fill%3D%22%2398fb98%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2280%22%20y%3D%22260%22%20width%3D%22240%22%20height%3D%2260%22%20fill%3D%22%2398fb98%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2280%22%20y%3D%22260%22%20width%3D%22240%22%20height%3D%2260%22%20fill%3D%22url(%23cylinderShade)%22%20%2F%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%22120%22%20ry%3D%2242%22%20fill%3D%22%2398fb98%22%20%2F%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%22120%22%20ry%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2Fg%3E%3Cg%20transform%3D%22translate(0%2C%20250)%22%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22160%22%20cy%3D%225%22%20r%3D%2212%22%20fill%3D%22%23ff4d4d%22%20%2F%3E%3Cpath%20d%3D%22M%20155%20-5%20L%20160%20-10%20L%20165%20-5%20Z%22%20fill%3D%22%234caf50%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22175%22%20cy%3D%22-5%22%20r%3D%228%22%20fill%3D%22%234a5a9c%22%20%2F%3E%3Ccircle%20cx%3D%22173%22%20cy%3D%22-7%22%20r%3D%222%22%20fill%3D%22%237b8ec7%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22195%22%20cy%3D%22-10%22%20r%3D%2213%22%20fill%3D%22%23ff4d4d%22%20%2F%3E%3Cpath%20d%3D%22M%20190%20-20%20L%20195%20-25%20L%20200%20-20%20Z%22%20fill%3D%22%234caf50%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22215%22%20cy%3D%22-8%22%20r%3D%227%22%20fill%3D%22%234a5a9c%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22230%22%20cy%3D%222%22%20r%3D%2211%22%20fill%3D%22%23ff4d4d%22%20%2F%3E%3Cpath%20d%3D%22M%20225%20-8%20L%20230%20-13%20L%20235%20-8%20Z%22%20fill%3D%22%234caf50%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22215%22%20cy%3D%2212%22%20r%3D%229%22%20fill%3D%22%234a5a9c%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22185%22%20cy%3D%2215%22%20r%3D%2214%22%20fill%3D%22%23ff4d4d%22%20%2F%3E%3Cpath%20d%3D%22M%20180%205%20L%20185%200%20L%20190%205%20Z%22%20fill%3D%22%234caf50%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22165%22%20cy%3D%2218%22%20r%3D%227%22%20fill%3D%22%234a5a9c%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22145%22%20cy%3D%2212%22%20r%3D%2210%22%20fill%3D%22%23ff4d4d%22%20%2F%3E%3Cpath%20d%3D%22M%20140%202%20L%20145%20-3%20L%20150%202%20Z%22%20fill%3D%22%234caf50%22%20%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+          "category": "Bánh thiết kế riêng",
+          "optionId": "custom",
+          "optionLabel": "Thiết kế riêng",
+          "price": 390000,
+          "quantity": 1,
+          "lineTotal": 390000
+        }
+      ],
+      "subtotal": 390000,
+      "shippingFee": 0,
+      "total": 390000,
+      "totalAmount": 390000,
+      "createdAt": "2026-07-22T15:32:00.251Z",
+      "updatedAt": "2026-07-22T15:32:45.621Z",
+      "id": 14,
+      "statusHistory": [
+        {
+          "status": "Confirmed",
+          "time": "2026-07-22T15:32:38.996Z"
+        },
+        {
+          "status": "Preparing",
+          "time": "2026-07-22T15:32:43.161Z"
+        },
+        {
+          "status": "Ready",
+          "time": "2026-07-22T15:32:45.620Z"
+        }
+      ]
+    },
+    {
+      "orderCode": "PD20260722FJ94H",
+      "customerId": 3,
+      "userId": 3,
+      "purchaserId": 3,
+      "purchaserName": "Phạm Thị Hương",
+      "purchaserEmail": "customer1@gmail.com",
+      "customerName": "abc",
+      "recipientName": "abc",
+      "phone": "0374559719",
+      "recipientPhone": "0374559719",
+      "email": "customer1@gmail.com",
+      "contactEmail": "customer1@gmail.com",
+      "fulfillmentMethod": "pickup",
+      "deliveryAddress": "",
+      "pickupAddress": "Địa chỉ cửa hàng Petite Douceur",
+      "address": "Địa chỉ cửa hàng Petite Douceur",
+      "scheduledDate": "2026-07-24",
+      "deliveryDate": "2026-07-24",
+      "scheduledTime": "10:00-12:00",
+      "deliveryTime": "10:00-12:00",
+      "note": "abcx",
+      "paymentMethod": "bank_transfer",
+      "paymentCode": "PD20260722FJ94H",
+      "paymentReference": "PD20260722FJ94H",
+      "paymentStatus": "pending_verification",
+      "status": "Confirmed",
+      "items": [
+        {
+          "cakeId": "custom",
+          "name": "Bánh Thiết Kế Custom",
+          "image": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20400%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22standGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%220%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23fdfdfd%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23e0e0e0%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22cylinderShade%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0.15)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2220%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2280%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0)%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22rgba(0%2C0%2C0%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22dripGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%220%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%233e1d04%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232a1201%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%3C%2Fdefs%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22365%22%20rx%3D%22130%22%20ry%3D%2225%22%20fill%3D%22rgba(0%2C0%2C0%2C0.1)%22%20%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%20160%20360%20Q%20160%20375%20180%20375%20L%20220%20375%20Q%20240%20375%20240%20360%20Z%22%20fill%3D%22%23d0d0d0%22%20%2F%3E%0A%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22350%22%20rx%3D%22140%22%20ry%3D%2230%22%20fill%3D%22url(%23standGrad)%22%20%2F%3E%0A%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22345%22%20rx%3D%22130%22%20ry%3D%2225%22%20fill%3D%22%23f5f5f5%22%20%2F%3E%3Cg%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22320%22%20rx%3D%22120%22%20ry%3D%2242%22%20fill%3D%22%2398fb98%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2280%22%20y%3D%22260%22%20width%3D%22240%22%20height%3D%2260%22%20fill%3D%22%2398fb98%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2280%22%20y%3D%22260%22%20width%3D%22240%22%20height%3D%2260%22%20fill%3D%22url(%23cylinderShade)%22%20%2F%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%22120%22%20ry%3D%2242%22%20fill%3D%22%2398fb98%22%20%2F%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%22120%22%20ry%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2Fg%3E%3Cg%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22260%22%20rx%3D%22100%22%20ry%3D%2235%22%20fill%3D%22%2398fb98%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22100%22%20y%3D%22200%22%20width%3D%22200%22%20height%3D%2260%22%20fill%3D%22%2398fb98%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22100%22%20y%3D%22200%22%20width%3D%22200%22%20height%3D%2260%22%20fill%3D%22url(%23cylinderShade)%22%20%2F%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22200%22%20rx%3D%22100%22%20ry%3D%2235%22%20fill%3D%22%2398fb98%22%20%2F%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22200%22%20rx%3D%22100%22%20ry%3D%2235%22%20fill%3D%22rgba(255%2C255%2C255%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2Fg%3E%3Cg%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22200%22%20rx%3D%2280%22%20ry%3D%2228%22%20fill%3D%22%2398fb98%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22120%22%20y%3D%22140%22%20width%3D%22160%22%20height%3D%2260%22%20fill%3D%22%2398fb98%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22120%22%20y%3D%22140%22%20width%3D%22160%22%20height%3D%2260%22%20fill%3D%22url(%23cylinderShade)%22%20%2F%3E%3Cpath%20d%3D%22M%20120%20140%20Q%20122%20155%20125%20165%20C%20128%20165%2C%20129.5%20215%2C%20132.5%20215%20C%20135.5%20215%2C%20137%20165%2C%20140%20165%20C%20144%20165%2C%20146%20185%2C%20150%20185%20C%20154%20185%2C%20156%20165%2C%20160%20165%20C%20164%20165%2C%20166%20235%2C%20170%20235%20C%20174%20235%2C%20176%20165%2C%20180%20165%20C%20184%20165%2C%20186%20195%2C%20190%20195%20C%20194%20195%2C%20196%20165%2C%20200%20165%20C%20204%20165%2C%20206%20225%2C%20210%20225%20C%20214%20225%2C%20216%20165%2C%20220%20165%20C%20224%20165%2C%20226%20180%2C%20230%20180%20C%20234%20180%2C%20236%20165%2C%20240%20165%20C%20244%20165%2C%20246%20210%2C%20250%20210%20C%20254%20210%2C%20256%20165%2C%20260%20165%20C%20263%20165%2C%20264.5%20190%2C%20267.5%20190%20C%20270.5%20190%2C%20272%20165%2C%20275%20165%20Q%20278%20155%20280%20140%20Z%22%20fill%3D%22url(%23dripGrad)%22%20%2F%3E%3Cellipse%20cx%3D%22200%22%20cy%3D%22140%22%20rx%3D%2280%22%20ry%3D%2228%22%20fill%3D%22%2398fb98%22%20%2F%3E%0A%20%20%20%20%20%20%3Cellipse%20cx%3D%22200%22%20cy%3D%22140%22%20rx%3D%2280%22%20ry%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.25)%22%20%2F%3E%0A%20%20%20%20%3C%2Fg%3E%3Cg%20transform%3D%22translate(0%2C%20130)%22%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22160%22%20cy%3D%225%22%20r%3D%2212%22%20fill%3D%22%23ff4d4d%22%20%2F%3E%3Cpath%20d%3D%22M%20155%20-5%20L%20160%20-10%20L%20165%20-5%20Z%22%20fill%3D%22%234caf50%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22175%22%20cy%3D%22-5%22%20r%3D%228%22%20fill%3D%22%234a5a9c%22%20%2F%3E%3Ccircle%20cx%3D%22173%22%20cy%3D%22-7%22%20r%3D%222%22%20fill%3D%22%237b8ec7%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22195%22%20cy%3D%22-10%22%20r%3D%2213%22%20fill%3D%22%23ff4d4d%22%20%2F%3E%3Cpath%20d%3D%22M%20190%20-20%20L%20195%20-25%20L%20200%20-20%20Z%22%20fill%3D%22%234caf50%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22215%22%20cy%3D%22-8%22%20r%3D%227%22%20fill%3D%22%234a5a9c%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22230%22%20cy%3D%222%22%20r%3D%2211%22%20fill%3D%22%23ff4d4d%22%20%2F%3E%3Cpath%20d%3D%22M%20225%20-8%20L%20230%20-13%20L%20235%20-8%20Z%22%20fill%3D%22%234caf50%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22215%22%20cy%3D%2212%22%20r%3D%229%22%20fill%3D%22%234a5a9c%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22185%22%20cy%3D%2215%22%20r%3D%2214%22%20fill%3D%22%23ff4d4d%22%20%2F%3E%3Cpath%20d%3D%22M%20180%205%20L%20185%200%20L%20190%205%20Z%22%20fill%3D%22%234caf50%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22165%22%20cy%3D%2218%22%20r%3D%227%22%20fill%3D%22%234a5a9c%22%20%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22145%22%20cy%3D%2212%22%20r%3D%2210%22%20fill%3D%22%23ff4d4d%22%20%2F%3E%3Cpath%20d%3D%22M%20140%202%20L%20145%20-3%20L%20150%202%20Z%22%20fill%3D%22%234caf50%22%20%2F%3E%0A%20%20%20%20%20%20%3Cg%20transform%3D%22translate(150%2C%2015)%20rotate(-25)%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%220%22%20rx%3D%2216%22%20ry%3D%228%22%20fill%3D%22%23ffb3ba%22%20%2F%3E%3Crect%20x%3D%22-15%22%20y%3D%22-2%22%20width%3D%2230%22%20height%3D%224%22%20fill%3D%22%23fff%22%20rx%3D%222%22%20%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20transform%3D%22translate(180%2C%20-5)%20rotate(10)%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%220%22%20rx%3D%2216%22%20ry%3D%228%22%20fill%3D%22%23baffc9%22%20%2F%3E%3Crect%20x%3D%22-15%22%20y%3D%22-2%22%20width%3D%2230%22%20height%3D%224%22%20fill%3D%22%23fff%22%20rx%3D%222%22%20%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20transform%3D%22translate(220%2C%20-10)%20rotate(40)%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%220%22%20rx%3D%2216%22%20ry%3D%228%22%20fill%3D%22%23bae1ff%22%20%2F%3E%3Crect%20x%3D%22-15%22%20y%3D%22-2%22%20width%3D%2230%22%20height%3D%224%22%20fill%3D%22%23fff%22%20rx%3D%222%22%20%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20transform%3D%22translate(240%2C%2015)%20rotate(-15)%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%220%22%20rx%3D%2216%22%20ry%3D%228%22%20fill%3D%22%23ffffba%22%20%2F%3E%3Crect%20x%3D%22-15%22%20y%3D%22-2%22%20width%3D%2230%22%20height%3D%224%22%20fill%3D%22%23fff%22%20rx%3D%222%22%20%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Cg%20transform%3D%22translate(195%2C%2020)%20rotate(-45)%22%3E%3Cellipse%20cx%3D%220%22%20cy%3D%220%22%20rx%3D%2216%22%20ry%3D%228%22%20fill%3D%22%23e6e6fa%22%20%2F%3E%3Crect%20x%3D%22-15%22%20y%3D%22-2%22%20width%3D%2230%22%20height%3D%224%22%20fill%3D%22%23fff%22%20rx%3D%222%22%20%2F%3E%3C%2Fg%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22150%22%20y%3D%225%22%20width%3D%228%22%20height%3D%223%22%20fill%3D%22%23ff9a9e%22%20rx%3D%221.5%22%20transform%3D%22rotate(45%20150%205)%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22165%22%20y%3D%22-10%22%20width%3D%228%22%20height%3D%223%22%20fill%3D%22%23a1c4fd%22%20rx%3D%221.5%22%20transform%3D%22rotate(-30%20165%20-10)%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22185%22%20y%3D%22-20%22%20width%3D%228%22%20height%3D%223%22%20fill%3D%22%23fecfef%22%20rx%3D%221.5%22%20transform%3D%22rotate(15%20185%20-20)%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22205%22%20y%3D%22-25%22%20width%3D%228%22%20height%3D%223%22%20fill%3D%22%23ffecd2%22%20rx%3D%221.5%22%20transform%3D%22rotate(-60%20205%20-25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22225%22%20y%3D%22-15%22%20width%3D%228%22%20height%3D%223%22%20fill%3D%22%23ffd166%22%20rx%3D%221.5%22%20transform%3D%22rotate(75%20225%20-15)%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22245%22%20y%3D%22-5%22%20width%3D%228%22%20height%3D%223%22%20fill%3D%22%23ff9a9e%22%20rx%3D%221.5%22%20transform%3D%22rotate(-20%20245%20-5)%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22250%22%20y%3D%2210%22%20width%3D%228%22%20height%3D%223%22%20fill%3D%22%23a1c4fd%22%20rx%3D%221.5%22%20transform%3D%22rotate(50%20250%2010)%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22235%22%20y%3D%2225%22%20width%3D%228%22%20height%3D%223%22%20fill%3D%22%23fecfef%22%20rx%3D%221.5%22%20transform%3D%22rotate(85%20235%2025)%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22210%22%20y%3D%2220%22%20width%3D%228%22%20height%3D%223%22%20fill%3D%22%23ffecd2%22%20rx%3D%221.5%22%20transform%3D%22rotate(-15%20210%2020)%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22185%22%20y%3D%2215%22%20width%3D%228%22%20height%3D%223%22%20fill%3D%22%23ffd166%22%20rx%3D%221.5%22%20transform%3D%22rotate(35%20185%2015)%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22170%22%20y%3D%2225%22%20width%3D%228%22%20height%3D%223%22%20fill%3D%22%23ff9a9e%22%20rx%3D%221.5%22%20transform%3D%22rotate(-40%20170%2025)%22%20%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22155%22%20y%3D%2215%22%20width%3D%228%22%20height%3D%223%22%20fill%3D%22%23a1c4fd%22%20rx%3D%221.5%22%20transform%3D%22rotate(65%20155%2015)%22%20%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+          "category": "Bánh thiết kế riêng",
+          "optionId": "custom",
+          "optionLabel": "Thiết kế riêng",
+          "price": 550000,
+          "quantity": 1,
+          "lineTotal": 550000
+        }
+      ],
+      "subtotal": 550000,
+      "shippingFee": 0,
+      "total": 550000,
+      "totalAmount": 550000,
+      "createdAt": "2026-07-22T15:37:20.302Z",
+      "updatedAt": "2026-07-22T15:38:06.576Z",
+      "id": 15,
+      "statusHistory": [
+        {
+          "status": "Confirmed",
+          "time": "2026-07-22T15:38:06.576Z"
+        }
+      ]
     }
   ],
   "cakeShapes": [
@@ -2126,6 +2242,24 @@
       "name": "Nến pháo hoa",
       "extraPrice": 25000,
       "isAvailable": true
+    }
+  ],
+  "notifications": [
+    {
+      "isRead": true,
+      "createdAt": "2026-07-22T15:37:20.352Z",
+      "userId": 3,
+      "title": "Đặt hàng thành công",
+      "content": "Đơn hàng PD20260722FJ94H của bạn đã được ghi nhận. Vui lòng chờ xác nhận.",
+      "id": 1
+    },
+    {
+      "isRead": true,
+      "createdAt": "2026-07-22T15:38:06.630Z",
+      "userId": 3,
+      "title": "Cập nhật đơn hàng",
+      "content": "Đơn hàng PD20260722FJ94H của bạn đã chuyển sang trạng thái: Đã xác nhận.",
+      "id": 2
     }
   ]
 }

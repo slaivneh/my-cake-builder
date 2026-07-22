@@ -32,7 +32,7 @@ const STATUS_INFORMATION = {
     group: "processing",
   },
 
-  delivering: {
+  shipping: {
     label: "Đang giao hàng",
     group: "processing",
   },
