@@ -1,17 +1,22 @@
 import { useState } from "react";
+
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import useAuth from "../../hooks/useAuth";
+import NotificationBell from "../notification/NotificationBell";
 
 import logo from "../../assets/images/auth/logo.png";
-import "../../assets/styles/header.css";
+
 function Header() {
   const navigate = useNavigate();
+
   const { user, logout } = useAuth();
 
   const [menuOpen, setMenuOpen] = useState(false);
 
   const displayName = user?.fullName || user?.name || "Tài khoản";
+
+  const normalizedRole = String(user?.role || "").toLowerCase();
 
   const avatarText = displayName
     .trim()
@@ -25,10 +30,13 @@ function Header() {
     setMenuOpen(false);
   };
 
-  const handleLogout = () => {
-    logout();
-    closeMenu();
-    navigate("/home");
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } finally {
+      closeMenu();
+      navigate("/home");
+    }
   };
 
   const getNavClass = ({ isActive }) => {
@@ -40,7 +48,8 @@ function Header() {
   return (
     <header className="pd-header">
       <div className="pd-header__container">
-        {/* Menu bên trái */}
+        {/* Menu trái */}
+
         <nav
           className={`pd-header__nav ${menuOpen ? "pd-header__nav--open" : ""}`}
         >
@@ -61,7 +70,8 @@ function Header() {
           </NavLink>
         </nav>
 
-        {/* Logo chính giữa */}
+        {/* Logo giữa */}
+
         <Link
           to="/home"
           className="pd-header__logo"
@@ -71,13 +81,14 @@ function Header() {
           <img src={logo} alt="Petite Douceur" />
         </Link>
 
-        {/* Khu vực bên phải */}
+        {/* Khu vực phải */}
+
         <div
-          className={`pd-header__actions ${menuOpen ? "pd-header__actions--open" : ""
-            }`}
+          className={`pd-header__actions ${
+            menuOpen ? "pd-header__actions--open" : ""
+          }`}
         >
           {!user ? (
-            /* Chưa đăng nhập */
             <div className="pd-header__auth">
               <Link
                 to="/login"
@@ -96,9 +107,8 @@ function Header() {
               </Link>
             </div>
           ) : (
-            /* Đã đăng nhập */
             <div className="pd-header__logged-in">
-              {user.role === "customer" && (
+              {normalizedRole === "customer" && (
                 <div className="pd-header__customer-links">
                   <NavLink
                     to="/orders"
@@ -118,7 +128,7 @@ function Header() {
                 </div>
               )}
 
-              {user.role === "owner" && (
+              {normalizedRole === "owner" && (
                 <NavLink
                   to="/admin/orders"
                   className={getNavClass}
@@ -127,6 +137,8 @@ function Header() {
                   Quản lý đơn
                 </NavLink>
               )}
+
+              <NotificationBell />
 
               <div className="pd-header__account">
                 <div className="pd-header__avatar">{avatarText}</div>
@@ -149,11 +161,13 @@ function Header() {
           )}
         </div>
 
-        {/* Nút menu mobile */}
+        {/* Mobile menu */}
+
         <button
           type="button"
-          className={`pd-header__menu-button ${menuOpen ? "pd-header__menu-button--open" : ""
-            }`}
+          className={`pd-header__menu-button ${
+            menuOpen ? "pd-header__menu-button--open" : ""
+          }`}
           onClick={() => {
             setMenuOpen((previous) => !previous);
           }}
