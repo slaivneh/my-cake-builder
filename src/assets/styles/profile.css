@@ -1,0 +1,184 @@
+/* =====================================================
+   PETITE DOUCEUR PROFILE PAGE
+   ===================================================== */
+
+.pd-profile-page {
+  width: min(720px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 42px 0 90px;
+  color: #60433d;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+.pd-profile-page *,
+.pd-profile-page *::before,
+.pd-profile-page *::after {
+  box-sizing: border-box;
+}
+
+.pd-profile-heading {
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.pd-profile-heading > p {
+  margin: 0 0 6px;
+  color: #e95077;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.pd-profile-heading h1 {
+  margin: 0 0 8px;
+  color: #5b3e38;
+  font-size: clamp(32px, 4vw, 42px);
+}
+
+.pd-profile-heading > span {
+  color: #92766f;
+  font-size: 14px;
+}
+
+.pd-profile-card {
+  padding: 40px;
+  background: #ffffff;
+  border: 1px solid #efbdc9;
+  border-radius: 26px;
+  box-shadow: 0 14px 34px rgba(105, 57, 66, 0.08);
+}
+
+.pd-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pd-profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pd-profile-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5b3e38;
+}
+
+.pd-profile-field label strong {
+  color: #e95077;
+  margin-left: 4px;
+}
+
+.pd-profile-field input {
+  width: 100%;
+  padding: 13px 18px;
+  border: 1px solid #e5d5d2;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #60433d;
+  background-color: #faf8f7;
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pd-profile-field input:focus {
+  outline: none;
+  border-color: #efbdc9;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(239, 189, 201, 0.25);
+}
+
+.pd-profile-field input:disabled,
+.pd-profile-field input[readonly] {
+  background-color: #f1ebe9;
+  border-color: #e2d7d5;
+  color: #92766f;
+  cursor: not-allowed;
+}
+
+.pd-profile-error-text {
+  color: #d9383a;
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.pd-profile-alert {
+  padding: 16px 20px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  animation: pdFadeIn 0.3s ease;
+}
+
+.pd-profile-alert--success {
+  background-color: #e8f7f0;
+  border: 1px solid #a3e0c1;
+  color: #0f5132;
+}
+
+.pd-profile-alert--error {
+  background-color: #fdf2f2;
+  border: 1px solid #f8b4b4;
+  color: #9b1c1c;
+}
+
+.pd-profile-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.pd-profile-btn {
+  padding: 13px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pd-profile-btn--primary {
+  background-color: #e95077;
+  color: #ffffff;
+}
+
+.pd-profile-btn--primary:hover:not(:disabled) {
+  background-color: #d63f64;
+  transform: translateY(-1px);
+}
+
+.pd-profile-btn--primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.pd-profile-btn--secondary {
+  background-color: #f3eae8;
+  color: #60433d;
+}
+
+.pd-profile-btn--secondary:hover:not(:disabled) {
+  background-color: #e5d5d2;
+}
+
+.pd-profile-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@keyframes pdFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

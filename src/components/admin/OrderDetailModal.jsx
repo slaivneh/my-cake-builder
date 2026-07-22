@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../assets/styles/OrderDetailModal.css";
+import { getFeedbackByOrderId } from "../../services/feedbackService";
 
 function OrderDetailModal({
   show,
@@ -13,7 +14,23 @@ function OrderDetailModal({
   metadata,
 }) {
   const [zoomImage, setZoomImage] = useState(null);
+  const [feedback, setFeedback] = useState(null);
 
+
+  useEffect(() => {
+    if (!show || !order) return;
+
+    const loadFeedback = async () => {
+      try {
+        const data = await getFeedbackByOrderId(order.id);
+        setFeedback(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    loadFeedback();
+  }, [show, order]);
   if (!show || !order) return null;
 
   /* ---------- Map cake image from cakes DB ---------- */
@@ -359,6 +376,36 @@ function OrderDetailModal({
                   <p className="odm-empty-text">Không ghi nhận lịch sử trạng thái.</p>
                 )}
               </div>
+
+              {/* Customer Feedback */}
+              {feedback && (
+                <div className="odm-card odm-card-full">
+                  <h6 className="odm-card_title">Đánh giá của khách hàng</h6>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 22, color: "#f5b301", marginBottom: 12, }}>
+                    {"★".repeat(feedback.rating)}
+                    {"☆".repeat(5 - feedback.rating)}
+                  </div>
+                  <p style={{ fontStyle: "italic", lineHeight: 1.6, marginBottom: 10, }}>
+                    "{feedback.comment}"
+                  </p>
+                  <small style={{ color: "#888" }}>
+                    {new Date(feedback.createdAt).toLocaleString("vi-VN")}
+                  </small>
+                </div>
+
+              )}
+              {/* Chưa có feedback */}
+              {!feedback && order.status === "Completed" && (
+                <div className="odm-card odm-card-full">
+                  <h6 className="odm-card__title">
+                    Đánh giá của khách hàng
+                  </h6>
+
+                  <p style={{ color: "#777", marginTop: 10 }}>
+                    Khách hàng chưa gửi đánh giá cho đơn hàng này.
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Footer */}
