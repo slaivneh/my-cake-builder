@@ -270,18 +270,6 @@ function OrderDetail() {
 
   return (
     <div className="pd-order-detail-page">
-      <nav className="pd-order-detail-breadcrumb">
-        <Link to="/home">Trang chủ</Link>
-
-        <span>/</span>
-
-        <Link to="/orders">Đơn hàng</Link>
-
-        <span>/</span>
-
-        <strong>{orderCode}</strong>
-      </nav>
-
       <header className="pd-order-detail-heading">
         <div>
           <p>Mã đơn hàng</p>

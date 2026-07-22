@@ -58,7 +58,7 @@ function AppRoutes() {
           <Route path="/order-success/:id" element={<OrderSuccess />} />
 
           <Route path="/orders" element={<OrderHistory />} />
-          <Route path="/orders/:id" element={<CustomerOrderDetail />} />
+          <Route path="/orders/:id" element={<OrderDetail />} />
         </Route>
       </Route>
 

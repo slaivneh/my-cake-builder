@@ -3,12 +3,12 @@
    ===================================================== */
 
 :root {
-  --order-pink: #e95077;
-  --order-pink-dark: #dc476d;
-  --order-light-pink: #fff1f4;
-  --order-brown: #60433d;
-  --order-muted: #92766f;
-  --order-border: #efbdc9;
+  --order-pink: var(--pd-pink-500, #e75f81);
+  --order-pink-dark: var(--pd-pink-600, #d84b70);
+  --order-light-pink: var(--pd-pink-100, #fff0f3);
+  --order-brown: var(--pd-brown-700, #583b35);
+  --order-muted: var(--pd-brown-500, #896d68);
+  --order-border: var(--pd-pink-300, #efb2c0);
 }
 
 /* =====================================================
@@ -26,11 +26,11 @@
 
   color: var(--order-brown);
 
-  font-family:
-    "Segoe UI",
-    Tahoma,
-    Arial,
-    sans-serif;
+  font-family: var(--pd-font);
+  background-color: var(--pd-pink-50, #fffafa);
+  padding: 30px;
+  border-radius: 24px;
+  box-shadow: var(--pd-shadow, 0 18px 42px rgba(101, 55, 62, 0.1));
 }
 
 .pd-orders-page *,
@@ -749,15 +749,20 @@
 .pd-order-detail-heading p {
   margin: 0 0 4px;
 
-  color: #9b7d76;
+  color: var(--pd-pink-500);
 
-  font-size: 11px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .pd-order-detail-heading h1 {
   margin: 0 0 5px;
 
-  color: #5b3e38;
+  color: var(--pd-pink-600);
+  
+  font-family: var(--pd-font);
 
   font-size:
     clamp(30px, 4vw, 42px);
