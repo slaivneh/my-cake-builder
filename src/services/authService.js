@@ -97,3 +97,11 @@ export const registerUser = async ({
 export const getUserById = async (id) => {
   return axiosClient.get(`/users/${id}`);
 };
+
+/*
+  Cập nhật thông tin user.
+*/
+export const updateUser = async (id, data) => {
+  return axiosClient.put(`/users/${id}`, data);
+};
+

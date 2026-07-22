@@ -198,6 +198,13 @@
     border-radius: var(--pd-radius-md);
     background: var(--logo-pink-light);
     transition: var(--pd-transition);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.admin-user-card:hover {
+    background: var(--logo-pink-soft);
+    transform: translateY(-1px);
 }
 
 .admin-user-avatar {

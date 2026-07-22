@@ -5,6 +5,10 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 import { getOrderById, updateStatus } from "../../services/orderService";
+import {
+  getFeedbackByOrderId,
+  createFeedback,
+} from "../../services/feedbackService";
 
 import "../../assets/styles/orders.css";
 
@@ -136,6 +140,9 @@ function OrderDetail() {
   const [cancelling, setCancelling] = useState(false);
 
   const [notice, setNotice] = useState("");
+  const [feedback, setFeedback] = useState(null);
+  const [rating, setRating] = useState(5);
+  const [comment, setComment] = useState("");
 
   useEffect(() => {
     const fetchOrder = async () => {
@@ -150,6 +157,11 @@ function OrderDetail() {
         }
 
         setOrder(orderData);
+        const fb = await getFeedbackByOrderId(orderData.id);
+
+        if (fb) {
+          setFeedback(fb);
+        }
       } catch (fetchError) {
         console.error("Lỗi tải đơn hàng:", fetchError);
 
@@ -205,6 +217,31 @@ function OrderDetail() {
       setError(cancelError.message || "Không thể hủy đơn hàng.");
     } finally {
       setCancelling(false);
+    }
+  };
+
+  const handleSubmitFeedback = async () => {
+    if (!comment.trim()) {
+      alert("Vui lòng nhập nhận xét.");
+      return;
+    }
+
+    try {
+      const newFeedback = {
+        orderId: order.id,
+        userId: order.userId,
+        rating,
+        comment: comment.trim(),
+        createdAt: new Date().toISOString(),
+      };
+
+      const result = await createFeedback(newFeedback);
+
+      setFeedback(result);
+
+      alert("Cảm ơn bạn đã đánh giá!");
+    } catch (error) {
+      alert(error.message);
     }
   };
 
@@ -431,6 +468,81 @@ function OrderDetail() {
               <h2>Ghi chú đơn hàng</h2>
 
               <p>{order.note}</p>
+            </div>
+          )}
+          {normalizeText(order.status) === "completed" && (
+            <div className="pd-order-note">
+              <h2>Đánh giá đơn hàng</h2>
+
+              {feedback ? (
+                <>
+                  <div
+                    style={{
+                      fontSize: 28,
+                      color: "#f5b301",
+                      marginBottom: 12,
+                    }}
+                  >
+                    {"★".repeat(feedback.rating)}
+                    {"☆".repeat(5 - feedback.rating)}
+                  </div>
+
+                  <p>{feedback.comment}</p>
+
+                  <small>
+                    {new Date(feedback.createdAt).toLocaleString("vi-VN")}
+                  </small>
+                </>
+              ) : (
+                <>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: 8,
+                      marginBottom: 20,
+                    }}
+                  >
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <span
+                        key={star}
+                        onClick={() => setRating(star)}
+                        style={{
+                          cursor: "pointer",
+                          fontSize: 32,
+                          color:
+                            star <= rating
+                              ? "#f5b301"
+                              : "#ccc",
+                        }}
+                      >
+                        ★
+                      </span>
+                    ))}
+                  </div>
+
+                  <textarea
+                    rows={4}
+                    value={comment}
+                    onChange={(e) =>
+                      setComment(e.target.value)
+                    }
+                    placeholder="Chia sẻ cảm nhận của bạn..."
+                    style={{
+                      width: "100%",
+                      padding: 12,
+                      borderRadius: 8,
+                      marginBottom: 15,
+                    }}
+                  />
+
+                  <button
+                    className="pd-button pd-button--primary"
+                    onClick={handleSubmitFeedback}
+                  >
+                    Gửi đánh giá
+                  </button>
+                </>
+              )}
             </div>
           )}
         </section>
