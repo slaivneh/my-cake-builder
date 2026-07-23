@@ -287,3 +287,153 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* =====================================================
+   CAKE LIST RESULT
+   ===================================================== */
+
+.pd-cake-list-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 22px;
+}
+
+.pd-cake-list-result
+  .pd-cake-list-count {
+  margin: 0;
+}
+
+.pd-cake-list-range {
+  margin: 0;
+
+  color: #977a73;
+
+  font-size: 13px;
+}
+
+.pd-cake-list-range strong {
+  color: #ed4d76;
+}
+
+/* =====================================================
+   PAGINATION
+   ===================================================== */
+
+.pd-cake-pagination {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-top: 42px;
+}
+
+.pd-cake-pagination__numbers {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.pd-cake-pagination button {
+  min-width: 44px;
+  height: 44px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 15px;
+
+  color: #654943;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+
+  background: #ffffff;
+
+  border: 1px solid #f1bdca;
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.pd-cake-pagination button:hover:not(
+    :disabled
+  ) {
+  color: #ffffff;
+
+  background: #ed4d76;
+
+  border-color: #ed4d76;
+
+  transform: translateY(-1px);
+}
+
+.pd-cake-pagination__page--active {
+  color: #ffffff !important;
+
+  background: #ed4d76 !important;
+
+  border-color: #ed4d76 !important;
+
+  box-shadow:
+    0 8px 20px
+    rgba(237, 77, 118, 0.22);
+}
+
+.pd-cake-pagination button:disabled {
+  color: #bda9a4;
+
+  background: #fff8fa;
+
+  cursor: not-allowed;
+
+  opacity: 0.65;
+}
+
+.pd-cake-pagination__control {
+  min-width: 94px !important;
+}
+
+@media (max-width: 600px) {
+  .pd-cake-list-result {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 7px;
+  }
+
+  .pd-cake-pagination {
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 30px;
+  }
+
+  .pd-cake-pagination button {
+    min-width: 40px;
+    height: 40px;
+
+    padding: 0 12px;
+  }
+
+  .pd-cake-pagination__control {
+    min-width: 82px !important;
+  }
+}
