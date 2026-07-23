@@ -78,11 +78,12 @@
           "price": 240000
         }
       ],
-      "isAvailable": true,
+      "isAvailable": false,
       "slug": "cupcake-dau-kem-hong",
       "isBestSeller": true,
       "isFeatured": true,
-      "displayOrder": 1
+      "displayOrder": 1,
+      "updatedAt": "2026-07-23T09:02:13.068Z"
     },
     {
       "id": 2,
@@ -2706,7 +2707,7 @@
       "comment": "ok",
       "createdAt": "2026-07-22T19:42:00.870Z",
       "id": 2,
-      "isVisible": false
+      "isVisible": true
     }
   ]
 }

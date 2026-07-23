@@ -33,7 +33,7 @@ import FeedbackManagement from "../pages/admin/FeedbackManagement";
 import NotFound from "../pages/NotFound";
 
 import useAuth from "../hooks/useAuth";
-
+import ProductManagement from "../pages/admin/ProductManagement";
 function DynamicLayout() {
   const { user } = useAuth();
 
@@ -104,6 +104,7 @@ function AppRoutes() {
           <Route path="/admin/orders" element={<OrderManagement />} />
 
           <Route path="/admin/feedbacks" element={<FeedbackManagement />} />
+          <Route path="/admin/products" element={<ProductManagement />} />
         </Route>
       </Route>
 
