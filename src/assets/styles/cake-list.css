@@ -1,16 +1,21 @@
 /* =====================================================
-   PETITE DOUCEUR
-   CAKE LIST PAGE
+   CAKE LIST
    ===================================================== */
 
-.pd-cake-list-page {
-  width: min(
-    1440px,
-    calc(100% - 48px)
-  );
+.pd-cake-list-page,
+.pd-cake-list-page *,
+.pd-cake-list-page *::before,
+.pd-cake-list-page *::after {
+  box-sizing: border-box;
+}
 
-  margin: 0 auto;
-  padding: 36px 0 90px;
+.pd-cake-list-page {
+  width: 100%;
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  color: #60433d;
 
   font-family:
     "Segoe UI",
@@ -19,101 +24,132 @@
     sans-serif;
 }
 
-/* =====================================================
-   BANNER
-   ===================================================== */
+/* Banner */
 
 .pd-cake-list-banner {
-  position: relative;
+  width: min(
+    1500px,
+    calc(100% - 48px)
+  );
 
-  width: 100%;
+  margin: 0 auto 52px;
 
   overflow: hidden;
 
-  background: #fff2f4;
+  border: 1px solid #f1bdca;
+  border-radius: 0 0 26px 26px;
 
-  border:
-    1px solid rgba(
-      238,
-      164,
-      181,
-      0.72
-    );
-
-  border-radius: 30px;
-
-  box-shadow:
-    0 18px 43px
-    rgba(107, 57, 66, 0.1);
+  background: #fff3f6;
 }
 
 .pd-cake-list-banner img {
-  display: block;
-
   width: 100%;
   height: auto;
 
-  object-fit: contain;
-  object-position: center;
-
-  border: 0;
+  display: block;
 }
 
-/* =====================================================
-   TOOLBAR
-   ===================================================== */
+/* Container */
 
-.pd-cake-toolbar {
+.pd-cake-list-container {
+  width: min(
+    1400px,
+    calc(100% - 48px)
+  );
+
+  margin: 0 auto;
+
+  padding-bottom: 90px;
+}
+
+/* Heading */
+
+.pd-cake-list-heading {
+  margin-bottom: 32px;
+
+  text-align: center;
+}
+
+.pd-cake-list-heading p {
+  margin: 0 0 8px;
+
+  color: #ee527a;
+
+  font-size: 14px;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.pd-cake-list-heading h1 {
+  margin: 0 0 10px;
+
+  color: #553a35;
+
+  font-size:
+    clamp(34px, 4vw, 50px);
+  line-height: 1.15;
+}
+
+.pd-cake-list-heading span {
+  color: #977a73;
+
+  font-size: 15px;
+}
+
+/* Toolbar */
+
+.pd-cake-list-toolbar {
   display: grid;
 
   grid-template-columns:
-    minmax(380px, 1fr)
-    230px
-    230px;
+    minmax(300px, 1fr)
+    245px
+    245px;
 
   gap: 16px;
 
-  margin: 34px 0 17px;
+  margin-bottom: 22px;
 }
 
-/* Search */
+.pd-cake-list-search,
+.pd-cake-list-toolbar select {
+  min-width: 0;
+  height: 58px;
 
-.pd-cake-search {
-  min-height: 56px;
+  color: #60433d;
 
-  display: flex;
-  align-items: center;
-
-  overflow: hidden;
+  font-family: inherit;
+  font-size: 14px;
 
   background: #ffffff;
 
-  border:
-    1px solid #efb7c4;
+  border: 1px solid #f1bdca;
+  border-radius: 16px;
 
-  border-radius: 17px;
-
-  box-shadow:
-    0 9px 22px
-    rgba(104, 57, 65, 0.05);
+  outline: none;
 }
 
-.pd-cake-search__icon {
-  padding-left: 19px;
-
-  color: #e95077;
-
-  font-size: 25px;
-  line-height: 1;
+.pd-cake-list-search {
+  display: flex;
+  align-items: center;
 }
 
-.pd-cake-search input {
+.pd-cake-list-search span {
+  padding-left: 18px;
+
+  color: #ee527a;
+
+  font-size: 23px;
+}
+
+.pd-cake-list-search input {
   width: 100%;
   min-width: 0;
+  height: 56px;
 
-  padding: 15px 16px;
+  padding: 0 16px;
 
-  color: #60443e;
+  color: #60433d;
 
   font-family: inherit;
   font-size: 14px;
@@ -124,181 +160,58 @@
   outline: 0;
 }
 
-.pd-cake-search input::placeholder {
-  color: #b59b95;
+.pd-cake-list-search input::placeholder {
+  color: #b39a94;
 }
 
-.pd-cake-search button {
-  align-self: stretch;
-
-  min-width: 125px;
-
-  padding: 0 24px;
-
-  color: #ffffff;
-
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 700;
-
-  background:
-    linear-gradient(
-      135deg,
-      #f27897,
-      #e94e76
-    );
-
-  border: 0;
-
-  cursor: pointer;
-
-  transition:
-    opacity 160ms ease;
-}
-
-.pd-cake-search button:hover {
-  opacity: 0.9;
-}
-
-/* Select */
-
-.pd-cake-toolbar select {
-  min-height: 56px;
+.pd-cake-list-toolbar select {
+  width: 100%;
 
   padding: 0 17px;
 
-  color: #634840;
-
-  font-family: inherit;
-  font-size: 14px;
-
-  background: #ffffff;
-
-  border:
-    1px solid #efb7c4;
-
-  border-radius: 17px;
-
-  outline: 0;
-
   cursor: pointer;
+}
+
+.pd-cake-list-search:focus-within,
+.pd-cake-list-toolbar select:focus {
+  border-color: #ed4d76;
 
   box-shadow:
-    0 9px 22px
-    rgba(104, 57, 65, 0.04);
+    0 0 0 3px
+    rgba(237, 77, 118, 0.1);
 }
 
-/* =====================================================
-   RESULT
-   ===================================================== */
+.pd-cake-list-count {
+  margin: 0 0 22px;
 
-.pd-cake-result-header {
-  min-height: 46px;
+  color: #977a73;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 20px;
-
-  margin-bottom: 20px;
-}
-
-.pd-cake-result-header p {
-  margin: 0;
-
-  color: #8d716a;
-
-  font-size: 14px;
-}
-
-.pd-cake-result-header strong {
-  color: #e95077;
-
-  font-weight: 750;
-}
-
-.pd-cake-result-header button {
-  padding: 7px 0;
-
-  color: #e95077;
-
-  font-family: inherit;
   font-size: 13px;
-  font-weight: 700;
-
-  background: transparent;
-
-  border: 0;
-
-  cursor: pointer;
 }
 
-/* =====================================================
-   PRODUCT GRID
-   ===================================================== */
+.pd-cake-list-count strong {
+  color: #ed4d76;
+}
+
+/* Grid */
 
 .pd-cake-list-grid {
+  width: 100%;
+
   display: grid;
 
   grid-template-columns:
-    repeat(4, minmax(0, 1fr));
+    repeat(4, minmax(0, 340px));
 
-  gap: 24px;
+  justify-content: center;
+  align-items: stretch;
+
+  gap: 26px;
 }
 
-/* =====================================================
-   LOADING
-   ===================================================== */
+/* State */
 
-.pd-cake-list-loading {
-  display: grid;
-
-  grid-template-columns:
-    repeat(4, minmax(0, 1fr));
-
-  gap: 24px;
-}
-
-.pd-cake-list-loading span {
-  height: 430px;
-
-  background:
-    linear-gradient(
-      100deg,
-      #fff0f3 20%,
-      #ffffff 40%,
-      #fff0f3 60%
-    );
-
-  background-size: 200% 100%;
-
-  border:
-    1px solid #efbdc9;
-
-  border-radius: 24px;
-
-  animation:
-    pd-list-loading
-    1.2s
-    infinite;
-}
-
-@keyframes pd-list-loading {
-  from {
-    background-position: 100% 0;
-  }
-
-  to {
-    background-position: -100% 0;
-  }
-}
-
-/* =====================================================
-   EMPTY
-   ===================================================== */
-
-.pd-cake-empty {
+.pd-cake-list-state {
   min-height: 280px;
 
   display: flex;
@@ -306,229 +219,71 @@
   justify-content: center;
   flex-direction: column;
 
-  padding: 35px;
+  padding: 30px;
+
+  color: #977a73;
 
   text-align: center;
 
   background: #ffffff;
 
-  border:
-    1px solid #efbdc9;
-
-  border-radius: 25px;
-
-  box-shadow:
-    0 12px 27px
-    rgba(103, 56, 64, 0.06);
+  border: 1px solid #f1bdca;
+  border-radius: 22px;
 }
 
-.pd-cake-empty h2 {
-  margin: 0 0 10px;
+.pd-cake-list-state h2 {
+  margin: 0 0 9px;
 
-  color: #5d4039;
-
-  font-size: 25px;
-  font-weight: 700;
+  color: #60433d;
 }
 
-.pd-cake-empty p {
-  max-width: 520px;
+/* Responsive */
 
-  margin: 0 0 20px;
-
-  color: #8c7069;
-
-  font-size: 14px;
-
-  line-height: 1.65;
-}
-
-.pd-cake-empty button {
-  min-height: 45px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0 22px;
-
-  color: #ffffff;
-
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 700;
-
-  background:
-    linear-gradient(
-      135deg,
-      #f27897,
-      #e94e76
-    );
-
-  border: 0;
-
-  border-radius: 999px;
-
-  cursor: pointer;
-}
-
-/* =====================================================
-   PAGINATION
-   ===================================================== */
-
-.pd-cake-pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 9px;
-
-  margin-top: 42px;
-}
-
-.pd-cake-pagination button {
-  width: 42px;
-  height: 42px;
-
-  display: grid;
-  place-items: center;
-
-  color: #62463f;
-
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 700;
-
-  background: #ffffff;
-
-  border:
-    1px solid #efb7c4;
-
-  border-radius: 50%;
-
-  cursor: pointer;
-
-  transition:
-    color 160ms ease,
-    background 160ms ease,
-    border-color 160ms ease;
-}
-
-.pd-cake-pagination
-  button:hover:not(:disabled),
-.pd-cake-pagination__active {
-  color: #ffffff !important;
-
-  background:
-    #eb557a !important;
-
-  border-color:
-    #eb557a !important;
-}
-
-.pd-cake-pagination button:disabled {
-  cursor: not-allowed;
-
-  opacity: 0.42;
-}
-
-/* =====================================================
-   RESPONSIVE
-   ===================================================== */
-
-@media (max-width: 1100px) {
-  .pd-cake-list-page {
-    width: calc(100% - 36px);
-  }
-
-  .pd-cake-toolbar {
+@media (max-width: 1200px) {
+  .pd-cake-list-grid {
     grid-template-columns:
-      minmax(320px, 1fr)
-      200px
-      200px;
-  }
-
-  .pd-cake-list-grid,
-  .pd-cake-list-loading {
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr));
+      repeat(3, minmax(0, 340px));
   }
 }
 
-@media (max-width: 850px) {
-  .pd-cake-list-page {
-    padding-top: 28px;
+@media (max-width: 900px) {
+  .pd-cake-list-banner,
+  .pd-cake-list-container {
+    width:
+      calc(100% - 30px);
   }
 
-  .pd-cake-list-banner {
-    border-radius: 23px;
-  }
-
-  .pd-cake-toolbar {
+  .pd-cake-list-toolbar {
     grid-template-columns:
-      1fr
-      1fr;
+      1fr 1fr;
   }
 
-  .pd-cake-search {
-    grid-column:
-      1 / -1;
+  .pd-cake-list-search {
+    grid-column: 1 / -1;
   }
 
-  .pd-cake-list-grid,
-  .pd-cake-list-loading {
+  .pd-cake-list-grid {
     grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+      repeat(2, minmax(0, 340px));
   }
 }
 
-@media (max-width: 580px) {
-  .pd-cake-list-page {
-    width: calc(100% - 22px);
-
-    padding:
-      20px
-      0
-      70px;
+@media (max-width: 600px) {
+  .pd-cake-list-banner,
+  .pd-cake-list-container {
+    width:
+      calc(100% - 20px);
   }
 
-  .pd-cake-list-banner {
-    border-radius: 17px;
-  }
-
-  .pd-cake-toolbar {
+  .pd-cake-list-toolbar {
     grid-template-columns: 1fr;
-
-    gap: 12px;
-
-    margin-top: 22px;
   }
 
-  .pd-cake-search {
+  .pd-cake-list-search {
     grid-column: auto;
-
-    min-height: 52px;
   }
 
-  .pd-cake-search button {
-    min-width: 100px;
-
-    padding: 0 16px;
-  }
-
-  .pd-cake-toolbar select {
-    min-height: 52px;
-  }
-
-  .pd-cake-result-header {
-    align-items: flex-start;
-    flex-direction: column;
-
-    gap: 5px;
-  }
-
-  .pd-cake-list-grid,
-  .pd-cake-list-loading {
+  .pd-cake-list-grid {
     grid-template-columns: 1fr;
   }
 }
