@@ -2,36 +2,79 @@ import { useEffect, useMemo, useState } from "react";
 
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
-import CakeCard from "../../components/customer/CakeCard";
-
 import useAuth from "../../hooks/useAuth";
 
-import { getAllCakes, getCakeById } from "../../services/cakeService";
+import { getCakeById } from "../../services/cakeService";
 
-import { getCakeHomeImage, normalizeCakeText } from "../../utils/homeCakeData";
+import { getCakeImage } from "../../utils/cakeImage";
 
 import { addItemToCart } from "../../utils/cartStorage";
 
-import "../../assets/styles/cake.css";
 import "../../assets/styles/cake-detail.css";
 
+const FALLBACK_IMAGE =
+  "data:image/svg+xml;charset=UTF-8," +
+  encodeURIComponent(`
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="900"
+      height="900"
+      viewBox="0 0 900 900"
+    >
+      <rect
+        width="900"
+        height="900"
+        fill="#fff3f6"
+      />
+
+      <circle
+        cx="450"
+        cy="355"
+        r="170"
+        fill="#f7bfd0"
+      />
+
+      <rect
+        x="280"
+        y="355"
+        width="340"
+        height="180"
+        rx="38"
+        fill="#ef91ad"
+      />
+
+      <text
+        x="450"
+        y="680"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="50"
+        fill="#9c6674"
+      >
+        Petite Douceur
+      </text>
+    </svg>
+  `);
+
 const formatCurrency = (value) => {
-  return Number(value).toLocaleString("vi-VN", {
+  return Number(value || 0).toLocaleString("vi-VN", {
     style: "currency",
     currency: "VND",
   });
 };
 
-const createPriceOptions = (cake) => {
+const getPriceOptions = (cake) => {
   if (Array.isArray(cake?.priceOptions) && cake.priceOptions.length > 0) {
-    return cake.priceOptions.map((option, index) => ({
-      id: String(option.id ?? index),
+    return cake.priceOptions.map((option, index) => {
+      return {
+        id: String(option.id ?? index + 1),
 
-      label:
-        option.label || option.size || option.name || `Lựa chọn ${index + 1}`,
+        label:
+          option.label || option.name || option.size || `Lựa chọn ${index + 1}`,
 
-      price: Number(option.price) || 0,
-    }));
+        price: Number(option.price) || 0,
+      };
+    });
   }
 
   return [
@@ -49,13 +92,12 @@ function CakeDetail() {
   const { id } = useParams();
 
   const navigate = useNavigate();
+
   const location = useLocation();
 
   const { user } = useAuth();
 
   const [cake, setCake] = useState(null);
-
-  const [allCakes, setAllCakes] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
@@ -65,36 +107,33 @@ function CakeDetail() {
 
   const [quantity, setQuantity] = useState(1);
 
-  const [notice, setNotice] = useState(null);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
-    const fetchCakeDetail = async () => {
+    const fetchCake = async () => {
       try {
         setLoading(true);
         setError("");
-        setNotice(null);
+        setMessage("");
 
-        const [cakeData, cakeListData] = await Promise.all([
-          getCakeById(id),
-          getAllCakes(),
-        ]);
+        const result = await getCakeById(id);
 
-        setCake(cakeData);
-
-        setAllCakes(Array.isArray(cakeListData) ? cakeListData : []);
+        setCake(result);
       } catch (fetchError) {
-        console.error("Lỗi tải chi tiết bánh:", fetchError);
+        console.error("Không tải được chi tiết bánh:", fetchError);
 
-        setError("Không tìm thấy thông tin bánh.");
+        setError(fetchError.message || "Không tìm thấy sản phẩm.");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchCakeDetail();
+    fetchCake();
   }, [id]);
 
-  const priceOptions = useMemo(() => createPriceOptions(cake), [cake]);
+  const priceOptions = useMemo(() => {
+    return getPriceOptions(cake);
+  }, [cake]);
 
   useEffect(() => {
     if (priceOptions.length > 0) {
@@ -104,63 +143,46 @@ function CakeDetail() {
 
   const selectedOption = useMemo(() => {
     return (
-      priceOptions.find((option) => option.id === selectedOptionId) ||
-      priceOptions[0]
+      priceOptions.find((option) => {
+        return option.id === selectedOptionId;
+      }) || priceOptions[0]
     );
   }, [priceOptions, selectedOptionId]);
 
   const displayImage = useMemo(() => {
     if (!cake) {
-      return "";
+      return FALLBACK_IMAGE;
     }
 
-    return getCakeHomeImage(cake) || cake.image || "";
+    return getCakeImage(cake.image) || FALLBACK_IMAGE;
   }, [cake]);
 
-  const relatedCakes = useMemo(() => {
-    if (!cake) {
-      return [];
-    }
-
-    const currentCategory = normalizeCakeText(cake.category || "");
-
-    return allCakes
-      .filter((item) => {
-        return (
-          String(item.id) !== String(cake.id) &&
-          normalizeCakeText(item.category || "") === currentCategory &&
-          item.isAvailable !== false
-        );
-      })
-      .slice(0, 4);
-  }, [allCakes, cake]);
-
-  const redirectToLogin = () => {
-    navigate("/login", {
-      state: {
-        from: location.pathname + location.search,
-      },
-    });
-  };
-
-  const addCurrentCakeToCart = () => {
-    /*
-        Chưa đăng nhập:
-        không thêm vào localStorage.
-      */
+  const requireCustomerLogin = () => {
     if (!user) {
-      redirectToLogin();
+      navigate("/login", {
+        state: {
+          from: location.pathname + location.search,
+        },
+      });
 
       return false;
     }
 
-    if (user.role !== "customer") {
-      setNotice({
-        type: "error",
+    if (
+      String(user.role || "")
+        .trim()
+        .toLowerCase() !== "customer"
+    ) {
+      setMessage("Chỉ tài khoản khách hàng mới có thể mua bánh.");
 
-        text: "Chỉ tài khoản khách hàng mới có thể mua bánh.",
-      });
+      return false;
+    }
 
+    return true;
+  };
+
+  const addCakeToCart = () => {
+    if (!requireCustomerLogin()) {
       return false;
     }
 
@@ -170,8 +192,11 @@ function CakeDetail() {
 
     addItemToCart({
       cake,
+
       selectedOption,
+
       quantity,
+
       image: displayImage,
     });
 
@@ -179,25 +204,17 @@ function CakeDetail() {
   };
 
   const handleAddToCart = () => {
-    const added = addCurrentCakeToCart();
+    const added = addCakeToCart();
 
     if (!added) {
       return;
     }
 
-    setNotice({
-      type: "success",
-
-      text: "Đã thêm bánh vào giỏ hàng.",
-    });
-
-    window.setTimeout(() => {
-      setNotice(null);
-    }, 2500);
+    setMessage("✓ Đã thêm bánh vào giỏ hàng.");
   };
 
   const handleBuyNow = () => {
-    const added = addCurrentCakeToCart();
+    const added = addCakeToCart();
 
     if (added) {
       navigate("/cart");
@@ -206,26 +223,23 @@ function CakeDetail() {
 
   if (loading) {
     return (
-      <div className="pd-cake-detail-page">
-        <div className="pd-detail-loading">
-          <div />
-          <div />
-        </div>
-      </div>
+      <main className="pd-cake-detail-page">
+        <div className="pd-detail-loading">Đang tải thông tin bánh...</div>
+      </main>
     );
   }
 
   if (error || !cake) {
     return (
-      <div className="pd-cake-detail-page">
+      <main className="pd-cake-detail-page">
         <div className="pd-cake-empty">
-          <h2>Không tìm thấy sản phẩm</h2>
+          <h1>Không tìm thấy sản phẩm</h1>
 
           <p>{error || "Sản phẩm không tồn tại."}</p>
 
           <Link to="/cakes">Quay lại danh sách bánh</Link>
         </div>
-      </div>
+      </main>
     );
   }
 
@@ -235,7 +249,7 @@ function CakeDetail() {
     cake.pricingType === "quantity" ? "Chọn quy cách" : "Chọn kích thước";
 
   return (
-    <div className="pd-cake-detail-page">
+    <main className="pd-cake-detail-page">
       <nav className="pd-cake-breadcrumb">
         <Link to="/home">Trang chủ</Link>
 
@@ -251,7 +265,15 @@ function CakeDetail() {
       <section className="pd-cake-detail pd-single-image-detail">
         <div className="pd-single-image-gallery">
           <div className="pd-single-image-gallery__image">
-            <img src={displayImage} alt={cake.name || "Bánh Petite Douceur"} />
+            <img
+              src={displayImage}
+              alt={cake.name || "Bánh Petite Douceur"}
+              onError={(event) => {
+                event.currentTarget.onerror = null;
+
+                event.currentTarget.src = FALLBACK_IMAGE;
+              }}
+            />
 
             {!isAvailable && (
               <span className="pd-detail-sold-out">Tạm hết</span>
@@ -308,7 +330,7 @@ function CakeDetail() {
                 type="button"
                 disabled={quantity <= 1}
                 onClick={() => {
-                  setQuantity((previous) => Math.max(1, previous - 1));
+                  setQuantity((current) => Math.max(1, current - 1));
                 }}
               >
                 −
@@ -320,9 +342,9 @@ function CakeDetail() {
                 max="20"
                 value={quantity}
                 onChange={(event) => {
-                  const value = Number(event.target.value);
+                  const nextQuantity = Number(event.target.value);
 
-                  setQuantity(Math.max(1, Math.min(20, value || 1)));
+                  setQuantity(Math.max(1, Math.min(20, nextQuantity || 1)));
                 }}
               />
 
@@ -330,7 +352,7 @@ function CakeDetail() {
                 type="button"
                 disabled={quantity >= 20}
                 onClick={() => {
-                  setQuantity((previous) => Math.min(20, previous + 1));
+                  setQuantity((current) => Math.min(20, current + 1));
                 }}
               >
                 +
@@ -358,57 +380,36 @@ function CakeDetail() {
             </button>
           </div>
 
-          {notice && (
-            <div
-              className={`pd-detail-message ${
-                notice.type === "error" ? "pd-detail-message--error" : ""
-              }`}
-            >
-              {notice.type === "success" ? "✓ " : ""}
-              {notice.text}
-            </div>
-          )}
+          {message && <div className="pd-detail-message">{message}</div>}
 
           <div className="pd-single-product-notes">
             <div>
               <span>♡</span>
+
               <p>Bánh được làm mới trong ngày</p>
             </div>
 
             <div>
               <span>♡</span>
+
               <p>Đóng gói cẩn thận và xinh xắn</p>
             </div>
 
             <div>
               <span>♡</span>
+
               <p>Bảo quản trong ngăn mát tủ lạnh</p>
             </div>
 
             <div>
               <span>♡</span>
+
               <p>Miễn phí giao hàng từ 300.000đ</p>
             </div>
           </div>
         </div>
       </section>
-
-      {relatedCakes.length > 0 && (
-        <section className="pd-related-section">
-          <div className="pd-related-heading">
-            <p>Có thể bạn cũng thích</p>
-
-            <h2>Bánh cùng danh mục</h2>
-          </div>
-
-          <div className="pd-related-grid">
-            {relatedCakes.map((relatedCake) => (
-              <CakeCard key={relatedCake.id} cake={relatedCake} />
-            ))}
-          </div>
-        </section>
-      )}
-    </div>
+    </main>
   );
 }
 

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import CakeCard from "../../components/customer/CakeCard";
 
 import { getAllCakes } from "../../services/cakeService";
+
 import { getAllFeedbacks } from "../../services/feedbackService";
 
 import {
@@ -17,25 +18,28 @@ import {
 function Home() {
   const [cakes, setCakes] = useState([]);
 
+  const [feedbacks, setFeedbacks] = useState([]);
+
   const [loading, setLoading] = useState(true);
 
   const [error, setError] = useState("");
-  const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
-    const fetchCakes = async () => {
+    const fetchHomeData = async () => {
       try {
         setLoading(true);
         setError("");
 
-        const data = await getAllCakes();
+        const [cakeData, feedbackData] = await Promise.all([
+          getAllCakes(),
+          getAllFeedbacks(),
+        ]);
 
-        setCakes(Array.isArray(data) ? data : []);
-        const feedbackData = await getAllFeedbacks();
+        setCakes(Array.isArray(cakeData) ? cakeData : []);
 
         setFeedbacks(Array.isArray(feedbackData) ? feedbackData : []);
       } catch (fetchError) {
-        console.error("Lỗi tải danh sách bánh:", fetchError);
+        console.error("Không tải được dữ liệu trang chủ:", fetchError);
 
         setError("Không thể tải danh sách bánh. Hãy kiểm tra JSON Server.");
       } finally {
@@ -43,32 +47,31 @@ function Home() {
       }
     };
 
-    fetchCakes();
+    fetchHomeData();
   }, []);
 
   const bestSellerCakes = useMemo(() => {
-    return getBestSellerCakes(cakes);
+    return getBestSellerCakes(cakes, 4);
   }, [cakes]);
 
+  const visibleFeedbacks = useMemo(() => {
+    return feedbacks.filter((feedback) => {
+      return feedback?.isVisible !== false;
+    });
+  }, [feedbacks]);
+
   return (
-    <div className="pd-home">
+    <main className="pd-home">
       {/* ================= HERO ================= */}
 
       <section className="pd-home-hero">
         <img
           className="pd-home-hero__image"
           src={HOME_HERO_IMAGE}
-          alt=""
-          aria-hidden="true"
+          alt="Bộ sưu tập bánh ngọt Petite Douceur"
         />
 
-        <div className="pd-home-hero__overlay" />
-
-        <Link
-          to="/cakes"
-          className="pd-home-hero__image-link"
-          aria-label="Xem danh sách bánh"
-        />
+        <div className="pd-home-hero__overlay" aria-hidden="true" />
 
         <div className="pd-home-hero__content">
           <h1>
@@ -100,21 +103,30 @@ function Home() {
         </div>
 
         <div className="pd-category-grid">
-          {HOME_CATEGORIES.map((category) => (
-            <Link
-              key={category.label}
-              to={`/cakes?category=${encodeURIComponent(category.label)}`}
-              className="pd-category-card"
-            >
-              <span className="pd-category-card__image">
-                <img src={category.image} alt={category.label} />
-              </span>
+          {HOME_CATEGORIES.map((category) => {
+            const categoryName =
+              category.label || category.name || category.category;
 
-              <strong>{category.label}</strong>
+            const categoryPath =
+              category.to ||
+              `/cakes?category=${encodeURIComponent(categoryName)}`;
 
-              <span className="pd-category-card__link">Khám phá →</span>
-            </Link>
-          ))}
+            return (
+              <Link
+                key={category.id || categoryName}
+                to={categoryPath}
+                className="pd-category-card"
+              >
+                <span className="pd-category-card__image">
+                  <img src={category.image} alt={categoryName} />
+                </span>
+
+                <strong>{categoryName}</strong>
+
+                <span className="pd-category-card__link">Khám phá →</span>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
@@ -146,6 +158,12 @@ function Home() {
           </div>
         )}
 
+        {!loading && !error && bestSellerCakes.length === 0 && (
+          <div className="pd-home-message">
+            <p>Chưa có bánh bán chạy.</p>
+          </div>
+        )}
+
         {!loading && !error && bestSellerCakes.length > 0 && (
           <div className="pd-cake-grid">
             {bestSellerCakes.map((cake) => (
@@ -165,7 +183,7 @@ function Home() {
             alt="Thiết kế bánh theo yêu cầu"
           />
 
-          <div className="pd-custom-banner__overlay" />
+          <div className="pd-custom-banner__overlay" aria-hidden="true" />
 
           <div className="pd-custom-banner__content">
             <p className="pd-home-eyebrow">Một chiếc bánh dành riêng cho bạn</p>
@@ -184,73 +202,104 @@ function Home() {
           </div>
         </Link>
       </section>
+
       {/* ================= CUSTOMER REVIEWS ================= */}
 
       <section className="pd-home-section">
         <div className="pd-section-title">
           <span />
+
           <h2>Khách hàng nói gì?</h2>
+
           <span />
         </div>
 
-        {feedbacks.length === 0 ? (
-          <p style={{ textAlign: "center" }}>
+        {visibleFeedbacks.length === 0 ? (
+          <p
+            style={{
+              textAlign: "center",
+            }}
+          >
             Chưa có đánh giá nào.
           </p>
         ) : (
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
+
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+
               gap: "20px",
             }}
           >
-            {feedbacks
-              .filter((item) => item.isVisible)
-              .map((item) => (
-                <div
-                  key={item.id}
+            {visibleFeedbacks.map((feedback) => {
+              const rating = Math.max(
+                0,
+                Math.min(5, Number(feedback.rating || 0)),
+              );
+
+              const createdDate = feedback.createdAt
+                ? new Date(feedback.createdAt)
+                : null;
+
+              const formattedDate =
+                createdDate && !Number.isNaN(createdDate.getTime())
+                  ? createdDate.toLocaleDateString("vi-VN")
+                  : "Chưa cập nhật";
+
+              return (
+                <article
+                  key={feedback.id}
                   style={{
-                    background: "#fff",
                     padding: "20px",
+
+                    background: "#ffffff",
+
+                    border: "1px solid #f1bdca",
+
                     borderRadius: "16px",
-                    boxShadow: "0 4px 12px rgba(0,0,0,.08)",
+
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.06)",
                   }}
                 >
                   <div
                     style={{
-                      color: "#f5b301",
-                      fontSize: "20px",
                       marginBottom: "10px",
+
+                      color: "#f5b301",
+
+                      fontSize: "20px",
                     }}
                   >
-                    {"★".repeat(item.rating)}
-                    {"☆".repeat(5 - item.rating)}
+                    {"★".repeat(rating)}
+
+                    {"☆".repeat(5 - rating)}
                   </div>
 
                   <p
                     style={{
-                      fontStyle: "italic",
                       marginBottom: "15px",
+
+                      fontStyle: "italic",
+
+                      lineHeight: "1.6",
                     }}
                   >
-                    "{item.comment}"
+                    “{feedback.comment}”
                   </p>
 
-                  <strong>
-                    Đơn hàng #{item.orderId}
-                  </strong>
+                  <strong>Đơn hàng #{feedback.orderId}</strong>
 
                   <br />
 
-                  <small>
-                    {new Date(item.createdAt).toLocaleDateString("vi-VN")}
-                  </small>
-                </div>
-              ))}
+                  <small>{formattedDate}</small>
+                </article>
+              );
+            })}
           </div>
         )}
       </section>
+
       {/* ================= WHY CHOOSE ================= */}
 
       <section className="pd-why-section">
@@ -296,7 +345,7 @@ function Home() {
           </article>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
 

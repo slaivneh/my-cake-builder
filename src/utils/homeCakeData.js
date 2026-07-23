@@ -1,323 +1,156 @@
-import bentoFlowerImage from "../assets/images/home/bento cake hoa nhi.jpg";
-import chouxStrawberryImage from "../assets/images/home/choux kem dau.jpg";
-import cupcakeCherryImage from "../assets/images/home/cupcake_cherry_vanilla.jpg";
-import cupcakeStrawberryImage from "../assets/images/home/cupcake_dau_hong.jpg";
-import cupcakeFlowerImage from "../assets/images/home/cupcake_hoa_kem_bo.jpg";
-import cupcakeMatchaImage from "../assets/images/home/cupcake_match_dau.jpg";
-import customizeBannerImage from "../assets/images/home/cutomize now.png";
-import macaronImage from "../assets/images/home/macaron dau hong.jpg";
-import mangoPuddingImage from "../assets/images/home/mango pudding mini cake.jpg";
-import miniPastelImage from "../assets/images/home/mini cake dau pastel.jpg";
-import miniBlueberryImage from "../assets/images/home/mini cake viet quat kem sua.jpg";
-import miniHeartImage from "../assets/images/home/mini trai tim mam xoi.jpg";
-import rollCakeImage from "../assets/images/home/roll cake dau kem sua.jpg";
-import lemonTartImage from "../assets/images/home/tart chanh.jpg";
-import vanillaTartImage from "../assets/images/home/tart dau vanilla.jpg";
 import heroImage from "../assets/images/home/thumbnail.png";
 
-/* =====================================================
-   ẢNH BANNER
-   ===================================================== */
+import customizeBannerImage from "../assets/images/home/cutomize now.png";
 
+import { getCakeImage } from "./cakeImage";
+
+/*
+  Ảnh giao diện của trang Home.
+*/
 export const HOME_HERO_IMAGE = heroImage;
 
 export const CUSTOMIZE_BANNER_IMAGE = customizeBannerImage;
 
-/* =====================================================
-   CHUẨN HÓA CHỮ
-   ===================================================== */
-
-export const normalizeCakeText = (value = "") => {
-  return String(value)
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/đ/g, "d")
-    .replace(/Đ/g, "D")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-};
-
-/* =====================================================
-   DANH MỤC TRÊN HOME
-   ===================================================== */
-
 /*
-  Các ảnh danh mục chỉ đóng vai trò đại diện.
+  Danh mục đại diện trang Home.
 
-  Những ảnh này được chọn khác với
-  bốn ảnh bánh bán chạy bên dưới.
+  Các ảnh này được lấy từ:
+  src/assets/images/cakes/
 */
 export const HOME_CATEGORIES = [
   {
+    id: "cupcake",
+
+    name: "Cupcake",
+    title: "Cupcake",
     label: "Cupcake",
-    image: cupcakeFlowerImage,
+    value: "Cupcake",
+    category: "Cupcake",
+
+    image: getCakeImage("cupcake_dau_hong.jpg", "Cupcake Dâu Kem Hồng"),
+
+    to: "/cakes?category=Cupcake",
+    link: "/cakes?category=Cupcake",
+    path: "/cakes?category=Cupcake",
+
+    description: "Cupcake nhỏ xinh với lớp kem trang trí ngọt ngào.",
   },
+
   {
+    id: "mini-cake",
+
+    name: "Mini Cake",
+    title: "Mini Cake",
     label: "Mini Cake",
-    image: mangoPuddingImage,
+    value: "Mini Cake",
+    category: "Mini Cake",
+
+    image: getCakeImage("mini cake dau pastel.jpg", "Mini Cake Dâu Pastel"),
+
+    to: "/cakes?category=Mini%20Cake",
+
+    link: "/cakes?category=Mini%20Cake",
+
+    path: "/cakes?category=Mini%20Cake",
+
+    description: "Bánh kem mini phù hợp với những buổi tiệc nhỏ.",
   },
+
   {
+    id: "tart",
+
+    name: "Tart",
+    title: "Tart",
     label: "Tart",
-    image: vanillaTartImage,
+    value: "Tart",
+    category: "Tart",
+
+    image: getCakeImage("tart dau vanilla.jpg", "Tart Dâu Vanilla"),
+
+    to: "/cakes?category=Tart",
+    link: "/cakes?category=Tart",
+    path: "/cakes?category=Tart",
+
+    description: "Đế tart bơ giòn kết hợp với kem mềm và trái cây.",
   },
+
   {
+    id: "bento-cake",
+
+    name: "Bento Cake",
+    title: "Bento Cake",
     label: "Bento Cake",
-    image: bentoFlowerImage,
+    value: "Bento Cake",
+    category: "Bento Cake",
+
+    image: getCakeImage("bento cake hoa nhi.jpg", "Bento Cake Hoa Nhí"),
+
+    to: "/cakes?category=Bento%20Cake",
+
+    link: "/cakes?category=Bento%20Cake",
+
+    path: "/cakes?category=Bento%20Cake",
+
+    description: "Bánh bento nhỏ gọn với lời nhắn theo yêu cầu.",
   },
 ];
 
-/* =====================================================
-   GHÉP ẢNH THEO TÊN BÁNH
-   ===================================================== */
-
-const cakeImageRules = [
-  {
-    keywords: [
-      "cupcake dau hong",
-      "cupcake dau kem hong",
-      "cupcake strawberry",
-    ],
-    image: cupcakeStrawberryImage,
-  },
-  {
-    keywords: ["cupcake hoa kem bo", "cupcake hoa"],
-    image: cupcakeFlowerImage,
-  },
-  {
-    keywords: ["cupcake cherry vanilla", "cupcake cherry vanila"],
-    image: cupcakeCherryImage,
-  },
-  {
-    keywords: ["cupcake matcha dau", "cupcake match dau"],
-    image: cupcakeMatchaImage,
-  },
-  {
-    keywords: ["mini cake dau pastel", "cake dau pastel"],
-    image: miniPastelImage,
-  },
-  {
-    keywords: [
-      "mini cake trai tim mam xoi",
-      "mini trai tim mam xoi",
-      "trai tim mam xoi",
-    ],
-    image: miniHeartImage,
-  },
-  {
-    keywords: [
-      "mini cake viet quat kem sua",
-      "mini cake viet quat",
-      "viet quat kem sua",
-    ],
-    image: miniBlueberryImage,
-  },
-  {
-    keywords: ["bento cake hoa nhi", "bento hoa nhi"],
-    image: bentoFlowerImage,
-  },
-  {
-    keywords: ["mango pudding mini cake", "mango pudding", "pudding xoai"],
-    image: mangoPuddingImage,
-  },
-  {
-    keywords: ["tart dau vanilla", "tart dau vanila", "tart dau"],
-    image: vanillaTartImage,
-  },
-  {
-    keywords: ["tart chanh meringue", "tart chanh", "lemon tart"],
-    image: lemonTartImage,
-  },
-  {
-    keywords: ["choux kem dau", "choux dau", "su kem dau"],
-    image: chouxStrawberryImage,
-  },
-  {
-    keywords: ["macaron dau hong", "macaron dau"],
-    image: macaronImage,
-  },
-  {
-    keywords: ["roll cake dau kem sua", "roll cake dau", "bong lan cuon dau"],
-    image: rollCakeImage,
-  },
-];
-
-const getCakeName = (cake) => {
-  return normalizeCakeText(cake?.name || cake?.cakeName || cake?.title || "");
+export const normalizeCakeText = (value = "") => {
+  return String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/đ/g, "d")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, " ");
 };
 
-const matchesCakeKeyword = (cake, keyword) => {
-  const cakeName = getCakeName(cake);
-
-  const normalizedKeyword = normalizeCakeText(keyword);
-
-  return (
-    cakeName === normalizedKeyword ||
-    cakeName.includes(normalizedKeyword) ||
-    normalizedKeyword.includes(cakeName)
-  );
-};
-
+/*
+  CakeCard, Home và CakeDetail đều có thể
+  gọi hàm này để lấy ảnh bánh.
+*/
 export const getCakeHomeImage = (cake) => {
-  const matchedRule = cakeImageRules.find((rule) => {
-    return rule.keywords.some((keyword) => {
-      return matchesCakeKeyword(cake, keyword);
-    });
-  });
-
-  if (matchedRule) {
-    return matchedRule.image;
-  }
-
-  if (Array.isArray(cake?.images) && cake.images.length > 0) {
-    return cake.images[0];
-  }
-
-  if (cake?.image) {
-    return cake.image;
-  }
-
-  return cupcakeStrawberryImage;
-};
-
-/* =====================================================
-   BÁNH BÁN CHẠY
-   ===================================================== */
-
-/*
-  Đây là bốn bánh ưu tiên cho phần bán chạy.
-
-  Các ảnh đều khác với ảnh đại diện category:
-  - Cupcake Dâu Hồng
-  - Mini Cake Dâu Pastel
-  - Tart Chanh
-  - Roll Cake Dâu Kem Sữa
-*/
-const BEST_SELLER_PRIORITY_RULES = [
-  ["cupcake dau hong", "cupcake dau kem hong"],
-  ["mini cake dau pastel"],
-  ["tart chanh", "tart chanh meringue"],
-  ["roll cake dau kem sua", "roll cake dau"],
-];
-
-/*
-  Các bánh đang được dùng làm ảnh danh mục.
-
-  Chúng sẽ không được đưa vào bánh bán chạy
-  để tránh hai mục có hình giống nhau.
-*/
-const CATEGORY_PREVIEW_RULES = [
-  ["cupcake hoa kem bo"],
-  ["mango pudding mini cake"],
-  ["tart dau vanilla", "tart dau vanila"],
-  ["bento cake hoa nhi"],
-];
-
-const isCategoryPreviewCake = (cake) => {
-  return CATEGORY_PREVIEW_RULES.some((keywords) => {
-    return keywords.some((keyword) => {
-      return matchesCakeKeyword(cake, keyword);
-    });
-  });
-};
-
-const isCakeAvailable = (cake) => {
-  const status = normalizeCakeText(cake?.status || "");
-
-  return (
-    cake?.isAvailable !== false &&
-    cake?.isActive !== false &&
-    cake?.active !== false &&
-    status !== "inactive" &&
-    status !== "disabled"
-  );
-};
-
-const isMarkedBestSeller = (cake) => {
-  return (
-    cake?.isBestSeller === true ||
-    cake?.bestSeller === true ||
-    cake?.isFeatured === true ||
-    cake?.featured === true
-  );
-};
-
-const addUniqueCake = (result, usedKeys, cake) => {
   if (!cake) {
-    return;
+    return "";
   }
 
-  const key = String(cake.id ?? cake.name ?? cake.cakeName ?? cake.title);
-
-  if (usedKeys.has(key)) {
-    return;
-  }
-
-  usedKeys.add(key);
-  result.push(cake);
+  return getCakeImage(cake.image, cake.name);
 };
 
-export const getBestSellerCakes = (cakes = []) => {
-  const availableCakes = cakes.filter(isCakeAvailable);
+export const getBestSellerCakes = (cakes = [], limit = 4) => {
+  if (!Array.isArray(cakes)) {
+    return [];
+  }
 
-  const result = [];
-  const usedKeys = new Set();
+  const availableCakes = cakes
+    .filter((cake) => {
+      return cake?.isAvailable !== false;
+    })
+    .sort((first, second) => {
+      const firstOrder = Number(first.displayOrder ?? first.id ?? 0);
 
-  /*
-    Bước 1:
-    Ưu tiên lấy đúng bốn sản phẩm đã chọn.
-  */
-  BEST_SELLER_PRIORITY_RULES.forEach((keywords) => {
-    const matchedCake = availableCakes.find((cake) => {
-      return keywords.some((keyword) => {
-        return matchesCakeKeyword(cake, keyword);
-      });
+      const secondOrder = Number(second.displayOrder ?? second.id ?? 0);
+
+      return firstOrder - secondOrder;
     });
 
-    addUniqueCake(result, usedKeys, matchedCake);
+  const markedBestSellers = availableCakes.filter((cake) => {
+    return cake?.isBestSeller === true;
   });
 
-  /*
-    Bước 2:
-    Nếu chưa đủ 4 thì lấy bánh có đánh dấu
-    isBestSeller hoặc isFeatured.
+  if (markedBestSellers.length >= limit) {
+    return markedBestSellers.slice(0, limit);
+  }
 
-    Loại bỏ bánh đang dùng làm ảnh danh mục.
-  */
-  availableCakes
-    .filter((cake) => {
-      return isMarkedBestSeller(cake) && !isCategoryPreviewCake(cake);
-    })
-    .forEach((cake) => {
-      if (result.length < 4) {
-        addUniqueCake(result, usedKeys, cake);
-      }
-    });
+  const selectedIds = new Set(
+    markedBestSellers.map((cake) => {
+      return String(cake.id);
+    }),
+  );
 
-  /*
-    Bước 3:
-    Nếu vẫn chưa đủ thì lấy bánh còn lại,
-    nhưng vẫn tránh ảnh danh mục.
-  */
-  availableCakes
-    .filter((cake) => {
-      return !isCategoryPreviewCake(cake);
-    })
-    .forEach((cake) => {
-      if (result.length < 4) {
-        addUniqueCake(result, usedKeys, cake);
-      }
-    });
-
-  /*
-    Trường hợp DB có quá ít bánh,
-    mới cho phép lấy sản phẩm bất kỳ.
-  */
-  availableCakes.forEach((cake) => {
-    if (result.length < 4) {
-      addUniqueCake(result, usedKeys, cake);
-    }
+  const remainingCakes = availableCakes.filter((cake) => {
+    return !selectedIds.has(String(cake.id));
   });
 
-  return result.slice(0, 4);
+  return [...markedBestSellers, ...remainingCakes].slice(0, limit);
 };
