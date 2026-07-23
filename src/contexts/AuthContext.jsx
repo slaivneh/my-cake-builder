@@ -101,6 +101,23 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   }, []);
 
+  /*
+    Cập nhật thông tin user hiện tại trong session.
+  */
+  const updateCurrentUser = useCallback((updatedUser) => {
+    const safeUser = removePassword(updatedUser);
+
+    if (localStorage.getItem(STORAGE_KEY)) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(safeUser));
+    } else if (sessionStorage.getItem(STORAGE_KEY)) {
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(safeUser));
+    } else {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(safeUser));
+    }
+
+    setUser(safeUser);
+  }, []);
+
   const contextValue = useMemo(
     () => ({
       user,
@@ -112,8 +129,9 @@ export const AuthProvider = ({ children }) => {
       login,
       register,
       logout,
+      updateCurrentUser,
     }),
-    [user, login, register, logout],
+    [user, login, register, logout, updateCurrentUser, loading],
   );
 
   return (

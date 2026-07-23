@@ -1,0 +1,138 @@
+.feedback-management {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.feedback-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feedback-header h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #4b2e2e;
+}
+
+.feedback-header p {
+    margin-top: 6px;
+    color: #7a6a6a;
+}
+
+.feedback-table-wrapper {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.feedback-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.feedback-table thead {
+    background: #fff4f2;
+}
+
+.feedback-table th,
+.feedback-table td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid #f3e6e4;
+}
+
+.feedback-table th {
+    font-weight: 600;
+    color: #5f3b37;
+}
+
+.feedback-table td {
+    color: #555;
+    vertical-align: top;
+}
+
+.feedback-table tbody tr:hover {
+    background: #fffaf9;
+}
+
+.feedback-rating {
+    color: #f5b301;
+    font-size: 18px;
+}
+
+.feedback-comment {
+    max-width: 360px;
+    line-height: 1.5;
+}
+
+.feedback-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.feedback-status.visible {
+    background: #e8f8ec;
+    color: #1c8b4d;
+}
+
+.feedback-status.hidden {
+    background: #f8eaea;
+    color: #c0392b;
+}
+
+.feedback-action-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.feedback-action-btn.hide {
+    background: #ffe7e3;
+    color: #d35454;
+}
+
+.feedback-action-btn.hide:hover {
+    background: #ffd2cb;
+}
+
+.feedback-action-btn.show {
+    background: #e8f8ec;
+    color: #1c8b4d;
+}
+
+.feedback-action-btn.show:hover {
+    background: #d4f3dc;
+}
+
+.feedback-empty {
+    padding: 50px;
+    text-align: center;
+    color: #888;
+}
+
+.feedback-loading {
+    text-align: center;
+    padding: 50px;
+    color: #777;
+}
+
+@media (max-width: 900px) {
+    .feedback-table-wrapper {
+        overflow-x: auto;
+    }
+
+    .feedback-table {
+        min-width: 850px;
+    }
+}

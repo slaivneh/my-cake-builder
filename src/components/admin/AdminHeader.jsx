@@ -79,11 +79,17 @@ function AdminHeader() {
               </span>
               <span className="admin-nav-label">Quản lý đơn hàng</span>
             </Link>
+            <Link to="/admin/feedbacks" className={`admin-nav-item ${isActive("/admin/feedbacks") ? "active" : ""}`}>
+              <span className="admin-nav-icon">☆</span>
+              <span className="admin-nav-label">Quản lý đánh giá</span>
+            </Link>
           </nav>
         </div>
 
+
+
         <div className="admin-sidebar-bottom">
-          <div className="admin-user-card">
+          <Link to="/profile" className="admin-user-card" style={{ textDecoration: "none" }}>
             <div className="admin-user-avatar">
               {getInitials(user?.fullName || user?.name)}
             </div>
@@ -95,7 +101,7 @@ function AdminHeader() {
                 {user?.role === "owner" ? "Chủ cửa hàng" : "Nhân viên"}
               </span>
             </div>
-          </div>
+          </Link>
 
           <button onClick={handleLogout} className="admin-logout-btn">
             <span className="admin-logout-icon">

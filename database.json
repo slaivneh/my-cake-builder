@@ -8,7 +8,8 @@
       "phone": "0901234567",
       "address": "",
       "role": "owner",
-      "isActive": true
+      "isActive": true,
+      "fullName": "Nguyễn Văn Minh"
     },
     {
       "id": "2",
@@ -24,11 +25,12 @@
       "id": "3",
       "email": "customer1@gmail.com",
       "password": "customer123",
-      "name": "Phạm Thị Hương",
-      "phone": "0934567890",
+      "name": "Phạm Thị",
+      "phone": "0934567891",
       "address": "123 Nguyễn Văn A, Bình Thạnh, TP.HCM",
       "role": "customer",
-      "isActive": true
+      "isActive": true,
+      "fullName": "Phạm Thị"
     },
     {
       "id": "4",
@@ -1847,7 +1849,7 @@
       "paymentCode": "PD20260722RXYWX",
       "paymentReference": "PD20260722RXYWX",
       "paymentStatus": "pending_verification",
-      "status": "Ready",
+      "status": "Shipping",
       "items": [
         {
           "cakeId": "custom",
@@ -1866,7 +1868,7 @@
       "total": 390000,
       "totalAmount": 390000,
       "createdAt": "2026-07-22T15:32:00.251Z",
-      "updatedAt": "2026-07-22T15:32:45.621Z",
+      "updatedAt": "2026-07-23T03:43:06.508Z",
       "id": "14",
       "statusHistory": [
         {
@@ -1880,6 +1882,10 @@
         {
           "status": "Ready",
           "time": "2026-07-22T15:32:45.620Z"
+        },
+        {
+          "status": "Shipping",
+          "time": "2026-07-23T03:43:06.507Z"
         }
       ]
     },
@@ -1909,7 +1915,7 @@
       "paymentCode": "PD20260722FJ94H",
       "paymentReference": "PD20260722FJ94H",
       "paymentStatus": "pending_verification",
-      "status": "Confirmed",
+      "status": "Completed",
       "items": [
         {
           "cakeId": "custom",
@@ -1928,12 +1934,28 @@
       "total": 550000,
       "totalAmount": 550000,
       "createdAt": "2026-07-22T15:37:20.302Z",
-      "updatedAt": "2026-07-22T15:38:06.576Z",
-      "id": "15",
+      "updatedAt": "2026-07-22T18:55:41.730Z",
+      "id": 15,
       "statusHistory": [
         {
           "status": "Confirmed",
           "time": "2026-07-22T15:38:06.576Z"
+        },
+        {
+          "status": "Preparing",
+          "time": "2026-07-22T18:55:35.603Z"
+        },
+        {
+          "status": "Ready",
+          "time": "2026-07-22T18:55:37.809Z"
+        },
+        {
+          "status": "Shipping",
+          "time": "2026-07-22T18:55:40.010Z"
+        },
+        {
+          "status": "Completed",
+          "time": "2026-07-22T18:55:41.730Z"
         }
       ]
     },
@@ -2353,6 +2375,66 @@
       "title": "Cập nhật đơn hàng",
       "content": "Đơn hàng PD20260723NL0ZS của bạn đã chuyển sang trạng thái: Đang chuẩn bị bánh.",
       "id": "24nGSj0zC-w"
+    },
+    {
+      "isRead": true,
+      "createdAt": "2026-07-22T18:55:35.650Z",
+      "userId": 3,
+      "title": "Cập nhật đơn hàng",
+      "content": "Đơn hàng PD20260722FJ94H của bạn đã chuyển sang trạng thái: Đang chuẩn bị bánh.",
+      "id": 3
+    },
+    {
+      "isRead": true,
+      "createdAt": "2026-07-22T18:55:37.851Z",
+      "userId": 3,
+      "title": "Cập nhật đơn hàng",
+      "content": "Đơn hàng PD20260722FJ94H của bạn đã chuyển sang trạng thái: Bánh đã sẵn sàng.",
+      "id": 4
+    },
+    {
+      "isRead": true,
+      "createdAt": "2026-07-22T18:55:40.036Z",
+      "userId": 3,
+      "title": "Cập nhật đơn hàng",
+      "content": "Đơn hàng PD20260722FJ94H của bạn đã chuyển sang trạng thái: Đang giao hàng.",
+      "id": 5
+    },
+    {
+      "isRead": true,
+      "createdAt": "2026-07-22T18:55:41.758Z",
+      "userId": 3,
+      "title": "Cập nhật đơn hàng",
+      "content": "Đơn hàng PD20260722FJ94H của bạn đã chuyển sang trạng thái: Đã hoàn thành.",
+      "id": 6
+    },
+    {
+      "isRead": true,
+      "createdAt": "2026-07-23T03:43:06.670Z",
+      "userId": 3,
+      "title": "Cập nhật đơn hàng",
+      "content": "Đơn hàng PD20260722RXYWX của bạn đã chuyển sang trạng thái: Đang giao hàng.",
+      "id": "XXngCgX"
+    }
+  ],
+  "feedbacks": [
+    {
+      "id": 1,
+      "orderId": 5,
+      "userId": 3,
+      "rating": 5,
+      "comment": "Bánh rất ngon, giao đúng giờ. Đóng gói cẩn thận, sẽ tiếp tục ủng hộ cửa hàng.",
+      "createdAt": "2026-07-23T14:00:00Z",
+      "isVisible": true
+    },
+    {
+      "orderId": 15,
+      "userId": 3,
+      "rating": 5,
+      "comment": "ok",
+      "createdAt": "2026-07-22T19:42:00.870Z",
+      "id": 2,
+      "isVisible": false
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import CakeCard from "../../components/customer/CakeCard";
 
 import { getAllCakes } from "../../services/cakeService";
+import { getAllFeedbacks } from "../../services/feedbackService";
 
 import {
   CUSTOMIZE_BANNER_IMAGE,
@@ -19,6 +20,7 @@ function Home() {
   const [loading, setLoading] = useState(true);
 
   const [error, setError] = useState("");
+  const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
     const fetchCakes = async () => {
@@ -29,6 +31,9 @@ function Home() {
         const data = await getAllCakes();
 
         setCakes(Array.isArray(data) ? data : []);
+        const feedbackData = await getAllFeedbacks();
+
+        setFeedbacks(Array.isArray(feedbackData) ? feedbackData : []);
       } catch (fetchError) {
         console.error("Lỗi tải danh sách bánh:", fetchError);
 
@@ -179,7 +184,73 @@ function Home() {
           </div>
         </Link>
       </section>
+      {/* ================= CUSTOMER REVIEWS ================= */}
 
+      <section className="pd-home-section">
+        <div className="pd-section-title">
+          <span />
+          <h2>Khách hàng nói gì?</h2>
+          <span />
+        </div>
+
+        {feedbacks.length === 0 ? (
+          <p style={{ textAlign: "center" }}>
+            Chưa có đánh giá nào.
+          </p>
+        ) : (
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
+              gap: "20px",
+            }}
+          >
+            {feedbacks
+              .filter((item) => item.isVisible)
+              .map((item) => (
+                <div
+                  key={item.id}
+                  style={{
+                    background: "#fff",
+                    padding: "20px",
+                    borderRadius: "16px",
+                    boxShadow: "0 4px 12px rgba(0,0,0,.08)",
+                  }}
+                >
+                  <div
+                    style={{
+                      color: "#f5b301",
+                      fontSize: "20px",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    {"★".repeat(item.rating)}
+                    {"☆".repeat(5 - item.rating)}
+                  </div>
+
+                  <p
+                    style={{
+                      fontStyle: "italic",
+                      marginBottom: "15px",
+                    }}
+                  >
+                    "{item.comment}"
+                  </p>
+
+                  <strong>
+                    Đơn hàng #{item.orderId}
+                  </strong>
+
+                  <br />
+
+                  <small>
+                    {new Date(item.createdAt).toLocaleDateString("vi-VN")}
+                  </small>
+                </div>
+              ))}
+          </div>
+        )}
+      </section>
       {/* ================= WHY CHOOSE ================= */}
 
       <section className="pd-why-section">

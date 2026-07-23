@@ -15,7 +15,6 @@ import CakeDetail from "../pages/customer/CakeDetail";
 import Cart from "../pages/customer/Cart";
 import Checkout from "../pages/customer/Checkout";
 import OrderHistory from "../pages/customer/OrderHistory";
-import CustomerOrderDetail from "../pages/customer/CustomerOrderDetail";
 import OrderDetail from "../pages/customer/OrderDetail";
 import OrderSuccess from "../pages/customer/OrderSuccess";
 
@@ -23,7 +22,21 @@ import CakeDesigner from "../pages/customCake/CakeDesigner";
 
 import OrderManagement from "../pages/admin/OrderManagement";
 
+import Profile from "../pages/customer/Profile";
+import useAuth from "../hooks/useAuth";
+
 import NotFound from "../pages/NotFound";
+import FeedbackManagement from "../pages/admin/FeedbackManagement";
+
+function DynamicLayout() {
+  const { user } = useAuth();
+
+  if (user?.role === "owner" || user?.role === "staff") {
+    return <AdminLayout />;
+  }
+
+  return <CustomerLayout />;
+}
 
 function AppRoutes() {
   return (
@@ -62,11 +75,19 @@ function AppRoutes() {
         </Route>
       </Route>
 
+      {/* Profile (accessible by customer, staff, and owner) */}
+      <Route element={<ProtectedRoute role={["customer", "owner", "staff"]} />}>
+        <Route element={<DynamicLayout />}>
+          <Route path="/profile" element={<Profile />} />
+        </Route>
+      </Route>
+
       {/* Owner */}
 
       <Route element={<ProtectedRoute role="owner" />}>
         <Route element={<AdminLayout />}>
           <Route path="/admin/orders" element={<OrderManagement />} />
+          <Route path="/admin/feedbacks" element={<FeedbackManagement />} />
         </Route>
       </Route>
 

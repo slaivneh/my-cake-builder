@@ -140,7 +140,12 @@ function Header() {
 
               <NotificationBell />
 
-              <div className="pd-header__account">
+              <Link
+                to="/profile"
+                className="pd-header__account"
+                style={{ textDecoration: "none" }}
+                onClick={closeMenu}
+              >
                 <div className="pd-header__avatar">{avatarText}</div>
 
                 <div className="pd-header__account-info">
@@ -148,7 +153,7 @@ function Header() {
 
                   <strong title={displayName}>{displayName}</strong>
                 </div>
-              </div>
+              </Link>
 
               <button
                 type="button"
