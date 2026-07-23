@@ -83,6 +83,10 @@ function AdminHeader() {
               <span className="admin-nav-icon">☆</span>
               <span className="admin-nav-label">Quản lý đánh giá</span>
             </Link>
+            <Link to="/admin/products" className={`admin-nav-item ${isActive("/admin/products") ? "active" : ""}`}>
+              <span className="admin-nav-icon">🧁</span>
+              <span className="admin-nav-label">Quản lý sản phẩm</span>
+            </Link>
           </nav>
         </div>
 

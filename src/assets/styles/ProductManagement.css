@@ -1,0 +1,314 @@
+:root {
+    --pd-primary: #d88a9a;
+    --pd-primary-dark: #c26d7e;
+    --pd-primary-light: #fdf3f5;
+    --pd-border: #ecd8dd;
+    --pd-text: #5d4c50;
+    --pd-text-light: #857177;
+    --pd-white: #fff;
+    --pd-shadow: 0 8px 30px rgba(0, 0, 0, .08);
+    --radius: 16px;
+}
+
+/* ================= PAGE ================= */
+
+.product-management {
+    padding: 30px;
+}
+
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.product-header h1 {
+    margin: 0;
+    color: var(--pd-primary-dark);
+}
+
+.product-header p {
+    margin-top: 8px;
+    color: var(--pd-text-light);
+}
+
+.product-add-btn {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 10px;
+    background: var(--pd-primary);
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .2s;
+}
+
+.product-add-btn:hover {
+    background: var(--pd-primary-dark);
+}
+
+/* ================= TABLE ================= */
+
+.product-table-wrapper {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--pd-shadow);
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product-table thead {
+    background: var(--pd-primary-light);
+}
+
+.product-table th {
+    padding: 18px;
+    text-align: left;
+    color: var(--pd-text);
+    font-weight: 600;
+    border-bottom: 1px solid var(--pd-border);
+}
+
+.product-table td {
+    padding: 16px;
+    border-bottom: 1px solid #f3f3f3;
+    vertical-align: middle;
+}
+
+.product-table tbody tr:hover {
+    background: #fffafb;
+}
+
+.product-image {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #eee;
+}
+
+.product-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.edit-btn {
+    background: #ffb8cd;
+}
+
+.delete-btn {
+    background: #ffd8d8;
+}
+
+/* ================= LOADING ================= */
+
+.product-loading {
+    text-align: center;
+    padding: 50px;
+}
+
+/* ================= MODAL ================= */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 30px;
+}
+
+.product-modal {
+    width: 850px;
+    max-width: 95vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, .25);
+    animation: popup .25s ease;
+}
+
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product-modal h2 {
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: var(--pd-primary-dark);
+}
+
+.product-modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-modal label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--pd-text);
+    font-weight: 600;
+}
+
+.product-modal input,
+.product-modal textarea,
+.product-modal select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--pd-border);
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.product-modal textarea {
+    resize: vertical;
+}
+
+.product-image-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.preview-image {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid #eee;
+}
+
+.product-image-preview small {
+    color: #888;
+}
+
+/* ================= PRICE ================= */
+
+.price-option {
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    gap: 14px;
+}
+
+/* ================= CHECKBOX ================= */
+
+.checkbox-group {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.checkbox-group label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+}
+
+/* ================= FOOTER ================= */
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.modal-actions button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .2s;
+}
+
+.modal-actions button:first-child {
+    background: #ececec;
+}
+
+.modal-actions button:first-child:hover {
+    background: #ddd;
+}
+
+.modal-actions button:last-child {
+    background: var(--pd-primary);
+    color: white;
+}
+
+.modal-actions button:last-child:hover {
+    background: var(--pd-primary-dark);
+}
+
+.modal-actions button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:768px) {
+
+    .product-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .product-table {
+        font-size: 13px;
+    }
+
+    .product-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .price-option {
+        grid-template-columns: 1fr;
+    }
+
+    .checkbox-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .product-modal {
+        padding: 20px;
+    }
+}
