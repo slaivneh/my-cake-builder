@@ -62,6 +62,7 @@ const NotificationBell = () => {
     }
   };
 
+
   const handleMarkAsRead = async (id, e) => {
     e.stopPropagation();
     try {
